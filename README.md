@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="scroll-smooth scroll-pt-28">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,11 +31,16 @@
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-10px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
                 }
@@ -43,28 +48,32 @@
         }
     </script>
     <style>
-        body { background-color: #0B0F19; color: white; }
+        body { 
+            background-color: #0B0F19; 
+            color: white; 
+            overflow-x: hidden; /* Evita scroll lateral por animaciones */
+        }
         .glass-panel {
-            background: rgba(17, 24, 39, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(11, 15, 25, 0.7); /* Un poco más oscuro para mejor legibilidad */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-            height: 100%; /* Para igualar alturas en grid */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
         }
         .glass-card:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06);
             border-color: var(--hover-color, rgba(6, 182, 212, 0.3));
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px -10px var(--hover-shadow, rgba(6, 182, 212, 0.2));
+            box-shadow: 0 20px 40px -10px var(--hover-shadow, rgba(6, 182, 212, 0.1));
         }
         .text-glow {
             text-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
@@ -74,7 +83,7 @@
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s ease-out;
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
         .reveal.active {
             opacity: 1;
@@ -83,16 +92,16 @@
 
         /* Gradientes de fondo para secciones */
         .section-gradient-blue {
-            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 40%);
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 50%);
         }
         .section-gradient-purple {
-            background: radial-gradient(circle at left center, rgba(139, 92, 246, 0.1), transparent 40%);
+            background: radial-gradient(circle at left center, rgba(139, 92, 246, 0.08), transparent 50%);
         }
         .section-gradient-cyan {
-            background: radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.1), transparent 40%);
+            background: radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.08), transparent 50%);
         }
         .section-gradient-pink {
-            background: radial-gradient(circle at top left, rgba(236, 72, 153, 0.1), transparent 40%);
+            background: radial-gradient(circle at top left, rgba(236, 72, 153, 0.08), transparent 50%);
         }
     </style>
 </head>
@@ -107,17 +116,17 @@
     </div>
 
     <!-- NAVEGACIÓN -->
-    <nav class="fixed top-0 w-full z-50 px-6 py-4 glass-panel border-b-0 border-b-white/5">
+    <nav class="fixed top-0 w-full z-50 px-6 py-4 glass-panel">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
                 <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center font-bold text-white shadow-lg shadow-cyan-500/20">S</div>
                 <span class="text-xl font-bold tracking-tight">SergioGP<span class="text-cyan-400">.AI</span></span>
             </div>
             
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-                <a href="#inicio" class="hover:text-white transition-colors">Inicio</a>
-                <a href="#servicios" class="hover:text-white transition-colors">Servicios</a>
-                <a href="#contacto" class="px-5 py-2 bg-white text-dark-900 rounded-full font-bold hover:bg-gray-200 transition-all transform hover:scale-105 shadow-lg shadow-white/10">
+                <a href="#inicio" class="hover:text-white transition-colors hover:scale-105 transform duration-200">Inicio</a>
+                <a href="#servicios" class="hover:text-white transition-colors hover:scale-105 transform duration-200">Servicios</a>
+                <a href="#contacto" class="px-6 py-2.5 bg-white text-dark-900 rounded-full font-bold hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg shadow-white/5 border border-transparent hover:border-white/50">
                     Contactar
                 </a>
             </div>
@@ -125,27 +134,26 @@
     </nav>
 
     <!-- SECCIÓN HERO -->
-    <section id="inicio" class="relative z-10 min-h-screen flex items-center pt-32 pb-12">
-        <div class="max-w-7xl mx-auto px-6 w-full flex flex-col md:flex-row items-center gap-12">
+    <section id="inicio" class="relative z-10 min-h-screen flex items-center pt-20 pb-12">
+        <div class="max-w-7xl mx-auto px-6 w-full flex flex-col md:flex-row items-center gap-12 lg:gap-20">
             
             <!-- CONTENIDO TEXTO -->
-            <div class="w-full md:w-7/12 space-y-8 order-2 md:order-1">
+            <div class="w-full md:w-7/12 space-y-8 order-2 md:order-1 animate-fade-in">
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider shadow-glow">
                     <span class="relative flex h-2 w-2">
                       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                       <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
                     </span>
-                    <!-- ETIQUETA ACTUALIZADA -->
                     Agente de Transformación Digital
                 </div>
 
                 <div class="space-y-2">
                     <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight tracking-tight">
                         Hola, soy <br>
-                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 text-glow inline-block pb-2">
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 text-glow inline-block pb-3">
                             Sergio Guillén Pampliega
                         </span>
-                        <i class="ph-fill ph-seal-check text-blue-500 text-3xl md:text-4xl align-middle inline-block ml-1 -mt-2" title="Experto Verificado"></i>
+                        <i class="ph-fill ph-seal-check text-blue-500 text-3xl md:text-4xl align-middle inline-block ml-1 -mt-3" title="Experto Verificado"></i>
                     </h1>
                 </div>
 
@@ -159,8 +167,8 @@
                 </div>
 
                 <!-- Botón ÚNICO de Consultoría Gratuita -->
-                <div class="flex flex-wrap gap-4 pt-4">
-                    <a href="#contacto" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl font-bold text-white shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 transition-all transform hover:-translate-y-1 flex items-center gap-2 group text-lg">
+                <div class="pt-4">
+                    <a href="#contacto" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl font-bold text-white shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 transition-all transform hover:-translate-y-1 text-lg group">
                         Consultoría Gratuita
                         <i class="ph-bold ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
                     </a>
@@ -206,7 +214,7 @@
             </div>
 
             <!-- BLOQUE 1: SOLUCIONES IA -->
-            <div class="mb-32 reveal section-gradient-blue rounded-3xl p-4 md:p-8 border border-blue-500/10">
+            <div class="mb-24 reveal section-gradient-blue rounded-3xl p-6 md:p-10 border border-blue-500/10 hover:border-blue-500/20 transition-colors">
                 <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 gap-4 border-b border-blue-500/20 pb-6">
                     <div>
                         <span class="text-blue-400 font-bold tracking-wider uppercase text-sm mb-2 block">Área 01</span>
@@ -255,7 +263,7 @@
             </div>
 
             <!-- BLOQUE 2: AUTOMATIZACIONES -->
-            <div class="mb-32 reveal section-gradient-purple rounded-3xl p-4 md:p-8 border border-purple-500/10">
+            <div class="mb-24 reveal section-gradient-purple rounded-3xl p-6 md:p-10 border border-purple-500/10 hover:border-purple-500/20 transition-colors">
                 <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 gap-4 border-b border-purple-500/20 pb-6">
                     <div>
                         <span class="text-purple-400 font-bold tracking-wider uppercase text-sm mb-2 block">Área 02</span>
@@ -304,7 +312,7 @@
             </div>
 
             <!-- BLOQUE 3: TRANSFORMACIÓN DIGITAL -->
-            <div class="mb-32 reveal section-gradient-cyan rounded-3xl p-4 md:p-8 border border-cyan-500/10">
+            <div class="mb-24 reveal section-gradient-cyan rounded-3xl p-6 md:p-10 border border-cyan-500/10 hover:border-cyan-500/20 transition-colors">
                 <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 gap-4 border-b border-cyan-500/20 pb-6">
                     <div>
                         <span class="text-cyan-400 font-bold tracking-wider uppercase text-sm mb-2 block">Área 03</span>
@@ -348,7 +356,7 @@
             </div>
 
             <!-- BLOQUE 4: MARKETING DIGITAL -->
-            <div class="mb-10 reveal section-gradient-pink rounded-3xl p-4 md:p-8 border border-pink-500/10">
+            <div class="mb-10 reveal section-gradient-pink rounded-3xl p-6 md:p-10 border border-pink-500/10 hover:border-pink-500/20 transition-colors">
                 <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 gap-4 border-b border-pink-500/20 pb-6">
                     <div>
                         <span class="text-pink-400 font-bold tracking-wider uppercase text-sm mb-2 block">Área 04</span>
@@ -398,7 +406,7 @@
     <section id="sobre-mi" class="relative z-10 py-24 bg-dark-900 border-y border-white/5">
         <div class="max-w-7xl mx-auto px-6">
             
-            <div class="grid md:grid-cols-2 gap-12 items-center mb-20 reveal">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center mb-20 reveal">
                 <div class="order-2 md:order-1 space-y-6">
                     <span class="text-cyan-400 font-bold tracking-wider uppercase text-sm">Trayectoria</span>
                     <h2 class="text-3xl md:text-5xl font-bold text-white">Sobre Mí</h2>
@@ -522,7 +530,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN FAQ (NUEVA) -->
+    <!-- SECCIÓN FAQ -->
     <section id="faq" class="relative z-10 py-24 bg-dark-900 border-y border-white/5">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4 reveal">
@@ -568,7 +576,7 @@
     <!-- SECCIÓN CONTACTO (CTA FINAL) -->
     <section id="contacto" class="relative z-10 py-24 border-t border-white/5 bg-gradient-to-b from-dark-900 to-blue-900/10">
         <div class="max-w-3xl mx-auto px-6">
-            <div class="glass-panel p-8 md:p-12 rounded-3xl border border-cyan-500/20 shadow-2xl relative overflow-hidden text-center">
+            <div class="glass-panel p-8 md:p-12 rounded-3xl border border-cyan-500/20 shadow-2xl relative overflow-hidden text-center transform hover:scale-[1.01] transition-transform duration-500">
                 
                 <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5"></div>
                 
@@ -577,10 +585,10 @@
                         <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Sergio Guillén Pampliega</h2>
                         <p class="text-lg md:text-xl text-cyan-400 font-medium">Experto en IA y Automatización</p>
                         <p class="text-gray-400 text-sm uppercase tracking-wider mt-1">Agente de Transformación Digital</p>
-                        <p class="text-gray-500 text-sm mt-1"><i class="ph-fill ph-map-pin inline-block mr-1"></i>Murcia, España</p>
+                        <p class="text-gray-500 text-sm mt-1 flex items-center justify-center gap-1"><i class="ph-fill ph-map-pin"></i>Murcia, España</p>
                     </div>
 
-                    <div class="h-px w-24 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent mx-auto"></div>
+                    <div class="h-px w-24 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent mx-auto my-6"></div>
 
                     <div class="space-y-4">
                          <a href="tel:+34649368800" class="block text-xl text-white hover:text-cyan-300 transition-colors font-medium">
@@ -591,8 +599,8 @@
                          </a>
                     </div>
 
-                    <div class="pt-4">
-                        <a href="https://www.linkedin.com/in/sergioguillenpampliega" target="_blank" class="inline-flex items-center gap-2 px-8 py-3 bg-[#0a66c2] hover:bg-[#004182] text-white rounded-full font-bold transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-1">
+                    <div class="pt-6">
+                        <a href="https://www.linkedin.com/in/sergioguillenpampliega" target="_blank" class="inline-flex items-center gap-2 px-8 py-3 bg-[#0a66c2] hover:bg-[#004182] text-white rounded-full font-bold transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-1 hover:shadow-blue-900/40">
                             <i class="ph-bold ph-linkedin-logo text-xl"></i>
                             LinkedIn
                         </a>
@@ -605,9 +613,9 @@
     <!-- FOOTER -->
     <footer class="py-10 text-center text-gray-500 text-sm border-t border-white/5 bg-dark-900 relative z-10">
         <div class="flex justify-center gap-6 mb-6">
-            <a href="#" class="text-gray-400 hover:text-white transition-colors text-xl"><i class="ph-fill ph-linkedin-logo"></i></a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors text-xl"><i class="ph-fill ph-twitter-logo"></i></a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors text-xl"><i class="ph-fill ph-instagram-logo"></i></a>
+            <a href="https://www.linkedin.com/in/sergioguillenpampliega" class="text-gray-400 hover:text-white transition-colors text-xl p-2 hover:bg-white/5 rounded-full"><i class="ph-fill ph-linkedin-logo"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors text-xl p-2 hover:bg-white/5 rounded-full"><i class="ph-fill ph-twitter-logo"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors text-xl p-2 hover:bg-white/5 rounded-full"><i class="ph-fill ph-instagram-logo"></i></a>
         </div>
         <p>&copy; 2024 Sergio Guillén Pampliega. Todos los derechos reservados.</p>
     </footer>
