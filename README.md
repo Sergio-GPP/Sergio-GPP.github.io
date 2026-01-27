@@ -51,10 +51,10 @@
         body { 
             background-color: #0B0F19; 
             color: white; 
-            overflow-x: hidden; /* Evita scroll lateral por animaciones */
+            overflow-x: hidden; /* Evita scroll lateral */
         }
         .glass-panel {
-            background: rgba(11, 15, 25, 0.7); /* Un poco más oscuro para mejor legibilidad */
+            background: rgba(11, 15, 25, 0.85); /* Mayor opacidad para asegurar legibilidad en nav */
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -91,21 +91,26 @@
         }
 
         /* Gradientes de fondo para secciones */
-        .section-gradient-blue {
-            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 50%);
+        .section-gradient-blue { background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 50%); }
+        .section-gradient-purple { background: radial-gradient(circle at left center, rgba(139, 92, 246, 0.08), transparent 50%); }
+        .section-gradient-cyan { background: radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.08), transparent 50%); }
+        .section-gradient-pink { background: radial-gradient(circle at top left, rgba(236, 72, 153, 0.08), transparent 50%); }
+
+        /* Menú móvil */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            transform: translateY(-20px);
+            opacity: 0;
+            pointer-events: none;
         }
-        .section-gradient-purple {
-            background: radial-gradient(circle at left center, rgba(139, 92, 246, 0.08), transparent 50%);
-        }
-        .section-gradient-cyan {
-            background: radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.08), transparent 50%);
-        }
-        .section-gradient-pink {
-            background: radial-gradient(circle at top left, rgba(236, 72, 153, 0.08), transparent 50%);
+        #mobile-menu.open {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
         }
     </style>
 </head>
-<body class="antialiased selection:bg-cyan-500 selection:text-white">
+<body class="antialiased selection:bg-cyan-500 selection:text-white relative">
 
     <!-- IMAGEN DE FONDO GLOBAL -->
     <div class="fixed inset-0 z-0">
@@ -118,11 +123,18 @@
     <!-- NAVEGACIÓN -->
     <nav class="fixed top-0 w-full z-50 px-6 py-4 glass-panel">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+            <!-- Logo -->
+            <div class="flex items-center gap-2 cursor-pointer z-50" onclick="window.scrollTo(0,0)">
                 <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center font-bold text-white shadow-lg shadow-cyan-500/20">S</div>
                 <span class="text-xl font-bold tracking-tight">SergioGP<span class="text-cyan-400">.AI</span></span>
             </div>
             
+            <!-- Botón Hamburguesa (Móvil) -->
+            <button id="menu-btn" class="md:hidden text-white text-2xl z-50 focus:outline-none">
+                <i class="ph-bold ph-list"></i>
+            </button>
+
+            <!-- Enlaces Escritorio -->
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
                 <a href="#inicio" class="hover:text-white transition-colors hover:scale-105 transform duration-200">Inicio</a>
                 <a href="#servicios" class="hover:text-white transition-colors hover:scale-105 transform duration-200">Servicios</a>
@@ -131,10 +143,19 @@
                 </a>
             </div>
         </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-dark-900/95 backdrop-blur-xl border-b border-white/10 md:hidden flex flex-col items-center py-8 space-y-6 shadow-2xl">
+            <a href="#inicio" class="text-lg font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Inicio</a>
+            <a href="#servicios" class="text-lg font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Servicios</a>
+            <a href="#contacto" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full font-bold text-white shadow-lg" onclick="toggleMenu()">
+                Contactar
+            </a>
+        </div>
     </nav>
 
     <!-- SECCIÓN HERO -->
-    <section id="inicio" class="relative z-10 min-h-screen flex items-center pt-20 pb-12">
+    <section id="inicio" class="relative z-10 min-h-screen flex items-center pt-24 pb-12">
         <div class="max-w-7xl mx-auto px-6 w-full flex flex-col md:flex-row items-center gap-12 lg:gap-20">
             
             <!-- CONTENIDO TEXTO -->
@@ -409,12 +430,19 @@
             <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center mb-20 reveal">
                 <div class="order-2 md:order-1 space-y-6">
                     <span class="text-cyan-400 font-bold tracking-wider uppercase text-sm">Trayectoria</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-white">Sobre Mí</h2>
-                    <p class="text-gray-300 leading-relaxed text-lg">
-                        Soy Sergio Guillén Pampliega, un apasionado de la tecnología con la misión de democratizar el uso de la Inteligencia Artificial en el entorno empresarial. Mi enfoque no es solo técnico, sino estratégico: busco soluciones que generen un retorno de inversión real y medible.
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Sobre Mí</h2>
+                    <h3 class="text-xl md:text-2xl font-bold text-cyan-400 mb-4">Hola, soy Sergio Guillén</h3>
+                    <p class="text-gray-300 leading-relaxed text-lg mb-4">
+                        Graduado y Formado en <strong class="text-white">Inteligencia Artificial</strong>, <strong class="text-white">Automatización de Procesos</strong>, <strong class="text-white">Marketing y Publicidad</strong>, y <strong class="text-white">Transformación Digital</strong>.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed text-lg mb-4">
+                        Mi objetivo es hacer a las empresas más óptimas, eficientes y competitivas.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        Esto lo consigo mejorando distintas áreas de negocio, ya sea liberando tiempo, desarrollando sistemas para una mejor toma de decisiones, mejorando la atención al cliente, automatizando y mejorando áreas de marketing, digitalizando procesos, formando equipos...
                     </p>
                     <p class="text-gray-400 leading-relaxed">
-                        En el último año, he liderado la transformación digital de múltiples compañías, implementando desde sistemas de automatización básicos hasta complejas infraestructuras de IA local. Mi objetivo es claro: que la tecnología trabaje para ti, y no al revés.
+                        Todos los servicios y soluciones son personalizados para cada cliente y proyecto, asegurando compromiso y resultados.
                     </p>
                     <div class="pt-4">
                         <a href="#contacto" class="text-cyan-400 hover:text-cyan-300 font-medium flex items-center gap-2 group">
@@ -636,6 +664,24 @@
         }
         // Ejecutar una vez al cargar
         reveal();
+
+        // Control del Menú Móvil
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        function toggleMenu() {
+            mobileMenu.classList.toggle('open');
+            const icon = menuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('open')) {
+                icon.classList.remove('ph-list');
+                icon.classList.add('ph-x');
+            } else {
+                icon.classList.remove('ph-x');
+                icon.classList.add('ph-list');
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
     </script>
 </body>
 </html>
