@@ -1,64 +1,45 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="scroll-smooth scroll-pt-28">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sergio Guillén Pampliega | Agente de Transformación Digital</title>
-    <meta name="description" content="Experto en Inteligencia Artificial y Automatización de Procesos. Transforma tu empresa con soluciones digitales.">
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Outfit', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
                     },
                     colors: {
                         dark: {
-                            950: '#050505',
-                            900: '#0A0A0A', 
-                            800: '#121212', 
-                            700: '#1C1C1C', 
+                            900: '#0B0F19', 
+                            800: '#111827', 
+                            700: '#1F2937', 
                         },
-                        accent: {
-                            cyan: '#00F0FF',
-                            blue: '#2D7FF9',
-                            purple: '#9D4EDD',
-                            pink: '#F72585'
+                        brand: {
+                            blue: '#3B82F6',
+                            cyan: '#06B6D4',
+                            purple: '#8B5CF6'
                         }
                     },
-                    backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')",
-                    },
                     animation: {
-                        'float': 'float 8s ease-in-out infinite',
-                        'float-delayed': 'float 8s ease-in-out 4s infinite',
-                        'pulse-glow': 'pulseGlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'shimmer': 'shimmer 2.5s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
+                            '50%': { transform: 'translateY(-10px)' },
                         },
-                        pulseGlow: {
-                            '0%, 100%': { opacity: '1', transform: 'scale(1)' },
-                            '50%': { opacity: '0.8', transform: 'scale(1.05)' },
-                        },
-                        shimmer: {
-                            '0%': { backgroundPosition: '-1000px 0' },
-                            '100%': { backgroundPosition: '1000px 0' }
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
                 }
@@ -66,578 +47,623 @@
         }
     </script>
     <style>
-        /* Base Styles & Reset */
         body { 
-            background-color: #050505; 
-            color: #E5E7EB; 
+            background-color: #0B0F19; 
+            color: white; 
             overflow-x: hidden; 
         }
-
-        /* Smooth Scrolling hack for Safari */
-        html { scroll-behavior: smooth; }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0A0A0A; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #555; }
-
-        /* Background Orbs Animation */
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.4;
-            animation: float 10s infinite ease-in-out;
+        .glass-panel {
+            background: rgba(11, 15, 25, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-
-        /* Glassmorphism Classes */
-        .glass-nav {
-            background: rgba(10, 10, 10, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
         .glass-card {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--hover-color, rgba(6, 182, 212, 0.3));
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px var(--hover-shadow, rgba(6, 182, 212, 0.1));
+        }
+        .text-glow {
+            text-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
         }
         
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
-            border-color: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5);
-        }
-
-        .glass-card:hover::before { opacity: 1; }
-
-        /* Icon Glow on Hover */
-        .glass-card:hover .icon-box {
-            transform: scale(1.1);
-            background: rgba(255,255,255,0.1);
-        }
-
-        /* Typography Enhancements */
-        .text-gradient {
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(to right, #60A5FA, #00F0FF, #9D4EDD);
-        }
-
-        /* Reveal Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Custom Gradients for Sections */
-        .gradient-border {
-            position: relative;
-            background: rgba(255, 255, 255, 0.02);
-        }
-        .gradient-border::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            padding: 1px;
-            background: linear-gradient(to bottom right, rgba(255,255,255,0.1), transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
+        .section-gradient-blue { background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 50%); }
+        .section-gradient-purple { background: radial-gradient(circle at left center, rgba(139, 92, 246, 0.08), transparent 50%); }
+        .section-gradient-cyan { background: radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.08), transparent 50%); }
+        .section-gradient-pink { background: radial-gradient(circle at top left, rgba(236, 72, 153, 0.08), transparent 50%); }
+
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            transform: translateY(-20px);
+            opacity: 0;
             pointer-events: none;
+        }
+        #mobile-menu.open {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
         }
     </style>
 </head>
-<body class="antialiased selection:bg-accent-cyan selection:text-black relative font-sans">
+<body class="antialiased selection:bg-cyan-500 selection:text-white relative">
 
-    <div class="fixed inset-0 pointer-events-none z-0">
-        <div class="absolute inset-0 bg-noise opacity-30 mix-blend-overlay"></div>
-        <div class="orb w-[500px] h-[500px] bg-accent-blue/20 top-[-100px] left-[-100px]"></div>
-        <div class="orb w-[400px] h-[400px] bg-accent-purple/20 bottom-[10%] right-[-50px] animation-delay-2000"></div>
-        <div class="orb w-[300px] h-[300px] bg-accent-cyan/10 top-[40%] left-[20%] animation-delay-4000"></div>
+    <!-- FONDO -->
+    <div class="fixed inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" 
+             alt="Background Tech" 
+             class="w-full h-full object-cover opacity-20 filter blur-[2px]">
+        <div class="absolute inset-0 bg-gradient-to-b from-dark-900/90 via-dark-900/95 to-dark-900"></div>
     </div>
 
-    <nav class="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
-        <div class="glass-nav rounded-full px-2 py-2 flex items-center justify-between shadow-2xl shadow-black/20 w-full max-w-4xl relative">
+    <!-- NAVEGACIÓN -->
+    <nav class="fixed top-0 w-full z-50 px-6 py-4 glass-panel">
+        <div class="max-w-screen-2xl mx-auto flex justify-center items-center relative">
             
-            <a href="#" class="px-6 font-display font-bold text-xl tracking-tight text-white hover:text-accent-cyan transition-colors">
-                SG<span class="text-accent-cyan">.</span>
-            </a>
+            <!-- Botón Móvil (Derecha) -->
+            <button id="menu-btn" class="md:hidden text-white text-2xl absolute right-0 focus:outline-none p-2">
+                <i class="ph-bold ph-list"></i>
+            </button>
 
-            <div class="hidden md:flex items-center gap-1 bg-white/5 rounded-full p-1">
-                <a href="#inicio" class="px-6 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-all">Inicio</a>
-                <a href="#servicios" class="px-6 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-all">Servicios</a>
-                <a href="#sobre-mi" class="px-6 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-all">Sobre Mí</a>
-            </div>
-
-            <div class="hidden md:block pr-2">
-                <a href="#contacto" class="px-6 py-2.5 bg-white text-black rounded-full font-bold text-sm hover:bg-accent-cyan transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_rgba(0,240,255,0.5)]">
+            <!-- Menú Escritorio (Solo enlaces) -->
+            <div class="hidden md:flex items-center gap-12 text-base font-medium text-gray-300">
+                <a href="#inicio" class="hover:text-white transition-colors hover:scale-105 transform duration-200">Inicio</a>
+                <a href="#servicios" class="hover:text-white transition-colors hover:scale-105 transform duration-200">Servicios</a>
+                <a href="#contacto" class="px-8 py-2.5 bg-white text-dark-900 rounded-full font-bold hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg shadow-white/5 border border-transparent hover:border-white/50">
                     Contactar
                 </a>
             </div>
-
-            <button id="menu-btn" class="md:hidden p-3 text-white rounded-full hover:bg-white/10 transition-colors">
-                <i class="ph-bold ph-list text-xl"></i>
-            </button>
         </div>
 
-        <div id="mobile-menu" class="absolute top-full mt-4 w-[90%] max-w-sm bg-[#0A0A0A] border border-white/10 rounded-2xl p-6 flex-col gap-4 shadow-2xl transform scale-95 opacity-0 pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]">
-            <a href="#inicio" class="block p-3 rounded-xl hover:bg-white/5 text-lg font-medium text-white" onclick="toggleMenu()">Inicio</a>
-            <a href="#servicios" class="block p-3 rounded-xl hover:bg-white/5 text-lg font-medium text-white" onclick="toggleMenu()">Servicios</a>
-            <a href="#sobre-mi" class="block p-3 rounded-xl hover:bg-white/5 text-lg font-medium text-white" onclick="toggleMenu()">Sobre Mí</a>
-            <a href="#contacto" class="block mt-4 p-4 bg-accent-blue text-center rounded-xl font-bold text-white shadow-lg shadow-blue-500/20" onclick="toggleMenu()">Contactar Ahora</a>
+        <!-- Menú Móvil -->
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-dark-900/98 backdrop-blur-xl border-b border-white/10 md:hidden flex flex-col items-center py-8 space-y-8 shadow-2xl">
+            <a href="#inicio" class="text-xl font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Inicio</a>
+            <a href="#servicios" class="text-xl font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Servicios</a>
+            <a href="#contacto" class="px-10 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full font-bold text-white text-lg shadow-lg" onclick="toggleMenu()">
+                Contactar
+            </a>
         </div>
     </nav>
 
-    <section id="inicio" class="relative z-10 min-h-screen flex items-center justify-center pt-32 pb-20 px-6 overflow-hidden">
-        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center">
+    <!-- HERO -->
+    <section id="inicio" class="relative z-10 min-h-screen flex items-center pt-24 pb-12">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12 w-full flex flex-col md:flex-row items-center gap-16 lg:gap-24">
             
-            <div class="space-y-8 order-2 lg:order-1 relative">
-                <div class="animate-fade-in opacity-0" style="animation-fill-mode: forwards; animation-delay: 0.1s;">
-                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent-cyan/30 bg-accent-cyan/10 text-accent-cyan text-xs font-bold uppercase tracking-widest mb-6">
-                        <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-pulse"></span>
-                        Disponible para proyectos
+            <div class="w-full md:w-7/12 space-y-8 order-2 md:order-1 animate-fade-in">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider shadow-glow">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
                     </span>
-                    
-                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-[0.95] tracking-tight text-white mb-6">
-                        Transforma <br/>
-                        <span class="text-gradient">Tu Negocio.</span>
+                    Agente de Transformación Digital
+                </div>
+
+                <div class="space-y-4">
+                    <h1 class="text-5xl sm:text-6xl lg:text-8xl font-bold leading-tight tracking-tight">
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 text-glow inline-block pb-3">
+                            Sergio Guillén Pampliega
+                        </span>
+                        <i class="ph-fill ph-seal-check text-blue-500 text-4xl md:text-5xl align-middle inline-block ml-2 -mt-4" title="Experto Verificado"></i>
                     </h1>
-                    
-                    <p class="text-lg md:text-xl text-gray-400 max-w-xl leading-relaxed font-light">
-                        Soy <strong class="text-white font-medium">Sergio Guillén</strong>, Agente de Transformación Digital. Especialista en optimizar empresas mediante <span class="text-white border-b border-accent-cyan/50">Inteligencia Artificial</span> y <span class="text-white border-b border-accent-purple/50">Automatización</span>.
+                </div>
+
+                <div class="space-y-6 border-l-2 border-cyan-500/30 pl-6">
+                    <h2 class="text-2xl md:text-3xl text-gray-200 font-light">
+                        Experto en <strong class="text-white font-semibold border-b border-cyan-500/50">Inteligencia Artificial</strong> y <strong class="text-white font-semibold border-b border-cyan-500/50">Automatización</strong>.
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed">
+                        Más de 3 años optimizando procesos y transformando empresas con IA.
                     </p>
                 </div>
 
-                <div class="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in opacity-0" style="animation-fill-mode: forwards; animation-delay: 0.3s;">
-                    <a href="#contacto" class="group relative px-8 py-4 bg-white text-black rounded-full font-bold text-lg overflow-hidden transition-all hover:scale-105">
-                        <span class="relative z-10 flex items-center gap-2">Consultoría Gratuita <i class="ph-bold ph-arrow-right group-hover:translate-x-1 transition-transform"></i></span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-accent-cyan to-accent-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="pt-6">
+                    <a href="#contacto" class="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl font-bold text-white shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 transition-all transform hover:-translate-y-1 text-xl group">
+                        Consultoría Gratuita
+                        <i class="ph-bold ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
                     </a>
-                    <a href="#servicios" class="px-8 py-4 rounded-full border border-white/10 text-white font-medium hover:bg-white/5 transition-colors text-center">
-                        Ver Servicios
-                    </a>
-                </div>
-
-                <div class="pt-8 flex items-center gap-4 opacity-70">
-                    <div class="flex -space-x-3">
-                        <div class="w-10 h-10 rounded-full bg-gray-800 border-2 border-dark-900 flex items-center justify-center text-xs">AI</div>
-                        <div class="w-10 h-10 rounded-full bg-gray-700 border-2 border-dark-900 flex items-center justify-center text-xs">Auto</div>
-                        <div class="w-10 h-10 rounded-full bg-gray-600 border-2 border-dark-900 flex items-center justify-center text-xs">MKT</div>
-                    </div>
-                    <p class="text-sm text-gray-500 font-medium">+3 años generando impacto real.</p>
                 </div>
             </div>
 
-            <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative">
-                <div class="absolute inset-0 bg-gradient-to-tr from-accent-blue/20 to-accent-purple/20 blur-[100px] rounded-full"></div>
-                
-                <div class="relative w-full max-w-md aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl animate-float">
+            <div class="w-full md:w-5/12 flex justify-center md:justify-end order-1 md:order-2 animate-float">
+                <div class="relative w-full max-w-md aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 shadow-2xl group mx-auto md:mx-0">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 mix-blend-overlay"></div>
                     <img src="https://res.cloudinary.com/dg3peytgm/image/upload/IMG_7667_snrmuc.jpg" 
                          alt="Sergio Guillén Ponencia" 
-                         class="w-full h-full object-cover grayscale-[20%] contrast-125 hover:scale-105 transition-transform duration-700">
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent"></div>
                     
-                    <div class="absolute bottom-6 left-6 right-6 p-4 bg-dark-900/80 backdrop-blur-xl rounded-xl border border-white/10 flex items-center gap-4 shadow-lg">
-                        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-accent-cyan to-accent-blue flex items-center justify-center text-black shrink-0">
-                            <i class="ph-fill ph-rocket-launch text-2xl"></i>
+                    <div class="absolute bottom-6 left-6 right-6 p-4 glass-panel rounded-xl border border-white/10 backdrop-blur-xl flex items-center gap-4 shadow-lg">
+                        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-cyan-500/25">
+                            <i class="ph-fill ph-brain text-2xl"></i>
                         </div>
                         <div>
-                            <p class="text-xs text-accent-cyan font-bold uppercase tracking-wider">ROI Promedio</p>
-                            <p class="text-white text-lg font-bold font-display">+300% en Clientes</p>
+                            <p class="text-xs text-cyan-300 font-bold uppercase tracking-wider">Impacto Real</p>
+                            <p class="text-white text-sm font-medium">+300% ROI en clientes</p>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-
-    <section id="servicios" class="relative z-10 py-32">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- SERVICIOS -->
+    <section id="servicios" class="relative z-10 py-32 bg-dark-800/30 border-y border-white/5">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
             
-            <div class="text-center max-w-3xl mx-auto mb-24 reveal">
-                <span class="text-accent-cyan font-bold tracking-widest uppercase text-xs mb-4 block">Áreas de Impacto</span>
-                <h2 class="text-4xl md:text-6xl font-display font-bold text-white mb-6">
-                    Soluciones <span class="text-gray-500">Integrales</span>
+            <div class="text-center max-w-4xl mx-auto mb-24 space-y-4 reveal">
+                <h2 class="text-5xl md:text-6xl font-bold text-white">
+                    Mis <span class="text-cyan-400">Servicios</span>
                 </h2>
-                <p class="text-lg text-gray-400 font-light">
-                    No vendo herramientas, implemento sistemas que hacen que tu empresa funcione mejor, más rápido y con menos costes.
+                <p class="text-xl text-gray-400">
+                    Soluciones integrales para la transformación de tu empresa.
                 </p>
             </div>
 
-            <div class="space-y-32">
-                <div class="reveal">
-                    <div class="flex items-end justify-between mb-10 border-b border-white/10 pb-6">
-                        <h3 class="text-3xl font-display font-bold text-white flex items-center gap-3">
-                            <span class="text-accent-blue opacity-50">01.</span> Inteligencia Artificial
-                        </h3>
-                        <div class="hidden md:block px-4 py-1 rounded-full border border-accent-blue/30 text-accent-blue text-xs font-bold uppercase">Eficiencia</div>
-                    </div>
-                    
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="glass-card p-8 rounded-3xl group">
-                            <div class="icon-box w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-accent-blue mb-6 transition-transform duration-300">
-                                <i class="ph-fill ph-chat-circle-text text-3xl"></i>
-                            </div>
-                            <h4 class="text-xl font-bold text-white mb-3 group-hover:text-accent-blue transition-colors">Chatbots 24/7</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed">Atención al cliente automatizada que se siente humana. Resuelve dudas y cualifica leads mientras duermes.</p>
-                        </div>
-                        
-                        <div class="glass-card p-8 rounded-3xl group">
-                            <div class="icon-box w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-accent-blue mb-6 transition-transform duration-300">
-                                <i class="ph-fill ph-brain text-3xl"></i>
-                            </div>
-                            <h4 class="text-xl font-bold text-white mb-3 group-hover:text-accent-blue transition-colors">Cerebro Corporativo (RAG)</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed">Asistentes IA entrenados con tus propios datos. Pregunta a tu base de conocimiento y obtén respuestas al instante.</p>
-                        </div>
-
-                        <div class="glass-card p-8 rounded-3xl group">
-                            <div class="icon-box w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-accent-blue mb-6 transition-transform duration-300">
-                                <i class="ph-fill ph-magic-wand text-3xl"></i>
-                            </div>
-                            <h4 class="text-xl font-bold text-white mb-3 group-hover:text-accent-blue transition-colors">Generación de Contenido</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed">Creación de informes, emails y posts adaptados perfectamente al tono de voz de tu marca.</p>
-                        </div>
-                        
-                        <div class="glass-card p-8 rounded-3xl group">
-                            <div class="icon-box w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-accent-blue mb-6 transition-transform duration-300">
-                                <i class="ph-fill ph-chart-polar text-3xl"></i>
-                            </div>
-                            <h4 class="text-xl font-bold text-white mb-3 group-hover:text-accent-blue transition-colors">Análisis Predictivo</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed">Segmentación de clientes y detección de oportunidades ocultas en tus datos mediante algoritmos.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reveal">
-                    <div class="flex items-end justify-between mb-10 border-b border-white/10 pb-6">
-                        <h3 class="text-3xl font-display font-bold text-white flex items-center gap-3">
-                            <span class="text-accent-purple opacity-50">02.</span> Automatizaciones
-                        </h3>
-                        <div class="hidden md:block px-4 py-1 rounded-full border border-accent-purple/30 text-accent-purple text-xs font-bold uppercase">Productividad</div>
-                    </div>
-                    
-                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div class="glass-card p-8 rounded-3xl group">
-                            <div class="mb-4 text-accent-purple"><i class="ph-fill ph-arrows-merge text-3xl"></i></div>
-                            <h4 class="text-lg font-bold text-white mb-2">Marketing & Ventas</h4>
-                            <p class="text-gray-500 text-xs">Captación, nurturing y cierre automático.</p>
-                        </div>
-                        <div class="glass-card p-8 rounded-3xl group">
-                            <div class="mb-4 text-accent-purple"><i class="ph-fill ph-files text-3xl"></i></div>
-                            <h4 class="text-lg font-bold text-white mb-2">Administración</h4>
-                            <p class="text-gray-500 text-xs">Facturación y gestión documental sin errores.</p>
-                        </div>
-                        <div class="glass-card p-8 rounded-3xl group">
-                            <div class="mb-4 text-accent-purple"><i class="ph-fill ph-users-three text-3xl"></i></div>
-                            <h4 class="text-lg font-bold text-white mb-2">Recursos Humanos</h4>
-                            <p class="text-gray-500 text-xs">Onboarding y gestión de talento fluida.</p>
-                        </div>
-                        <div class="glass-card p-8 rounded-3xl group">
-                            <div class="mb-4 text-accent-purple"><i class="ph-fill ph-kanban text-3xl"></i></div>
-                            <h4 class="text-lg font-bold text-white mb-2">Gestión de Proyectos</h4>
-                            <p class="text-gray-500 text-xs">Conexión entre equipos y tareas.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reveal">
-                    <div class="flex items-end justify-between mb-10 border-b border-white/10 pb-6">
-                        <h3 class="text-3xl font-display font-bold text-white flex items-center gap-3">
-                            <span class="text-accent-cyan opacity-50">03.</span> Transformación Digital
-                        </h3>
-                        <div class="hidden md:block px-4 py-1 rounded-full border border-accent-cyan/30 text-accent-cyan text-xs font-bold uppercase">Evolución</div>
-                    </div>
-                    
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="glass-card p-8 rounded-3xl group border-l-4 border-l-accent-cyan">
-                            <h4 class="text-xl font-bold text-white mb-2">Embudos de Venta</h4>
-                            <p class="text-gray-400 text-sm">Diseño estratégico de landing pages y funnels que convierten visitas en dinero.</p>
-                        </div>
-                         <div class="glass-card p-8 rounded-3xl group border-l-4 border-l-accent-cyan">
-                            <h4 class="text-xl font-bold text-white mb-2">Digitalización de Procesos</h4>
-                            <p class="text-gray-400 text-sm">Elimina el papel y el Excel. Pasa a herramientas en la nube conectadas.</p>
-                        </div>
-                         <div class="glass-card p-8 rounded-3xl group border-l-4 border-l-accent-cyan">
-                            <h4 class="text-xl font-bold text-white mb-2">Business Intelligence</h4>
-                            <p class="text-gray-400 text-sm">Dashboards visuales para tomar decisiones basadas en datos reales.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="sobre-mi" class="relative z-10 py-32 bg-dark-900/50 border-y border-white/5">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-20 items-center reveal">
-                
-                <div class="space-y-8">
-                    <h2 class="text-4xl md:text-5xl font-display font-bold text-white">
-                        Más que un consultor, <br>
-                        <span class="text-gray-500">un socio estratégico.</span>
-                    </h2>
-                    
-                    <div class="space-y-6 text-lg text-gray-400 font-light leading-relaxed">
-                        <p>
-                            Mi background combina la lógica de la <strong class="text-white font-medium">Ingeniería de Datos</strong> con la creatividad del <strong class="text-white font-medium">Marketing</strong>. Esta mezcla es lo que permite que mis soluciones no solo funcionen técnicamente, sino que vendan.
-                        </p>
-                        <p>
-                            Mi misión es clara: democratizar el acceso a la tecnología punta para que empresas ambiciosas puedan competir (y ganar) en mercados saturados.
-                        </p>
-                        <p>
-                            Cada solución que diseño es personalizada. No creo en las fórmulas mágicas de "cortar y pegar". Tu negocio es único, tu solución también debe serlo.
-                        </p>
-                    </div>
-
-                    <div class="pt-4">
-                        <div class="grid grid-cols-2 gap-6">
-                            <div>
-                                <h3 class="text-3xl font-bold text-white mb-1">20+</h3>
-                                <p class="text-sm text-gray-500 uppercase tracking-wider">Automatizaciones Activas</p>
-                            </div>
-                            <div>
-                                <h3 class="text-3xl font-bold text-white mb-1">15+</h3>
-                                <p class="text-sm text-gray-500 uppercase tracking-wider">Chatbots Desplegados</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative">
-                    <div class="absolute inset-0 bg-accent-cyan blur-[80px] opacity-20"></div>
-                    <div class="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl rotate-2 hover:rotate-0 transition-all duration-500 bg-dark-800">
-                        <img src="https://res.cloudinary.com/dg3peytgm/image/upload/v1769542383/yo_terraza_celohz.png" 
-                             onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1000&auto=format&fit=crop'"
-                             alt="Sergio Guillén" 
-                             class="w-full h-auto object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-500">
-                        
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-8">
-                            <p class="text-white font-bold text-lg">Sergio Guillén</p>
-                            <p class="text-accent-cyan text-sm">Murcia, España</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-32 reveal">
-                <h3 class="text-2xl font-bold text-white mb-10 border-l-4 border-accent-purple pl-4">Proyectos Recientes</h3>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
-                    <div class="glass-card p-8 rounded-3xl md:col-span-2 relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                            <i class="ph-fill ph-share-network text-9xl"></i>
-                        </div>
-                        <div class="relative z-10 h-full flex flex-col">
-                            <div class="w-12 h-12 bg-accent-purple/20 rounded-lg flex items-center justify-center text-accent-purple mb-6">
-                                <i class="ph-fill ph-rocket text-2xl"></i>
-                            </div>
-                            <h4 class="text-2xl font-bold text-white mb-2">Ecosistema de Redes Sociales IA</h4>
-                            <p class="text-gray-400 mb-8 max-w-lg">Sistema autónomo para 3 empresas distintas. Generación de ideas, guiones, diseño de posts y programación automática.</p>
-                            <div class="mt-auto flex gap-4 text-sm font-medium">
-                                <span class="bg-white/5 px-3 py-1 rounded text-green-400">-80% Tiempo</span>
-                                <span class="bg-white/5 px-3 py-1 rounded text-green-400">+50% Consistencia</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card p-8 rounded-3xl flex flex-col group">
-                        <div class="w-12 h-12 bg-accent-blue/20 rounded-lg flex items-center justify-center text-accent-blue mb-6">
-                            <i class="ph-fill ph-envelope-simple-open text-2xl"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-white mb-2">Email Marketing Automático</h4>
-                        <p class="text-gray-400 text-sm mb-6">Hiper-personalización de correos según el comportamiento del usuario.</p>
-                        <div class="mt-auto border-t border-white/5 pt-4">
-                            <p class="text-2xl font-bold text-white">+36% <span class="text-xs font-normal text-gray-500 align-middle">Tasa de apertura</span></p>
-                        </div>
-                    </div>
-
-                    <div class="glass-card p-8 rounded-3xl flex flex-col group">
-                        <div class="w-12 h-12 bg-accent-cyan/20 rounded-lg flex items-center justify-center text-accent-cyan mb-6">
-                            <i class="ph-fill ph-shield-check text-2xl"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-white mb-2">IA Privada & Local</h4>
-                        <p class="text-gray-400 text-sm mb-6">Implementación de modelos LLM Open Source (Ollama) en servidores propios.</p>
-                         <div class="mt-auto border-t border-white/5 pt-4 flex items-center gap-2 text-gray-300 text-sm">
-                            <i class="ph-fill ph-lock-key"></i> 100% Privacidad de Datos
-                        </div>
-                    </div>
-
-                    <div class="glass-card p-8 rounded-3xl md:col-span-2 relative overflow-hidden flex flex-col justify-center group">
-                        <div class="absolute inset-0 bg-gradient-to-r from-accent-blue/5 to-transparent"></div>
-                        <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
-                            <div class="flex-1">
-                                <h4 class="text-2xl font-bold text-white mb-2">Automatización de Procesos (RPA)</h4>
-                                <p class="text-gray-400">Más de 20 flujos activos ininterrumpidamente. Desde la gestión de leads hasta la comunicación interna.</p>
-                            </div>
-                            <div class="flex flex-wrap gap-2 justify-center md:justify-end max-w-xs">
-                                <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-black/20">Make</span>
-                                <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-black/20">Python</span>
-                                <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-black/20">Zapier</span>
-                                <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-black/20">n8n</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 relative z-10">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl md:text-5xl font-display font-bold text-center text-white mb-16">Preguntas Frecuentes</h2>
-            
-            <div class="grid gap-4 reveal">
-                <details class="group glass-card rounded-2xl">
-                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-white text-lg">
-                        <span>¿En cuánto tiempo veré resultados?</span>
-                        <span class="transition group-open:rotate-180"><i class="ph-bold ph-caret-down"></i></span>
-                    </summary>
-                    <div class="text-gray-400 px-6 pb-6 leading-relaxed">
-                        ¡Inmediato tras la implementación! Para el ROI completo, la media suele ser de 4 a 6 meses, dependiendo de la complejidad del proyecto.
-                    </div>
-                </details>
-
-                <details class="group glass-card rounded-2xl">
-                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-white text-lg">
-                        <span>¿Necesito saber de tecnología?</span>
-                        <span class="transition group-open:rotate-180"><i class="ph-bold ph-caret-down"></i></span>
-                    </summary>
-                    <div class="text-gray-400 px-6 pb-6 leading-relaxed">
-                        Para nada. Mi trabajo es hacer que la tecnología trabaje para ti, no que tú trabajes para ella. Te entrego sistemas "llave en mano" y formación simple.
-                    </div>
-                </details>
-
-                 <details class="group glass-card rounded-2xl">
-                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-white text-lg">
-                        <span>¿Cómo es el modelo de pago?</span>
-                        <span class="transition group-open:rotate-180"><i class="ph-bold ph-caret-down"></i></span>
-                    </summary>
-                    <div class="text-gray-400 px-6 pb-6 leading-relaxed">
-                        Generalmente trabajo por proyecto cerrado con hitos de pago (inicio y entrega), o mediante paquetes de horas para consultoría continua. Nos adaptamos a tu flujo de caja.
-                    </div>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <section id="contacto" class="relative py-32 z-10">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="glass-card rounded-[3rem] p-8 md:p-20 text-center relative overflow-hidden border border-accent-blue/30 shadow-[0_0_100px_rgba(45,127,249,0.1)]">
-                
-                <div class="absolute inset-0 bg-gradient-to-b from-accent-blue/5 to-transparent pointer-events-none"></div>
-
-                <div class="relative z-10 space-y-10">
+            <!-- SOLUCIONES IA -->
+            <div class="mb-32 reveal section-gradient-blue rounded-[2.5rem] p-8 md:p-12 border border-blue-500/10 hover:border-blue-500/20 transition-colors">
+                <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6 border-b border-blue-500/20 pb-8">
                     <div>
-                        <h2 class="text-5xl md:text-7xl font-display font-bold text-white mb-6">Empecemos.</h2>
-                        <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                            Tienes el negocio, yo tengo la tecnología. Agendemos una llamada de 15 minutos para ver si podemos trabajar juntos.
-                        </p>
+                        <span class="text-blue-400 font-bold tracking-wider uppercase text-sm mb-2 block">Área 01</span>
+                        <h3 class="text-4xl md:text-5xl font-bold text-white">Soluciones IA</h3>
+                    </div>
+                    <p class="text-gray-400 max-w-lg text-base md:text-right">Optimiza tu empresa con Inteligencia Artificial para hacerla más eficiente y rentable.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-card p-10 rounded-3xl group" style="--hover-color: rgba(59, 130, 246, 0.5); --hover-shadow: rgba(59, 130, 246, 0.2);">
+                        <i class="ph-fill ph-chat-circle-text text-4xl text-blue-400 mb-6 block"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Chatbots</h4>
+                        <p class="text-gray-400 text-base">Atiende a tus clientes de forma automatizada con respuestas naturales y soporte disponible las 24 horas.</p>
                     </div>
 
-                    <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-                        <a href="mailto:sergio@sergiogp.com" class="px-10 py-5 bg-white text-black rounded-full font-bold text-xl hover:bg-gray-200 transition-all transform hover:-translate-y-1 shadow-lg w-full md:w-auto">
-                            Enviar Email
-                        </a>
-                        <a href="https://www.linkedin.com/in/sergioguillenpampliega" target="_blank" class="px-10 py-5 bg-[#0077B5] text-white rounded-full font-bold text-xl hover:bg-[#006396] transition-all transform hover:-translate-y-1 shadow-lg w-full md:w-auto flex items-center justify-center gap-3">
-                            <i class="ph-bold ph-linkedin-logo text-2xl"></i> LinkedIn
+                    <div class="glass-card p-10 rounded-3xl group" style="--hover-color: rgba(59, 130, 246, 0.5); --hover-shadow: rgba(59, 130, 246, 0.2);">
+                        <i class="ph-fill ph-robot text-4xl text-blue-400 mb-6 block"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Asistentes Internos (RAG)</h4>
+                        <p class="text-gray-400 text-base">Accede al conocimiento corporativo con asistentes que consultan documentación y datos internos de forma precisa.</p>
+                    </div>
+
+                    <div class="glass-card p-10 rounded-3xl group" style="--hover-color: rgba(59, 130, 246, 0.5); --hover-shadow: rgba(59, 130, 246, 0.2);">
+                        <i class="ph-fill ph-pen-nib text-4xl text-blue-400 mb-6 block"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Contenido Corporativo</h4>
+                        <p class="text-gray-400 text-base">Crea textos, informes y materiales de comunicación adaptados al tono y estilo de tu empresa en cuestión de segundos.</p>
+                    </div>
+
+                    <div class="glass-card p-10 rounded-3xl group" style="--hover-color: rgba(59, 130, 246, 0.5); --hover-shadow: rgba(59, 130, 246, 0.2);">
+                        <i class="ph-fill ph-users-three text-4xl text-blue-400 mb-6 block"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Segmentación IA</h4>
+                        <p class="text-gray-400 text-base">Detecta patrones, comportamientos y oportunidades con modelos que convierten decisiones estratégicas.</p>
+                    </div>
+
+                    <div class="glass-card p-10 rounded-3xl group" style="--hover-color: rgba(59, 130, 246, 0.5); --hover-shadow: rgba(59, 130, 246, 0.2);">
+                        <i class="ph-fill ph-chart-bar text-4xl text-blue-400 mb-6 block"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Informes Ejecutivos</h4>
+                        <p class="text-gray-400 text-base">Genera informes claros y visuales directamente a partir de tus métricas y sistemas de gestión.</p>
+                    </div>
+
+                    <div class="glass-card p-10 rounded-3xl group" style="--hover-color: rgba(59, 130, 246, 0.5); --hover-shadow: rgba(59, 130, 246, 0.2);">
+                        <i class="ph-fill ph-microphone text-4xl text-blue-400 mb-6 block"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Reportes de Reuniones</h4>
+                        <p class="text-gray-400 text-base">Transcribe, resume y extrae conclusiones clave de reuniones y sesiones de trabajo automáticamente.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AUTOMATIZACIONES -->
+            <div class="mb-32 reveal section-gradient-purple rounded-[2.5rem] p-8 md:p-12 border border-purple-500/10 hover:border-purple-500/20 transition-colors">
+                <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6 border-b border-purple-500/20 pb-8">
+                    <div>
+                        <span class="text-purple-400 font-bold tracking-wider uppercase text-sm mb-2 block">Área 02</span>
+                        <h3 class="text-4xl md:text-5xl font-bold text-white">Automatizaciones</h3>
+                    </div>
+                    <p class="text-gray-400 max-w-lg text-base md:text-right">Optimiza tus operaciones con eficiencia.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                     <div class="glass-card p-8 rounded-3xl group" style="--hover-color: rgba(139, 92, 246, 0.5); --hover-shadow: rgba(139, 92, 246, 0.2);">
+                        <i class="ph-fill ph-megaphone text-3xl text-purple-400 mb-4 block"></i>
+                        <h4 class="text-xl font-bold text-white mb-2">Marketing y Ventas</h4>
+                        <p class="text-gray-400 text-sm">Automatiza la captación, el seguimiento y la conversión de clientes para impulsar tus resultados comerciales.</p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-3xl group" style="--hover-color: rgba(139, 92, 246, 0.5); --hover-shadow: rgba(139, 92, 246, 0.2);">
+                        <i class="ph-fill ph-headset text-3xl text-purple-400 mb-4 block"></i>
+                        <h4 class="text-xl font-bold text-white mb-2">Atención al Cliente</h4>
+                        <p class="text-gray-400 text-sm">Ofrece asistencia inmediata y personalizada con automatizaciones y bots que mejoran la satisfacción.</p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-3xl group" style="--hover-color: rgba(139, 92, 246, 0.5); --hover-shadow: rgba(139, 92, 246, 0.2);">
+                        <i class="ph-fill ph-files text-3xl text-purple-400 mb-4 block"></i>
+                        <h4 class="text-xl font-bold text-white mb-2">Procesos Administrativos</h4>
+                        <p class="text-gray-400 text-sm">Optimiza tareas repetitivas como facturación, aprobaciones o control documental con flujos digitales precisos.</p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-3xl group" style="--hover-color: rgba(139, 92, 246, 0.5); --hover-shadow: rgba(139, 92, 246, 0.2);">
+                        <i class="ph-fill ph-users text-3xl text-purple-400 mb-4 block"></i>
+                        <h4 class="text-xl font-bold text-white mb-2">Recursos Humanos</h4>
+                        <p class="text-gray-400 text-sm">Simplifica la gestión de personal, selección y evaluaciones mediante procesos automatizados y centralizados.</p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-3xl group" style="--hover-color: rgba(139, 92, 246, 0.5); --hover-shadow: rgba(139, 92, 246, 0.2);">
+                        <i class="ph-fill ph-kanban text-3xl text-purple-400 mb-4 block"></i>
+                        <h4 class="text-xl font-bold text-white mb-2">Gestión de Proyectos</h4>
+                        <p class="text-gray-400 text-sm">Coordina equipos, tareas y entregas con sistemas automatizados que aseguran control y eficiencia operativa.</p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-3xl group" style="--hover-color: rgba(139, 92, 246, 0.5); --hover-shadow: rgba(139, 92, 246, 0.2);">
+                        <i class="ph-fill ph-file-text text-3xl text-purple-400 mb-4 block"></i>
+                        <h4 class="text-xl font-bold text-white mb-2">Reportes e Informes</h4>
+                        <p class="text-gray-400 text-sm">Automatiza la recopilación y análisis de datos para disponer siempre de indicadores actualizados y fiables.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRANSFORMACIÓN DIGITAL -->
+            <div class="mb-32 reveal section-gradient-cyan rounded-[2.5rem] p-8 md:p-12 border border-cyan-500/10 hover:border-cyan-500/20 transition-colors">
+                <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6 border-b border-cyan-500/20 pb-8">
+                    <div>
+                        <span class="text-cyan-400 font-bold tracking-wider uppercase text-sm mb-2 block">Área 03</span>
+                        <h3 class="text-4xl md:text-5xl font-bold text-white">Transformación Digital</h3>
+                    </div>
+                    <p class="text-gray-400 max-w-lg text-base md:text-right">Adapta todo tu negocio a la era digital.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-card p-10 rounded-3xl group border-t-4 border-t-cyan-500" style="--hover-color: rgba(6, 182, 212, 0.5); --hover-shadow: rgba(6, 182, 212, 0.2);">
+                        <i class="ph-fill ph-browser text-4xl text-cyan-400 mb-6 block"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Landing Pages</h4>
+                        <p class="text-gray-400 text-sm">Páginas enfocadas en conversión que comunican valor y generan contactos cualificados para tu negocio.</p>
+                    </div>
+                    <div class="glass-card p-10 rounded-3xl group border-t-4 border-t-cyan-500" style="--hover-color: rgba(6, 182, 212, 0.5); --hover-shadow: rgba(6, 182, 212, 0.2);">
+                        <i class="ph-fill ph-funnel text-4xl text-cyan-400 mb-6 block"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Embudos de Venta</h4>
+                        <p class="text-gray-400 text-sm">Diseños estratégicos que guían al cliente a través del proceso de compra con decisiones basadas en datos.</p>
+                    </div>
+                    <div class="glass-card p-10 rounded-3xl group border-t-4 border-t-cyan-500" style="--hover-color: rgba(6, 182, 212, 0.5); --hover-shadow: rgba(6, 182, 212, 0.2);">
+                        <i class="ph-fill ph-arrows-left-right text-4xl text-cyan-400 mb-6 block"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Digitalización Procesos</h4>
+                        <p class="text-gray-400 text-sm">Transforma los flujos internos en procesos digitales más rápidos, trazables y escalables.</p>
+                    </div>
+                    <div class="glass-card p-10 rounded-3xl group border-t-4 border-t-cyan-500" style="--hover-color: rgba(6, 182, 212, 0.5); --hover-shadow: rgba(6, 182, 212, 0.2);">
+                        <i class="ph-fill ph-database text-4xl text-cyan-400 mb-6 block"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Análisis de Datos</h4>
+                        <p class="text-gray-400 text-sm">Centraliza la información de tu empresa para tomar decisiones con una visión global y en tiempo real.</p>
+                    </div>
+                     <div class="glass-card p-10 rounded-3xl group border-t-4 border-t-cyan-500" style="--hover-color: rgba(6, 182, 212, 0.5); --hover-shadow: rgba(6, 182, 212, 0.2);">
+                        <i class="ph-fill ph-git-branch text-4xl text-cyan-400 mb-6 block"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Optimización Workflows</h4>
+                        <p class="text-gray-400 text-sm">Rediseña los flujos de trabajo para eliminar tareas ineficientes y mejorar la productividad general.</p>
+                    </div>
+                     <div class="glass-card p-10 rounded-3xl group border-t-4 border-t-cyan-500" style="--hover-color: rgba(6, 182, 212, 0.5); --hover-shadow: rgba(6, 182, 212, 0.2);">
+                        <i class="ph-fill ph-lightbulb text-4xl text-cyan-400 mb-6 block"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Decisiones Inteligentes</h4>
+                        <p class="text-gray-400 text-sm">Aplica inteligencia artificial para anticipar escenarios y respaldar decisiones estratégicas clave.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MARKETING DIGITAL -->
+            <div class="mb-10 reveal section-gradient-pink rounded-[2.5rem] p-8 md:p-12 border border-pink-500/10 hover:border-pink-500/20 transition-colors">
+                <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6 border-b border-pink-500/20 pb-8">
+                    <div>
+                        <span class="text-pink-400 font-bold tracking-wider uppercase text-sm mb-2 block">Área 04</span>
+                        <h3 class="text-4xl md:text-5xl font-bold text-white">Marketing Digital</h3>
+                    </div>
+                    <p class="text-gray-400 max-w-lg text-base md:text-right">Impulsa tu marca con estrategias inteligentes.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-card p-8 rounded-3xl group" style="--hover-color: rgba(236, 72, 153, 0.5); --hover-shadow: rgba(236, 72, 153, 0.2);">
+                        <i class="ph-fill ph-globe text-3xl text-pink-400 mb-4 block"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">Estrategia Digital 360º</h4>
+                        <p class="text-gray-400 text-sm">Integra todos los canales digitales de tu empresa en una estrategia coherente y orientada a resultados.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-3xl group" style="--hover-color: rgba(236, 72, 153, 0.5); --hover-shadow: rgba(236, 72, 153, 0.2);">
+                        <i class="ph-fill ph-broadcast text-3xl text-pink-400 mb-4 block"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">Planes de Comunicación</h4>
+                        <p class="text-gray-400 text-sm">Diseña mensajes potentes y consistentes que refuercen la identidad corporativa y la relación con el cliente.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-3xl group" style="--hover-color: rgba(236, 72, 153, 0.5); --hover-shadow: rgba(236, 72, 153, 0.2);">
+                        <i class="ph-fill ph-magnifying-glass text-3xl text-pink-400 mb-4 block"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">Redacción SEO con IA</h4>
+                        <p class="text-gray-400 text-sm">Genera contenidos optimizados que posicionan tu marca y aumentan la visibilidad en buscadores.</p>
+                    </div>
+                     <div class="glass-card p-8 rounded-3xl group" style="--hover-color: rgba(236, 72, 153, 0.5); --hover-shadow: rgba(236, 72, 153, 0.2);">
+                        <i class="ph-fill ph-target text-3xl text-pink-400 mb-4 block"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">Segmentación Audiencias</h4>
+                        <p class="text-gray-400 text-sm">Identifica y alcanza con precisión a los públicos más relevantes mediante análisis avanzado de datos.</p>
+                    </div>
+                     <div class="glass-card p-8 rounded-3xl group" style="--hover-color: rgba(236, 72, 153, 0.5); --hover-shadow: rgba(236, 72, 153, 0.2);">
+                        <i class="ph-fill ph-rocket text-3xl text-pink-400 mb-4 block"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">Campañas Automatizadas</h4>
+                        <p class="text-gray-400 text-sm">Ejecuta campañas inteligentes que se adaptan automáticamente al comportamiento del cliente.</p>
+                    </div>
+                     <div class="glass-card p-8 rounded-3xl group" style="--hover-color: rgba(236, 72, 153, 0.5); --hover-shadow: rgba(236, 72, 153, 0.2);">
+                        <i class="ph-fill ph-envelope text-3xl text-pink-400 mb-4 block"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">Email Marketing</h4>
+                        <p class="text-gray-400 text-sm">Crea comunicaciones automatizadas, personalizadas y medibles que impulsan la conversión y fidelización.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SOBRE MÍ & PROYECTOS -->
+    <section id="sobre-mi" class="relative z-10 py-32 bg-dark-900 border-y border-white/5">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
+            
+            <div class="grid md:grid-cols-2 gap-16 lg:gap-28 items-center mb-32 reveal">
+                <div class="order-2 md:order-1 space-y-8">
+                    <span class="text-cyan-400 font-bold tracking-wider uppercase text-sm">Trayectoria</span>
+                    <h2 class="text-4xl md:text-6xl font-bold text-white mb-8">Sobre Mí</h2>
+                    <h3 class="text-2xl md:text-3xl font-bold text-cyan-400 mb-6">Hola, soy Sergio Guillén</h3>
+                    <p class="text-gray-300 leading-relaxed text-lg mb-6">
+                        Graduado y Formado en <strong class="text-white">Inteligencia Artificial</strong>, <strong class="text-white">Automatización de Procesos</strong>, <strong class="text-white">Marketing y Publicidad</strong>, y <strong class="text-white">Transformación Digital</strong>.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed text-lg mb-6">
+                        Mi objetivo es hacer a las empresas más óptimas, eficientes y competitivas.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed text-lg mb-6">
+                        Esto lo consigo mejorando distintas áreas de negocio, ya sea liberando tiempo, desarrollando sistemas para una mejor toma de decisiones, mejorando la atención al cliente, automatizando y mejorando áreas de marketing, digitalizando procesos, formando equipos...
+                    </p>
+                    <p class="text-gray-400 leading-relaxed text-lg">
+                        Todos los servicios y soluciones son personalizados para cada cliente y proyecto, asegurando compromiso y resultados.
+                    </p>
+                    <div class="pt-6">
+                        <a href="#contacto" class="text-cyan-400 hover:text-cyan-300 font-medium flex items-center gap-2 group text-xl">
+                            Hablemos sobre tu proyecto <i class="ph-bold ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
+                </div>
+                <!-- Foto -->
+                <div class="order-1 md:order-2 flex justify-center">
+                    <div class="relative w-full max-w-sm aspect-square rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
+                         <img src="https://res.cloudinary.com/dg3peytgm/image/upload/v1769542383/yo_terraza_celohz.png" 
+                              onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932&auto=format&fit=crop'"
+                              alt="Sergio Guillén" 
+                              class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyectos -->
+            <div class="space-y-16 reveal">
+                <div class="text-center max-w-4xl mx-auto space-y-6">
+                    <h3 class="text-4xl font-bold text-white">Proyectos Destacados <span class="text-cyan-400">2025</span></h3>
+                    <p class="text-xl text-gray-400">
+                        Algunos proyectos realizados en el último año. Siempre evolucionando y buscando nuevas metas y mejoras de empresas. Se puede consultar más información poniéndote en contacto conmigo.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
-                    <div class="pt-8 border-t border-white/5 mt-10">
-                        <a href="tel:+34649368800" class="text-gray-500 hover:text-white transition-colors font-mono">
-                            +34 649 36 88 00
+                    <!-- Proyecto 1: RRSS -->
+                    <div class="glass-card p-10 rounded-3xl group border-t-2 border-t-purple-500">
+                        <div class="w-14 h-14 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6 text-purple-400">
+                            <i class="ph-fill ph-share-network text-3xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-4">RRSS con IA</h4>
+                        <p class="text-gray-300 text-base mb-6">
+                            He desarrollado 3 sistemas distintos (para 3 empresas) de creación de contenido y automatización de redes sociales el último año.
+                        </p>
+                        <ul class="text-sm text-gray-500 space-y-3 border-t border-white/5 pt-6 mt-auto">
+                            <li class="flex items-center gap-3"><i class="ph-fill ph-check text-green-400 text-lg"></i> 80% menos tiempo invertido</li>
+                            <li class="flex items-center gap-3"><i class="ph-fill ph-check text-green-400 text-lg"></i> +50% consistencia en calendario</li>
+                        </ul>
+                    </div>
+
+                    <!-- Proyecto 2: Chatbots -->
+                    <div class="glass-card p-10 rounded-3xl group border-t-2 border-t-blue-500">
+                        <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 text-blue-400">
+                            <i class="ph-fill ph-chat-centered-text text-3xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-4">Chatbots y Asistentes</h4>
+                        <p class="text-gray-300 text-base mb-6">
+                            Más de 15 Chatbots desarrollados para diferentes proyectos. Integración total en múltiples plataformas.
+                        </p>
+                         <ul class="text-sm text-gray-500 space-y-3 border-t border-white/5 pt-6 mt-auto">
+                            <li class="flex items-center gap-3"><i class="ph-fill ph-check text-blue-400 text-lg"></i> Web, Whatsapp, Telegram</li>
+                            <li class="flex items-center gap-3"><i class="ph-fill ph-check text-blue-400 text-lg"></i> Soporte 24/7 automático</li>
+                        </ul>
+                    </div>
+
+                    <!-- Proyecto 3: Email Marketing -->
+                    <div class="glass-card p-10 rounded-3xl group border-t-2 border-t-pink-500">
+                        <div class="w-14 h-14 bg-pink-500/10 rounded-xl flex items-center justify-center mb-6 text-pink-400">
+                            <i class="ph-fill ph-envelope-simple-open text-3xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-4">Email Marketing IA</h4>
+                        <p class="text-gray-300 text-base mb-6">
+                            Sistema robusto que automatiza e hiperpersonaliza el canal de ventas y todo el email marketing del cliente.
+                        </p>
+                        <ul class="text-sm text-gray-500 space-y-3 border-t border-white/5 pt-6 mt-auto">
+                            <li class="flex items-center gap-3"><i class="ph-fill ph-trend-up text-pink-400 text-lg"></i> +36% Tasa de Apertura</li>
+                            <li class="flex items-center gap-3"><i class="ph-fill ph-trend-up text-pink-400 text-lg"></i> +11% Tasa de Conversión</li>
+                        </ul>
+                    </div>
+
+                    <!-- Proyecto 4: IA Privada -->
+                    <div class="glass-card p-10 rounded-3xl group border-t-2 border-t-green-500 lg:col-span-1">
+                        <div class="w-14 h-14 bg-green-500/10 rounded-xl flex items-center justify-center mb-6 text-green-400">
+                            <i class="ph-fill ph-shield-check text-3xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-4">IA Privada y Local</h4>
+                        <p class="text-gray-300 text-base mb-6">
+                            IA empresarial con modelos Open Source (Ollama), Entrenamiento con ML y Asistentes Internos.
+                        </p>
+                        <ul class="text-sm text-gray-500 space-y-3 border-t border-white/5 pt-6 mt-auto">
+                            <li class="flex items-center gap-3"><i class="ph-fill ph-lock-key text-green-400 text-lg"></i> Privacidad total de datos</li>
+                            <li class="flex items-center gap-3"><i class="ph-fill ph-cpu text-green-400 text-lg"></i> Ejecución en Local</li>
+                        </ul>
+                    </div>
+
+                    <!-- Proyecto 5: Automatizaciones -->
+                    <div class="glass-card p-10 rounded-3xl group border-t-2 border-t-orange-500 lg:col-span-2">
+                        <div class="flex flex-col md:flex-row gap-8 items-start">
+                            <div class="w-14 h-14 bg-orange-500/10 rounded-xl flex-shrink-0 flex items-center justify-center text-orange-400">
+                                <i class="ph-fill ph-gear text-3xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold text-white mb-4">Automatizaciones de Procesos</h4>
+                                <p class="text-gray-300 text-base mb-6">
+                                    He programado más de 20 automatizaciones, para múltiples proyectos, que siguen funcionando ininterrumpidamente. Optimizando flujos críticos de negocio.
+                                </p>
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="px-3 py-1.5 bg-white/5 rounded text-sm text-gray-400 border border-white/10">Tratamiento de Leads</span>
+                                    <span class="px-3 py-1.5 bg-white/5 rounded text-sm text-gray-400 border border-white/10">Manejo de Datos</span>
+                                    <span class="px-3 py-1.5 bg-white/5 rounded text-sm text-gray-400 border border-white/10">Comunicación Interna</span>
+                                    <span class="px-3 py-1.5 bg-white/5 rounded text-sm text-gray-400 border border-white/10">RRHH</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="relative z-10 py-32 bg-dark-900 border-y border-white/5">
+        <div class="max-w-screen-xl mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-4xl mx-auto mb-20 space-y-4 reveal">
+                <h2 class="text-4xl md:text-6xl font-bold text-white">Preguntas <span class="text-cyan-400">Frecuentes</span></h2>
+                <p class="text-xl text-gray-400">Todo lo que necesitas saber antes de empezar.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 reveal">
+                <!-- FAQ 1 -->
+                <div class="glass-card p-10 rounded-3xl">
+                    <h4 class="text-2xl font-bold text-white mb-4 flex items-start gap-4"><i class="ph-bold ph-question text-cyan-400 mt-1"></i> ¿En cuánto tiempo se ven resultados?</h4>
+                    <p class="text-gray-400 leading-relaxed text-base">¡Los resultados son notables desde la implementación de las soluciones! El ROI dependerá de las dimensiones de la solución y de cómo actúe en el negocio, pero la media suelen ser 4-6 meses.</p>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="glass-card p-10 rounded-3xl">
+                    <h4 class="text-2xl font-bold text-white mb-4 flex items-start gap-4"><i class="ph-bold ph-question text-cyan-400 mt-1"></i> ¿Necesito conocimientos técnicos?</h4>
+                    <p class="text-gray-400 leading-relaxed text-base">Para nada. Las soluciones están diseñadas para optimizar el negocio por sí mismas. Cualquier aspecto a considerar tras la implementación se ofrecerá en un "know-how" junto con el servicio.</p>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="glass-card p-10 rounded-3xl">
+                    <h4 class="text-2xl font-bold text-white mb-4 flex items-start gap-4"><i class="ph-bold ph-question text-cyan-400 mt-1"></i> ¿Cuotas mensuales o pago único?</h4>
+                    <p class="text-gray-400 leading-relaxed text-base">Por lo general suelo trabajar por proyectos, por lo que se suele tratar de o bien pagos únicos o bien 2-4 micropagos repartidos durante el proceso (suele aplicar para proyectos más largos).</p>
+                </div>
+                <!-- FAQ 4 -->
+                <div class="glass-card p-10 rounded-3xl">
+                    <h4 class="text-2xl font-bold text-white mb-4 flex items-start gap-4"><i class="ph-bold ph-question text-cyan-400 mt-1"></i> ¿Con qué sectores trabajas?</h4>
+                    <p class="text-gray-400 leading-relaxed text-base">Trabajo con todo tipo de empresas o proyectos. Se hace una auditoría inicial de procesos y de negocio y se adapta el servicio a las necesidades concretas.</p>
+                </div>
+                <!-- FAQ 5 -->
+                <div class="glass-card p-10 rounded-3xl">
+                    <h4 class="text-2xl font-bold text-white mb-4 flex items-start gap-4"><i class="ph-bold ph-question text-cyan-400 mt-1"></i> ¿Puedo empezar con algo pequeño?</h4>
+                    <p class="text-gray-400 leading-relaxed text-base">Por supuesto, así como empezar por soluciones más "pequeñas" o concretas, comprobar resultados, y mantener el frente abierto a más colaboraciones para incidir más en el éxito de tu empresa.</p>
+                </div>
+                <!-- FAQ 6 -->
+                <div class="glass-card p-10 rounded-3xl">
+                    <h4 class="text-2xl font-bold text-white mb-4 flex items-start gap-4"><i class="ph-bold ph-question text-cyan-400 mt-1"></i> ¿Se integra con mis herramientas actuales?</h4>
+                    <p class="text-gray-400 leading-relaxed text-base">Esto es prioridad en todos mis servicios, integrar las soluciones y nuevos procedimientos en el stack de la empresa. Por tanto, sí.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="relative z-10 py-32 border-t border-white/5 bg-gradient-to-b from-dark-900 to-blue-900/10">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="glass-panel p-10 md:p-16 rounded-[2.5rem] border border-cyan-500/20 shadow-2xl relative overflow-hidden text-center transform hover:scale-[1.01] transition-transform duration-500">
+                
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5"></div>
+                
+                <div class="relative z-10 space-y-8">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Sergio Guillén Pampliega</h2>
+                        <p class="text-xl md:text-2xl text-cyan-400 font-medium">Experto en IA y Automatización</p>
+                        <p class="text-gray-400 text-sm uppercase tracking-wider mt-2">Agente de Transformación Digital</p>
+                        <p class="text-gray-500 text-base mt-2 flex items-center justify-center gap-2"><i class="ph-fill ph-map-pin"></i>Murcia, España</p>
+                    </div>
+
+                    <div class="h-px w-32 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent mx-auto my-8"></div>
+
+                    <div class="space-y-6">
+                         <a href="tel:+34649368800" class="block text-2xl text-white hover:text-cyan-300 transition-colors font-medium">
+                            <i class="ph-fill ph-phone text-cyan-500 mr-3"></i> 649 36 88 00
+                         </a>
+                         <a href="mailto:sergio@sergiogp.com" class="block text-2xl text-white hover:text-cyan-300 transition-colors font-medium">
+                            <i class="ph-fill ph-envelope text-cyan-500 mr-3"></i> sergio@sergiogp.com
+                         </a>
+                    </div>
+
+                    <div class="pt-8">
+                        <a href="https://www.linkedin.com/in/sergioguillenpampliega" target="_blank" class="inline-flex items-center gap-3 px-10 py-4 bg-[#0a66c2] hover:bg-[#004182] text-white rounded-full font-bold text-xl transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-1 hover:shadow-blue-900/40">
+                            <i class="ph-bold ph-linkedin-logo text-2xl"></i>
+                            LinkedIn
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <footer class="py-12 border-t border-white/5 bg-black relative z-10 text-center">
-        <div class="flex justify-center gap-6 mb-8">
-            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all"><i class="ph-fill ph-linkedin-logo text-xl"></i></a>
-            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all"><i class="ph-fill ph-instagram-logo text-xl"></i></a>
-            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all"><i class="ph-fill ph-envelope-simple text-xl"></i></a>
+    
+    <!-- FOOTER -->
+    <footer class="py-12 text-center text-gray-500 text-sm border-t border-white/5 bg-dark-900 relative z-10">
+        <div class="flex justify-center gap-8 mb-8">
+            <a href="https://www.linkedin.com/in/sergioguillenpampliega" target="_blank" class="text-gray-400 hover:text-white transition-colors text-2xl p-3 hover:bg-white/5 rounded-full"><i class="ph-fill ph-linkedin-logo"></i></a>
+            <a href="https://www.instagram.com/sergiogp.ia/" target="_blank" class="text-gray-400 hover:text-white transition-colors text-2xl p-3 hover:bg-white/5 rounded-full"><i class="ph-fill ph-instagram-logo"></i></a>
         </div>
-        <p class="text-gray-600 text-sm">© 2026 Sergio Guillén Pampliega. Innovación y Estrategia.</p>
+        <p>&copy; 2026 Sergio Guillén Pampliega. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        // Reveal Animation on Scroll
-        function reveal() {
+        window.addEventListener('scroll', reveal);
+        function reveal(){
             var reveals = document.querySelectorAll('.reveal');
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
+            for(var i = 0; i < reveals.length; i++){
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+                if(revealtop < windowheight - revealpoint){
                     reveals[i].classList.add('active');
                 }
             }
         }
-        window.addEventListener('scroll', reveal);
-        reveal(); // Trigger once on load
+        reveal();
 
-        // Mobile Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const icon = menuBtn.querySelector('i');
-
+        
         function toggleMenu() {
-            const isOpen = mobileMenu.style.opacity === '1';
-            
-            if (isOpen) {
-                mobileMenu.style.opacity = '0';
-                mobileMenu.style.transform = 'scale(0.95)';
-                mobileMenu.style.pointerEvents = 'none';
-                icon.classList.remove('ph-x');
-                icon.classList.add('ph-list');
-            } else {
-                mobileMenu.style.opacity = '1';
-                mobileMenu.style.transform = 'scale(1)';
-                mobileMenu.style.pointerEvents = 'auto';
+            mobileMenu.classList.toggle('open');
+            const icon = menuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('open')) {
                 icon.classList.remove('ph-list');
                 icon.classList.add('ph-x');
+            } else {
+                icon.classList.remove('ph-x');
+                icon.classList.add('ph-list');
             }
         }
 
         menuBtn.addEventListener('click', toggleMenu);
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
     </script>
 </body>
 </html>
