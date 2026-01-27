@@ -184,7 +184,7 @@
 
     <!-- NAVIGATION -->
     <nav class="fixed top-0 w-full z-50 glass-nav transition-all duration-300" id="navbar">
-        <div class="max-w-screen-2xl mx-auto px-6 h-20 flex justify-between items-center">
+        <div class="max-w-screen-2xl mx-auto px-6 h-20 flex justify-between items-center relative z-50">
             
             <!-- Logo / Brand -->
             <a href="#" class="text-xl font-bold tracking-tight text-white flex items-center gap-2 group">
@@ -212,7 +212,7 @@
         </div>
 
         <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="fixed inset-0 bg-dark-950/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 md:hidden">
+        <div id="mobile-menu" class="fixed inset-0 bg-dark-950/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 md:hidden pt-20">
             <a href="#inicio" class="text-2xl font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Inicio</a>
             <a href="#servicios" class="text-2xl font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Servicios</a>
             <a href="#sobre-mi" class="text-2xl font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Sobre Mí</a>
@@ -225,7 +225,7 @@
 
     <!-- HERO SECTION -->
     <section id="inicio" class="relative z-10 min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
-        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12 w-full flex flex-col-reverse md:flex-row items-center gap-12 lg:gap-20">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12 w-full flex flex-col md:flex-row items-center gap-12 lg:gap-20">
             
             <!-- Text Content -->
             <div class="w-full md:w-7/12 space-y-8 animate-fade-in-up">
@@ -522,7 +522,7 @@
             
             <!-- Intro -->
             <div class="grid md:grid-cols-2 gap-16 lg:gap-28 items-center mb-32 reveal">
-                <div class="order-2 md:order-1 space-y-8">
+                <div class="space-y-8">
                     <span class="text-cyan-400 font-bold tracking-wider uppercase text-sm">Trayectoria</span>
                     <h2 class="text-4xl md:text-5xl font-bold text-white">Sobre Mí</h2>
                     <h3 class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Hola, soy Sergio Guillén</h3>
@@ -547,7 +547,7 @@
                 </div>
                 
                 <!-- Foto -->
-                <div class="order-1 md:order-2 flex justify-center">
+                <div class="flex justify-center">
                     <div class="relative w-full max-w-sm aspect-square rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl rotate-3 hover:rotate-0 transition-all duration-500 group">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-950/60 to-transparent z-10"></div>
                         <img src="https://res.cloudinary.com/dg3peytgm/image/upload/v1769542383/yo_terraza_celohz.png" 
