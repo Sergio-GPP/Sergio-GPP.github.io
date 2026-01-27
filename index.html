@@ -210,18 +210,18 @@
                 <i class="ph-bold ph-list transition-all duration-300"></i>
             </button>
         </div>
-
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="fixed inset-0 bg-dark-950/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 md:hidden pt-20">
-            <a href="#inicio" class="text-2xl font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Inicio</a>
-            <a href="#servicios" class="text-2xl font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Servicios</a>
-            <a href="#sobre-mi" class="text-2xl font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Sobre Mí</a>
-            <a href="#faq" class="text-2xl font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">FAQ</a>
-            <a href="#contacto" class="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full font-bold text-white text-xl shadow-lg shadow-cyan-500/30" onclick="toggleMenu()">
-                Contactar Ahora
-            </a>
-        </div>
     </nav>
+
+    <!-- Mobile Menu Overlay (Moved outside nav to fix backdrop-filter clipping) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-dark-950/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 md:hidden pt-20">
+        <a href="#inicio" class="text-2xl font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Inicio</a>
+        <a href="#servicios" class="text-2xl font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Servicios</a>
+        <a href="#sobre-mi" class="text-2xl font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Sobre Mí</a>
+        <a href="#faq" class="text-2xl font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">FAQ</a>
+        <a href="#contacto" class="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full font-bold text-white text-xl shadow-lg shadow-cyan-500/30" onclick="toggleMenu()">
+            Contactar Ahora
+        </a>
+    </div>
 
     <!-- HERO SECTION -->
     <section id="inicio" class="relative z-10 min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
