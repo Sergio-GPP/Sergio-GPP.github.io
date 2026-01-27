@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es" class="scroll-smooth scroll-pt-28">
 <head>
     <meta charset="UTF-8">
@@ -5,7 +6,6 @@
     <title>Sergio Guillén Pampliega | Agente de Transformación Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    <!-- Iconos Phosphor -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
     <script>
@@ -17,9 +17,9 @@
                     },
                     colors: {
                         dark: {
-                            900: '#0B0F19', // Fondo casi negro
-                            800: '#111827', // Paneles
-                            700: '#1F2937', // Bordes
+                            900: '#0B0F19', 
+                            800: '#111827', 
+                            700: '#1F2937', 
                         },
                         brand: {
                             blue: '#3B82F6',
@@ -53,7 +53,7 @@
             overflow-x: hidden; 
         }
         .glass-panel {
-            background: rgba(11, 15, 25, 0.95); /* Más opacidad para asegurar visibilidad */
+            background: rgba(11, 15, 25, 0.95);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -93,7 +93,6 @@
         .section-gradient-cyan { background: radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.08), transparent 50%); }
         .section-gradient-pink { background: radial-gradient(circle at top left, rgba(236, 72, 153, 0.08), transparent 50%); }
 
-        /* Menú móvil */
         #mobile-menu {
             transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
             transform: translateY(-20px);
@@ -109,7 +108,7 @@
 </head>
 <body class="antialiased selection:bg-cyan-500 selection:text-white relative">
 
-    <!-- IMAGEN DE FONDO GLOBAL -->
+    <!-- FONDO -->
     <div class="fixed inset-0 z-0">
         <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" 
              alt="Background Tech" 
@@ -117,16 +116,16 @@
         <div class="absolute inset-0 bg-gradient-to-b from-dark-900/90 via-dark-900/95 to-dark-900"></div>
     </div>
 
-    <!-- NAVEGACIÓN CENTRADA -->
+    <!-- NAVEGACIÓN -->
     <nav class="fixed top-0 w-full z-50 px-6 py-4 glass-panel">
         <div class="max-w-screen-2xl mx-auto flex justify-center items-center relative">
             
-            <!-- Botón Hamburguesa (Móvil) - Posicionado absoluto a la derecha para no afectar el centro en desktop -->
+            <!-- Botón Móvil (Derecha) -->
             <button id="menu-btn" class="md:hidden text-white text-2xl absolute right-0 focus:outline-none p-2">
                 <i class="ph-bold ph-list"></i>
             </button>
 
-            <!-- Enlaces Escritorio (CENTRADOS) -->
+            <!-- Menú Escritorio (Solo enlaces) -->
             <div class="hidden md:flex items-center gap-12 text-base font-medium text-gray-300">
                 <a href="#inicio" class="hover:text-white transition-colors hover:scale-105 transform duration-200">Inicio</a>
                 <a href="#servicios" class="hover:text-white transition-colors hover:scale-105 transform duration-200">Servicios</a>
@@ -136,7 +135,7 @@
             </div>
         </div>
 
-        <!-- Menú Desplegable Móvil -->
+        <!-- Menú Móvil -->
         <div id="mobile-menu" class="absolute top-full left-0 w-full bg-dark-900/98 backdrop-blur-xl border-b border-white/10 md:hidden flex flex-col items-center py-8 space-y-8 shadow-2xl">
             <a href="#inicio" class="text-xl font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Inicio</a>
             <a href="#servicios" class="text-xl font-medium text-white hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Servicios</a>
@@ -146,12 +145,10 @@
         </div>
     </nav>
 
-    <!-- SECCIÓN HERO -->
+    <!-- HERO -->
     <section id="inicio" class="relative z-10 min-h-screen flex items-center pt-24 pb-12">
-        <!-- Layout más ancho (max-w-screen-2xl) -->
         <div class="max-w-screen-2xl mx-auto px-6 lg:px-12 w-full flex flex-col md:flex-row items-center gap-16 lg:gap-24">
             
-            <!-- CONTENIDO TEXTO -->
             <div class="w-full md:w-7/12 space-y-8 order-2 md:order-1 animate-fade-in">
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider shadow-glow">
                     <span class="relative flex h-2 w-2">
@@ -179,7 +176,6 @@
                     </p>
                 </div>
 
-                <!-- Botón ÚNICO de Consultoría Gratuita -->
                 <div class="pt-6">
                     <a href="#contacto" class="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl font-bold text-white shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 transition-all transform hover:-translate-y-1 text-xl group">
                         Consultoría Gratuita
@@ -188,7 +184,6 @@
                 </div>
             </div>
 
-            <!-- IMAGEN -->
             <div class="w-full md:w-5/12 flex justify-center md:justify-end order-1 md:order-2 animate-float">
                 <div class="relative w-full max-w-md aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 shadow-2xl group mx-auto md:mx-0">
                     <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 mix-blend-overlay"></div>
@@ -212,7 +207,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN SERVICIOS PRINCIPAL -->
+    <!-- SERVICIOS -->
     <section id="servicios" class="relative z-10 py-32 bg-dark-800/30 border-y border-white/5">
         <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
             
@@ -225,7 +220,7 @@
                 </p>
             </div>
 
-            <!-- BLOQUE 1: SOLUCIONES IA -->
+            <!-- SOLUCIONES IA -->
             <div class="mb-32 reveal section-gradient-blue rounded-[2.5rem] p-8 md:p-12 border border-blue-500/10 hover:border-blue-500/20 transition-colors">
                 <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6 border-b border-blue-500/20 pb-8">
                     <div>
@@ -274,7 +269,7 @@
                 </div>
             </div>
 
-            <!-- BLOQUE 2: AUTOMATIZACIONES -->
+            <!-- AUTOMATIZACIONES -->
             <div class="mb-32 reveal section-gradient-purple rounded-[2.5rem] p-8 md:p-12 border border-purple-500/10 hover:border-purple-500/20 transition-colors">
                 <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6 border-b border-purple-500/20 pb-8">
                     <div>
@@ -323,7 +318,7 @@
                 </div>
             </div>
 
-            <!-- BLOQUE 3: TRANSFORMACIÓN DIGITAL -->
+            <!-- TRANSFORMACIÓN DIGITAL -->
             <div class="mb-32 reveal section-gradient-cyan rounded-[2.5rem] p-8 md:p-12 border border-cyan-500/10 hover:border-cyan-500/20 transition-colors">
                 <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6 border-b border-cyan-500/20 pb-8">
                     <div>
@@ -367,7 +362,7 @@
                 </div>
             </div>
 
-            <!-- BLOQUE 4: MARKETING DIGITAL -->
+            <!-- MARKETING DIGITAL -->
             <div class="mb-10 reveal section-gradient-pink rounded-[2.5rem] p-8 md:p-12 border border-pink-500/10 hover:border-pink-500/20 transition-colors">
                 <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6 border-b border-pink-500/20 pb-8">
                     <div>
@@ -414,7 +409,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN SOBRE MÍ & PROYECTOS 2025 -->
+    <!-- SOBRE MÍ & PROYECTOS -->
     <section id="sobre-mi" class="relative z-10 py-32 bg-dark-900 border-y border-white/5">
         <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
             
@@ -422,7 +417,7 @@
                 <div class="order-2 md:order-1 space-y-8">
                     <span class="text-cyan-400 font-bold tracking-wider uppercase text-sm">Trayectoria</span>
                     <h2 class="text-4xl md:text-6xl font-bold text-white mb-8">Sobre Mí</h2>
-                    <h3 class="text-2xl md:text-3xl font-bold text-cyan-400 mb-6">Sergio Guillén</h3>
+                    <h3 class="text-2xl md:text-3xl font-bold text-cyan-400 mb-6">Hola, soy Sergio Guillén</h3>
                     <p class="text-gray-300 leading-relaxed text-lg mb-6">
                         Graduado y Formado en <strong class="text-white">Inteligencia Artificial</strong>, <strong class="text-white">Automatización de Procesos</strong>, <strong class="text-white">Marketing y Publicidad</strong>, y <strong class="text-white">Transformación Digital</strong>.
                     </p>
@@ -441,7 +436,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- Foto 'Yo.PNG' -->
+                <!-- Foto -->
                 <div class="order-1 md:order-2 flex justify-center">
                     <div class="relative w-full max-w-sm aspect-square rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
                          <img src="https://res.cloudinary.com/dg3peytgm/image/upload/v1769542383/yo_terraza_celohz.png" 
@@ -452,7 +447,7 @@
                 </div>
             </div>
 
-            <!-- Proyectos 2025 -->
+            <!-- Proyectos -->
             <div class="space-y-16 reveal">
                 <div class="text-center max-w-4xl mx-auto space-y-6">
                     <h3 class="text-4xl font-bold text-white">Proyectos Destacados <span class="text-cyan-400">2025</span></h3>
@@ -549,7 +544,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN FAQ -->
+    <!-- FAQ -->
     <section id="faq" class="relative z-10 py-32 bg-dark-900 border-y border-white/5">
         <div class="max-w-screen-xl mx-auto px-6 lg:px-12">
             <div class="text-center max-w-4xl mx-auto mb-20 space-y-4 reveal">
@@ -592,7 +587,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN CONTACTO (CTA FINAL) -->
+    <!-- CONTACTO -->
     <section id="contacto" class="relative z-10 py-32 border-t border-white/5 bg-gradient-to-b from-dark-900 to-blue-900/10">
         <div class="max-w-3xl mx-auto px-6">
             <div class="glass-panel p-10 md:p-16 rounded-[2.5rem] border border-cyan-500/20 shadow-2xl relative overflow-hidden text-center transform hover:scale-[1.01] transition-transform duration-500">
@@ -639,7 +634,6 @@
     </footer>
 
     <script>
-        // Animación de aparición al hacer scroll
         window.addEventListener('scroll', reveal);
         function reveal(){
             var reveals = document.querySelectorAll('.reveal');
@@ -652,10 +646,8 @@
                 }
             }
         }
-        // Ejecutar una vez al cargar
         reveal();
 
-        // Control del Menú Móvil
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         
