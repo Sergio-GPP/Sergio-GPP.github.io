@@ -1439,7 +1439,10 @@ footer a:hover { color: var(--accent); }
 @media (max-width: 960px) {
   /* Nav */
   .nav-links { display: none; }
-  .nav-cta { padding: 6px 12px; font-size: 11px; }
+  .nav-inner { gap: 12px; }
+  .nav-actions { gap: 8px; margin-left: auto; }
+  .nav-cta { padding: 7px 12px; font-size: 11px; gap: 6px; }
+  .nav-cta::after { font-size: 11px; }
 
   /* Hero */
   .hero { min-height: auto; padding-top: 100px; padding-bottom: 60px; }
@@ -1491,11 +1494,15 @@ footer a:hover { color: var(--accent); }
 @media (max-width: 600px) {
   :root { --pad: 20px; }
 
-  /* Nav compact */
-  .nav-inner { padding: 12px var(--pad); }
-  .brand { font-size: 13px; gap: 8px; }
-  .brand-dot { width: 6px; height: 6px; }
-  .lang-switch button { padding: 5px 8px; font-size: 10px; }
+  /* Nav compact — el nombre completo se mantiene, ajustamos para que entre todo */
+  .nav-inner { padding: 12px var(--pad); gap: 8px; }
+  .brand { font-size: 12px; gap: 7px; min-width: 0; flex-shrink: 1; overflow: hidden; }
+  .brand-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .brand-dot { width: 6px; height: 6px; flex-shrink: 0; }
+  .nav-actions { gap: 5px; flex-shrink: 0; }
+  .lang-switch button { padding: 4px 7px; font-size: 10px; }
+  .nav-cta { padding: 5px 9px; font-size: 10px; gap: 4px; }
+  .nav-cta::after { font-size: 10px; }
 
   /* Sections breathing */
   section { padding: 60px var(--pad) 48px; }
