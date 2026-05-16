@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Email Marketing Automation | Caso de éxito — Sergio Guillén Pampliega</title>
+<meta name="description" content="Automatización integral de email marketing para empresa del sector formación: dashboard operativo, flujos n8n, app de campañas con IA, centro de bajas y +4.000 buzones monitorizados." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0b0d;
+  --bg-2: #101216;
+  --bg-3: #16191f;
+  --line: #1f242c;
+  --line-2: #2a3038;
+  --fg: #e8e8e3;
+  --fg-2: #a3a8b0;
+  --fg-3: #6b7280;
+  --accent: oklch(0.86 0.19 145);
+  --accent-2: oklch(0.7 0.15 145);
+  --accent-glow: oklch(0.86 0.19 145 / 0.15);
+  --accent-b: oklch(0.78 0.16 220);
+  --accent-b-glow: oklch(0.78 0.16 220 / 0.15);
+  --warn: oklch(0.8 0.15 60);
+  --font-sans: "Space Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --maxw: 1280px;
+  --pad: clamp(20px, 4vw, 60px);
+  --r: 4px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* BG */
+.grid-bg {
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none; z-index: 0;
+  mask-image: radial-gradient(ellipse at top, black 0%, transparent 70%);
+}
+.noise {
+  position: fixed; inset: 0; pointer-events: none; z-index: 1;
+  opacity: 0.03; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+}
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  backdrop-filter: blur(14px);
+  background: rgba(10, 11, 13, 0.72);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  max-width: var(--maxw); margin: 0 auto;
+  padding: 14px var(--pad);
+  display: flex; align-items: center; gap: 16px;
+}
+.nav-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 12px;
+  color: var(--fg-2); text-decoration: none;
+  padding: 6px 12px; border-radius: var(--r);
+  border: 1px solid var(--line-2);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.nav-back:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-glow); }
+.nav-back svg { transition: transform 0.2s; }
+.nav-back:hover svg { transform: translateX(-2px); }
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-sans); font-size: 14px;
+  color: var(--fg); text-decoration: none; white-space: nowrap; margin-left: auto;
+}
+.brand-dot {
+  width: 8px; height: 8px; background: var(--accent);
+  box-shadow: 0 0 12px var(--accent); border-radius: 50%;
+  animation: pulse 2s infinite ease-in-out;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.55;transform:scale(.85)} }
+.brand-name { font-weight: 600; }
+
+/* LAYOUT */
+main { position: relative; z-index: 2; }
+section {
+  scroll-margin-top: 80px;
+  padding: 80px var(--pad) 60px;
+  max-width: var(--maxw); margin: 0 auto;
+}
+.kicker {
+  font-family: var(--font-mono); font-size: 12px;
+  color: var(--accent); letter-spacing: 0.05em;
+  margin-bottom: 16px; display: inline-flex; align-items: center; gap: 8px;
+}
+.section-title {
+  font-size: clamp(26px, 3.5vw, 42px); font-weight: 600;
+  letter-spacing: -0.02em; line-height: 1.15;
+  margin: 0 0 12px; text-wrap: pretty; max-width: 900px;
+}
+.section-sub { color: var(--fg-2); font-size: 16px; max-width: 720px; margin: 0; }
+
+/* HERO */
+.hero {
+  min-height: 80vh; padding-top: 120px; padding-bottom: 80px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.hero-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 6px 14px; border: 1px solid var(--line-2);
+  border-radius: 100px; font-family: var(--font-mono);
+  font-size: 12px; color: var(--fg-2); background: var(--bg-2);
+  margin-bottom: 28px; width: fit-content;
+}
+.hero-label .dot {
+  width: 6px; height: 6px; background: var(--accent);
+  border-radius: 50%; box-shadow: 0 0 10px var(--accent);
+  animation: pulse 2s infinite;
+}
+.hero-title {
+  font-size: clamp(34px, 5vw, 64px); font-weight: 500;
+  letter-spacing: -0.035em; line-height: 1.08;
+  margin: 0 0 32px; max-width: 960px;
+}
+.hero-title .hl { color: var(--accent); font-style: italic; font-weight: 400; }
+.hero-intro {
+  font-size: clamp(16px, 1.3vw, 18px); color: var(--fg-2);
+  max-width: 720px; margin: 0 0 48px; line-height: 1.65;
+}
+
+/* FICHA */
+.ficha {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0; border: 1px solid var(--line); border-radius: 8px;
+  overflow: hidden; background: var(--bg-2);
+}
+.ficha-item {
+  padding: 20px 24px; position: relative;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.3s;
+}
+.ficha-item:hover { background: var(--bg-3); }
+.ficha-item::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--accent); opacity: 0;
+  transition: opacity 0.3s;
+}
+.ficha-item:hover::before { opacity: 1; }
+.ficha-k {
+  font-family: var(--font-mono); font-size: 10.5px;
+  color: var(--fg-3); letter-spacing: 0.08em; margin-bottom: 6px;
+}
+.ficha-v { font-size: 14px; font-weight: 500; color: var(--fg); letter-spacing: -0.01em; }
+
+/* CONTENT BLOCKS */
+.content-grid {
+  display: grid; grid-template-columns: 200px 1fr;
+  gap: 48px; align-items: start;
+}
+.content-label {
+  font-family: var(--font-mono); font-size: 12px;
+  color: var(--accent); letter-spacing: 0.05em;
+  position: sticky; top: 100px; padding-top: 4px;
+}
+.content-body p {
+  color: var(--fg-2); font-size: 16.5px; line-height: 1.75; margin: 0 0 20px;
+}
+.content-body p:first-child {
+  color: var(--fg); font-size: 18px; font-weight: 400; line-height: 1.65;
+}
+.content-body p:last-child { margin-bottom: 0; }
+
+.section-divider {
+  width: 100%; height: 1px; margin: 0;
+  background: linear-gradient(to right, var(--accent), var(--line), transparent);
+  border: none;
+}
+
+/* SOLUTION BLOCKS */
+.solution-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line);
+  margin-top: 32px;
+}
+.solution-block {
+  padding: 32px; border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line); position: relative;
+  background: var(--bg); transition: background 0.3s;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.solution-block:hover { background: var(--bg-2); }
+.solution-block::before {
+  content: ""; position: absolute; top: 0; left: 0;
+  width: 100%; height: 1px; background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.solution-block:hover::before { transform: scaleX(1); }
+.solution-head {
+  display: flex; align-items: center; gap: 14px;
+}
+.solution-num {
+  font-family: var(--font-mono); font-size: 12px;
+  color: var(--accent); letter-spacing: 0.06em;
+  width: 32px; height: 32px; display: flex;
+  align-items: center; justify-content: center;
+  border: 1px solid var(--accent); border-radius: 50%;
+  background: var(--accent-glow); flex-shrink: 0;
+  transition: box-shadow 0.3s;
+}
+.solution-block:hover .solution-num {
+  box-shadow: 0 0 0 4px var(--accent-glow);
+}
+.solution-title {
+  font-size: 17px; font-weight: 500; color: var(--fg);
+  margin: 0; letter-spacing: -0.01em;
+}
+.solution-desc { font-size: 14px; color: var(--fg-2); margin: 0; line-height: 1.6; }
+.solution-details {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px;
+}
+.solution-detail {
+  font-family: var(--font-mono); font-size: 10.5px;
+  padding: 4px 10px; border: 1px solid var(--line-2);
+  border-radius: 100px; color: var(--fg-3); letter-spacing: 0.04em;
+}
+
+/* FEATURES GRID */
+.features-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line);
+}
+.feature {
+  padding: 28px; border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line); position: relative;
+  background: var(--bg); transition: background 0.3s;
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.feature:hover { background: var(--bg-2); }
+.feature::before {
+  content: ""; position: absolute; top: 0; left: 0;
+  width: 100%; height: 1px; background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.feature:hover::before { transform: scaleX(1); }
+.feature-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  border: 1px solid var(--line-2); border-radius: 6px;
+  background: var(--bg-3); color: var(--accent);
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.feature:hover .feature-icon {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-glow);
+}
+.feature-content { flex: 1; }
+.feature-title {
+  font-size: 15px; font-weight: 500; color: var(--fg);
+  margin: 0 0 6px; letter-spacing: -0.01em;
+}
+.feature-desc { font-size: 13px; color: var(--fg-2); margin: 0; line-height: 1.55; }
+
+/* DIFF SECTION */
+.diff-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 40px; align-items: start;
+}
+.diff-body p {
+  color: var(--fg-2); font-size: 16px; line-height: 1.75; margin: 0 0 20px;
+}
+.diff-body p:first-child { color: var(--fg); font-size: 18px; }
+.diff-body p:last-child { margin-bottom: 0; }
+.diff-panel {
+  border: 1px solid var(--line-2); border-radius: 8px;
+  background: radial-gradient(ellipse at top right, var(--accent-glow), transparent 65%), var(--bg-2);
+  overflow: hidden; font-family: var(--font-mono);
+}
+.diff-panel-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 16px; border-bottom: 1px solid var(--line);
+  font-size: 11px; color: var(--fg-2); letter-spacing: 0.04em;
+}
+.diff-panel-dots { display: inline-flex; gap: 5px; }
+.diff-panel-dots i {
+  width: 9px; height: 9px; border-radius: 50%; display: inline-block;
+}
+.diff-panel-dots i:nth-child(1) { background: oklch(0.65 0.18 25); }
+.diff-panel-dots i:nth-child(2) { background: oklch(0.78 0.16 80); }
+.diff-panel-dots i:nth-child(3) { background: var(--accent); box-shadow: 0 0 6px var(--accent-glow); }
+.diff-panel-body { padding: 20px; }
+.diff-panel-row {
+  display: grid; grid-template-columns: 80px 1fr;
+  gap: 12px; align-items: baseline;
+  padding: 10px 0; border-bottom: 1px dashed var(--line);
+  font-size: 12px; color: var(--fg-2);
+}
+.diff-panel-row:last-child { border-bottom: none; }
+.diff-panel-val { color: var(--fg); font-weight: 500; }
+.diff-panel-val.hl { color: var(--accent); }
+
+/* RESULT STATS */
+.result-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0; border: 1px solid var(--line); border-radius: 8px;
+  overflow: hidden; background: var(--bg-2); margin-top: 40px;
+}
+.result-stat {
+  padding: 28px; display: flex; flex-direction: column; gap: 8px;
+  position: relative; transition: background 0.3s;
+}
+.result-stat:not(:last-child) { border-right: 1px solid var(--line); }
+.result-stat:hover { background: var(--bg-3); }
+.result-stat::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--accent); opacity: 0;
+  transition: opacity 0.3s;
+}
+.result-stat:hover::before { opacity: 1; }
+.result-stat-icon {
+  width: 32px; height: 32px; border: 1px solid var(--line-2);
+  border-radius: 6px; background: var(--bg);
+  color: var(--accent); display: inline-flex;
+  align-items: center; justify-content: center;
+}
+.result-stat-k {
+  font-family: var(--font-mono); font-size: 10.5px;
+  color: var(--fg-3); letter-spacing: 0.08em;
+}
+.result-stat-v { font-size: 15px; font-weight: 500; color: var(--fg); }
+
+/* BIG METRICS */
+.metrics-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; border: 1px solid var(--line); border-radius: 8px;
+  overflow: hidden; background: var(--bg-2); margin-top: 24px;
+}
+.metric-card {
+  padding: 24px; text-align: center;
+  border-right: 1px solid var(--line);
+  transition: background 0.3s;
+}
+.metric-card:last-child { border-right: none; }
+.metric-card:hover { background: var(--bg-3); }
+.metric-num {
+  font-family: var(--font-mono); font-size: clamp(24px, 3vw, 36px);
+  font-weight: 600; color: var(--accent); letter-spacing: -0.02em;
+}
+.metric-label {
+  font-family: var(--font-mono); font-size: 10.5px;
+  color: var(--fg-3); letter-spacing: 0.06em; margin-top: 8px;
+}
+
+/* IMPACT LIST */
+.impact-list {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; border-top: 1px solid var(--line);
+}
+.impact-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 20px 24px; border-bottom: 1px solid var(--line);
+  transition: background 0.2s, padding-left 0.3s;
+}
+.impact-item:nth-child(odd) { border-right: 1px solid var(--line); }
+.impact-item:hover { background: var(--bg-2); padding-left: 32px; }
+.impact-bullet {
+  width: 8px; height: 8px; flex-shrink: 0; margin-top: 6px;
+  background: var(--accent); border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+.impact-text { font-size: 15px; color: var(--fg-2); line-height: 1.55; }
+
+/* BLOCKQUOTE */
+.highlight-quote {
+  position: relative; padding: 48px 56px;
+  border: 1px solid var(--line-2); border-radius: 8px;
+  background: radial-gradient(ellipse at 20% 20%, var(--accent-glow), transparent 50%), var(--bg-2);
+  margin-top: 40px;
+}
+.highlight-quote::before {
+  content: "\201C"; font-family: var(--font-sans);
+  font-size: 80px; line-height: 1; color: var(--accent);
+  opacity: 0.4; position: absolute; top: 16px; left: 28px;
+}
+.highlight-quote p {
+  font-size: clamp(18px, 2vw, 24px); color: var(--fg);
+  font-weight: 400; line-height: 1.55; margin: 0;
+  font-style: italic; letter-spacing: -0.01em;
+  max-width: 800px;
+}
+
+/* CTA FINAL */
+.cta-section {
+  padding-top: 100px; padding-bottom: 100px;
+}
+.cta-card {
+  border: 1px solid var(--line); border-radius: 8px;
+  background: radial-gradient(ellipse at top right, var(--accent-glow), transparent 60%), var(--bg-2);
+  padding: clamp(40px, 6vw, 80px); position: relative; overflow: hidden;
+  text-align: center;
+}
+.cta-card::before {
+  content: ""; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 32px 32px; pointer-events: none;
+}
+.cta-card > * { position: relative; }
+.cta-title {
+  font-size: clamp(26px, 3.5vw, 44px); font-weight: 500;
+  letter-spacing: -0.02em; line-height: 1.1;
+  margin: 0 0 20px; max-width: 700px; margin-inline: auto;
+}
+.cta-sub {
+  color: var(--fg-2); max-width: 600px; margin: 0 auto 36px;
+  font-size: 16px; line-height: 1.6;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 28px; border-radius: var(--r);
+  font-family: var(--font-mono); font-size: 14px; font-weight: 600;
+  text-decoration: none; cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+}
+.btn-primary {
+  background: var(--accent); color: #000;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px var(--accent-glow);
+}
+.btn .arr { transition: transform 0.2s; }
+.btn:hover .arr { transform: translateX(4px); }
+
+/* CHIPS */
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip {
+  font-family: var(--font-mono); font-size: 10.5px;
+  padding: 4px 10px; border: 1px solid var(--line-2);
+  border-radius: 100px; color: var(--fg-2); letter-spacing: 0.04em;
+}
+.chip-accent {
+  border-color: var(--accent); color: var(--accent);
+  background: var(--accent-glow);
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 32px var(--pad);
+  max-width: var(--maxw); margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono); font-size: 11.5px;
+  color: var(--fg-3); position: relative; z-index: 2;
+  flex-wrap: wrap; gap: 16px;
+}
+footer .right { display: flex; gap: 18px; }
+footer a { color: var(--fg-2); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+
+/* REVEAL */
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .content-grid { grid-template-columns: 1fr; gap: 16px; }
+  .content-label { position: static; }
+  .solution-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .diff-grid { grid-template-columns: 1fr; gap: 32px; }
+  .result-stats { grid-template-columns: 1fr; }
+  .result-stat:not(:last-child) { border-right: none; border-bottom: 1px solid var(--line); }
+  .metrics-row { grid-template-columns: repeat(2, 1fr); }
+  .metric-card:nth-child(2) { border-right: none; }
+  .impact-list { grid-template-columns: 1fr; }
+  .impact-item:nth-child(odd) { border-right: none; }
+  .ficha { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  :root { --pad: 20px; }
+  section { padding: 60px var(--pad) 40px; }
+  .hero { padding-top: 100px; padding-bottom: 48px; min-height: auto; }
+  .hero-title { font-size: clamp(26px, 7vw, 40px); }
+  .ficha { grid-template-columns: 1fr; }
+  .highlight-quote { padding: 36px 28px; }
+  .highlight-quote::before { font-size: 56px; left: 16px; top: 8px; }
+  .feature { flex-direction: column; gap: 12px; }
+  .solution-block { padding: 24px; }
+  .metrics-row { grid-template-columns: 1fr 1fr; }
+  .cta-card { padding: clamp(28px, 5vw, 48px); }
+}
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<div class="noise"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Volver
+    </a>
+    <a href="index.html" class="brand">
+      <span class="brand-dot"></span>
+      <span class="brand-name">Sergio Guillén Pampliega</span>
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero reveal">
+    <div class="hero-label">
+      <span class="dot"></span>
+      Caso de éxito · Email Marketing Automation
+    </div>
+    <h1 class="hero-title">Automatización integral de <span class="hl">email marketing</span> para empresa del sector formación</h1>
+    <p class="hero-intro">Cómo una empresa con más de 200 trabajadores automatizó su operativa de email marketing, centralizó sus datos y ganó control sobre más de 4.000 buzones comerciales.</p>
+
+    <div class="chips" style="margin-bottom: 32px;">
+      <span class="chip chip-accent">Smartlead</span>
+      <span class="chip chip-accent">n8n</span>
+      <span class="chip chip-accent">OpenAI</span>
+      <span class="chip">Zoho CRM</span>
+      <span class="chip">Zoho Analytics</span>
+      <span class="chip">MySQL</span>
+      <span class="chip">Node.js</span>
+      <span class="chip">Vercel</span>
+      <span class="chip">FastAPI</span>
+    </div>
+
+    <div class="ficha">
+      <div class="ficha-item">
+        <div class="ficha-k">CLIENTE</div>
+        <div class="ficha-v">Empresa Sector Formación</div>
+      </div>
+      <div class="ficha-item">
+        <div class="ficha-k">SECTOR</div>
+        <div class="ficha-v">Formación · +200 trabajadores</div>
+      </div>
+      <div class="ficha-item">
+        <div class="ficha-k">TIPO</div>
+        <div class="ficha-v">Email Marketing Automation</div>
+      </div>
+      <div class="ficha-item">
+        <div class="ficha-k">ALCANCE</div>
+        <div class="ficha-v">Dashboard, n8n, app IA, bajas, replies</div>
+      </div>
+      <div class="ficha-item">
+        <div class="ficha-k">OBJETIVO</div>
+        <div class="ficha-v">Centralizar, automatizar, controlar</div>
+      </div>
+      <div class="ficha-item">
+        <div class="ficha-k">ESTADO</div>
+        <div class="ficha-v" style="color: var(--accent);">Entregado · Producción</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- EL RETO -->
+  <section class="reveal">
+    <div class="content-grid">
+      <div class="content-label">// El reto</div>
+      <div class="content-body">
+        <p>La empresa trabajaba con una infraestructura de email marketing de gran volumen. Miles de buzones conectados, diferentes campañas activas, datos repartidos entre herramientas y procesos críticos que dependían de revisión manual.</p>
+        <p>Los principales retos eran controlar la salud y reputación de miles de buzones, detectar buzones saturados o con baja reputación, evitar envíos a contactos dados de baja o con rebotes repetidos, y reducir la dependencia de hojas de cálculo en procesos de alto volumen.</p>
+        <p>Además, el equipo necesitaba crear campañas de forma más rápida manteniendo criterios de segmentación, copy, horarios y límites por buzón, y tener una vista clara de lo que estaba pasando en producción.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- LA SOLUCIÓN -->
+  <section class="reveal">
+    <div class="kicker">// La solución</div>
+    <h2 class="section-title">Seis módulos conectados para una operativa integrada</h2>
+    <p class="section-sub" style="margin-bottom: 8px;">Se desarrolló una arquitectura integral de automatización conectada a las herramientas reales del cliente.</p>
+
+    <div class="solution-grid">
+      <div class="solution-block">
+        <div class="solution-head">
+          <span class="solution-num">01</span>
+          <h3 class="solution-title">Dashboard operativo en tiempo real</h3>
+        </div>
+        <p class="solution-desc">Dashboard web conectado a MySQL para consultar el estado de campañas, buzones, acciones automáticas, errores y métricas operativas sin entrar en cada herramienta por separado.</p>
+        <div class="solution-details">
+          <span class="solution-detail">Campañas activas</span>
+          <span class="solution-detail">Reputación</span>
+          <span class="solution-detail">Warmup</span>
+          <span class="solution-detail">Errores</span>
+          <span class="solution-detail">Históricos</span>
+        </div>
+      </div>
+      <div class="solution-block">
+        <div class="solution-head">
+          <span class="solution-num">02</span>
+          <h3 class="solution-title">Migración de datos a MySQL</h3>
+        </div>
+        <p class="solution-desc">Se consolidó MySQL como fuente operativa principal para monitores, dashboard y centro de bajas, eliminando las limitaciones de rendimiento de las capas legacy con miles de registros.</p>
+        <div class="solution-details">
+          <span class="solution-detail">Estabilidad</span>
+          <span class="solution-detail">Sin límites escritura</span>
+          <span class="solution-detail">Escalable</span>
+        </div>
+      </div>
+      <div class="solution-block">
+        <div class="solution-head">
+          <span class="solution-num">03</span>
+          <h3 class="solution-title">Flujos n8n para monitorización</h3>
+        </div>
+        <p class="solution-desc">Flujos de automatización para inventario de buzones, monitorización de campañas, rotación de buzones, snapshots diarios, aperturas horarias y gestión global de errores.</p>
+        <div class="solution-details">
+          <span class="solution-detail">8 flujos</span>
+          <span class="solution-detail">Inventario</span>
+          <span class="solution-detail">Rotación</span>
+          <span class="solution-detail">Snapshots</span>
+        </div>
+      </div>
+      <div class="solution-block">
+        <div class="solution-head">
+          <span class="solution-num">04</span>
+          <h3 class="solution-title">App de campañas con IA</h3>
+        </div>
+        <p class="solution-desc">Aplicación interna para crear campañas en Smartlead en borrador: descarga audiencias desde Zoho, filtra leads, genera copy con IA, crea secuencias A/B y selecciona buzones automáticamente.</p>
+        <div class="solution-details">
+          <span class="solution-detail">Zoho CRM</span>
+          <span class="solution-detail">OpenAI</span>
+          <span class="solution-detail">A/B testing</span>
+          <span class="solution-detail">Borrador</span>
+        </div>
+      </div>
+      <div class="solution-block">
+        <div class="solution-head">
+          <span class="solution-num">05</span>
+          <h3 class="solution-title">Centro de bajas y compliance</h3>
+        </div>
+        <p class="solution-desc">Sistema para procesar rebotes hard y soft, unsubscribes, sincronización con lista global de bloqueo, registro histórico y trazabilidad de eventos.</p>
+        <div class="solution-details">
+          <span class="solution-detail">Hard bounce</span>
+          <span class="solution-detail">Soft bounce</span>
+          <span class="solution-detail">Unsubscribe</span>
+          <span class="solution-detail">Bloqueo global</span>
+        </div>
+      </div>
+      <div class="solution-block">
+        <div class="solution-head">
+          <span class="solution-num">06</span>
+          <h3 class="solution-title">Clasificación de respuestas con IA</h3>
+        </div>
+        <p class="solution-desc">Clasificación automática entre respuestas humanas y automáticas para reducir falsos positivos de autoresponders y priorizar las respuestas que pueden convertirse en oportunidad comercial.</p>
+        <div class="solution-details">
+          <span class="solution-detail">NLP</span>
+          <span class="solution-detail">Autoresponders</span>
+          <span class="solution-detail">Priorización</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- RESULTADOS -->
+  <section class="reveal">
+    <div class="kicker">// Resultados</div>
+    <h2 class="section-title">Infraestructura robusta para email marketing de alto volumen</h2>
+    <p class="section-sub">El proyecto dejó preparada una infraestructura más robusta para operar email marketing de alto volumen con total trazabilidad.</p>
+
+    <div class="metrics-row">
+      <div class="metric-card">
+        <div class="metric-num">+4.000</div>
+        <div class="metric-label">BUZONES MONITORIZADOS</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">304</div>
+        <div class="metric-label">ACCIONES AUTOMÁTICAS</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">8</div>
+        <div class="metric-label">FLUJOS N8N</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">67</div>
+        <div class="metric-label">EJECUCIONES TRAZABLES</div>
+      </div>
+    </div>
+
+    <div class="result-stats">
+      <div class="result-stat">
+        <div class="result-stat-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18M9 9v11"/></svg>
+        </div>
+        <div class="result-stat-k">DASHBOARD CONECTADO</div>
+        <div class="result-stat-v">Datos reales de producción visibles sin entrar en cada herramienta</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-stat-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11V5l8-3 8 3v6c0 6.5-8 11-8 11z"/></svg>
+        </div>
+        <div class="result-stat-k">COMPLIANCE AUTOMATIZADO</div>
+        <div class="result-stat-v">Bajas y rebotes procesados sin riesgo de reenvíos indebidos</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-stat-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4a3 3 0 0 0-3 3v.5A2.5 2.5 0 0 0 4 10v.5A2.5 2.5 0 0 0 6 13a2 2 0 0 0 2 2v3M15 4a3 3 0 0 1 3 3v.5A2.5 2.5 0 0 1 20 10v.5A2.5 2.5 0 0 1 18 13a2 2 0 0 1-2 2v3M12 4v16M9 8h3M12 12h3"/></svg>
+        </div>
+        <div class="result-stat-k">CAMPAÑAS CON IA</div>
+        <div class="result-stat-v">Creación asistida con copy, segmentación y selección de buzones automática</div>
+      </div>
+    </div>
+
+    <div class="highlight-quote">
+      <p>Automatizar email marketing no es solo enviar más correos. Es tener control sobre cada buzón, cada campaña y cada contacto, y que el equipo pueda operar con visibilidad y sin procesos manuales.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- DIFERENCIAL -->
+  <section class="reveal">
+    <div class="kicker">// Lo que hace diferente a este proyecto</div>
+    <h2 class="section-title" style="margin-bottom: 32px;">De operativa fragmentada a sistema integrado</h2>
+
+    <div class="diff-grid">
+      <div class="diff-body">
+        <p>La empresa pasó de una operativa fragmentada a un sistema integrado, con datos centralizados y automatizaciones conectadas a sus herramientas principales.</p>
+        <p>No se trató de sustituir herramientas, sino de conectarlas. Smartlead, Zoho CRM, Zoho Analytics y MySQL trabajan ahora como un sistema coordinado, con n8n orquestando los flujos y una app interna como punto de entrada para crear campañas.</p>
+        <p>El control humano se mantiene en el lanzamiento final: las campañas se crean como borrador y el equipo decide cuándo activarlas. La automatización elimina lo repetitivo, no la decisión.</p>
+      </div>
+      <div class="diff-panel">
+        <div class="diff-panel-header">
+          <span class="diff-panel-dots"><i></i><i></i><i></i></span>
+          <span style="flex:1; text-align:center; opacity:0.7;">email.ops.dashboard</span>
+          <span style="color:var(--accent); font-size:10px;">● LIVE</span>
+        </div>
+        <div class="diff-panel-body">
+          <div class="diff-panel-row"><span class="diff-panel-val">Buzones</span> <span class="diff-panel-val hl">+4.000 monitorizados</span></div>
+          <div class="diff-panel-row"><span class="diff-panel-val">Campañas</span> <span class="diff-panel-val">25 registradas</span></div>
+          <div class="diff-panel-row"><span class="diff-panel-val">Acciones</span> <span class="diff-panel-val hl">304 automáticas</span></div>
+          <div class="diff-panel-row"><span class="diff-panel-val">Flujos</span> <span class="diff-panel-val">8 n8n documentados</span></div>
+          <div class="diff-panel-row"><span class="diff-panel-val">Runs</span> <span class="diff-panel-val">67 trazables</span></div>
+          <div class="diff-panel-row"><span class="diff-panel-val">Copy IA</span> <span class="diff-panel-val hl">Secuencias A/B</span></div>
+          <div class="diff-panel-row"><span class="diff-panel-val">Bajas</span> <span class="diff-panel-val">Compliance cerrado</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- IMPACTO -->
+  <section class="reveal">
+    <div class="kicker">// Impacto para el negocio</div>
+    <h2 class="section-title" style="margin-bottom: 32px;">Más visibilidad, menos trabajo manual, mejor control</h2>
+
+    <div class="impact-list">
+      <div class="impact-item">
+        <span class="impact-bullet"></span>
+        <span class="impact-text">Mayor visibilidad sobre campañas y buzones desde un único dashboard.</span>
+      </div>
+      <div class="impact-item">
+        <span class="impact-bullet"></span>
+        <span class="impact-text">Menos trabajo manual en tareas repetitivas de supervisión y control.</span>
+      </div>
+      <div class="impact-item">
+        <span class="impact-bullet"></span>
+        <span class="impact-text">Mejor control sobre reputación y capacidad de envío de cada buzón.</span>
+      </div>
+      <div class="impact-item">
+        <span class="impact-bullet"></span>
+        <span class="impact-text">Mayor seguridad frente a bajas, rebotes y contactos bloqueados.</span>
+      </div>
+      <div class="impact-item">
+        <span class="impact-bullet"></span>
+        <span class="impact-text">Proceso más rápido para crear campañas sin perder control operativo.</span>
+      </div>
+      <div class="impact-item">
+        <span class="impact-bullet"></span>
+        <span class="impact-text">Base técnica preparada para escalar y mantener la operativa a largo plazo.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section reveal">
+    <div class="cta-card">
+      <div class="kicker" style="justify-content: center;">// Siguiente paso</div>
+      <h2 class="cta-title">¿Quieres automatizar tu operativa de email marketing?</h2>
+      <p class="cta-sub">Podemos ayudarte a centralizar datos, controlar reputación, automatizar campañas y conectar tus herramientas comerciales para que tu equipo trabaje con más visibilidad y menos procesos manuales.</p>
+      <a href="index.html#contact" class="btn btn-primary">Automatizar mi email marketing <span class="arr">→</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="left">
+    <span>© 2026 Sergio Guillén Pampliega. Todos los derechos reservados.</span>
+  </div>
+  <div class="right">
+    <span>Estrategia, IA y automatización.</span>
+    <a href="https://www.linkedin.com/in/sergioguillenpampliega" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a href="https://www.instagram.com/sergiogp.ia/" target="_blank" rel="noopener">Instagram ↗</a>
+    <a href="https://sergiogp.com" target="_blank" rel="noopener">sergiogp.com ↗</a>
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.02, rootMargin: '0px 0px 80px 0px' });
+document.querySelectorAll('.reveal').forEach(n => observer.observe(n));
+</script>
+</body>
+</html>

@@ -178,6 +178,69 @@ body {
 .nav-cta::after { content: "→"; transition: transform 0.2s; }
 .nav-cta:hover::after { transform: translateX(3px); }
 
+.hamburger { display: none; }
+
+/* MOBILE MENU */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 53px; left: 0; right: 0; bottom: 0;
+  background: rgba(10, 11, 13, 0.96);
+  backdrop-filter: blur(20px);
+  z-index: 49;
+  padding: 24px var(--pad);
+  overflow-y: auto;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+.mobile-menu.open {
+  display: block;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.mobile-nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--fg);
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: color 0.2s, padding-left 0.2s;
+}
+.mobile-nav a:first-child { border-top: 1px solid var(--line); }
+.mobile-nav a:hover,
+.mobile-nav a:active {
+  color: var(--accent);
+  padding-left: 8px;
+}
+.mobile-nav a::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--line-2);
+  flex-shrink: 0;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.mobile-nav a:hover::before,
+.mobile-nav a:active::before {
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+body.menu-open { overflow: hidden; }
+
 /* MAIN */
 main { position: relative; z-index: 2; }
 section {
@@ -942,6 +1005,24 @@ section {
   content: ""; width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
   box-shadow: 0 0 8px var(--accent);
 }
+.project-linked { transition: background 0.3s, padding 0.3s; }
+.project-linked:hover { background: var(--bg-2); }
+.project-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 12px;
+  color: var(--accent); text-decoration: none;
+  padding: 8px 14px; margin-top: 8px;
+  border: 1px solid var(--accent); border-radius: var(--r);
+  background: var(--accent-glow);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.project-link:hover {
+  background: var(--accent); color: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--accent-glow);
+}
+.project-link .arr { transition: transform 0.2s; }
+.project-link:hover .arr { transform: translateX(3px); }
 
 /* EXPERIENCE / TIMELINE */
 .timeline {
@@ -1439,10 +1520,28 @@ footer a:hover { color: var(--accent); }
 @media (max-width: 960px) {
   /* Nav */
   .nav-links { display: none; }
-  .nav-inner { gap: 12px; }
-  .nav-actions { gap: 8px; margin-left: auto; }
-  .nav-cta { padding: 7px 12px; font-size: 11px; gap: 6px; }
-  .nav-cta::after { font-size: 11px; }
+  .nav-cta { display: none; }
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin: -8px;
+    z-index: 51;
+  }
+  .hamburger span {
+    display: block;
+    width: 20px; height: 2px;
+    background: var(--fg);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
   /* Hero */
   .hero { min-height: auto; padding-top: 100px; padding-bottom: 60px; }
@@ -1494,15 +1593,11 @@ footer a:hover { color: var(--accent); }
 @media (max-width: 600px) {
   :root { --pad: 20px; }
 
-  /* Nav compact — el nombre completo se mantiene, ajustamos para que entre todo */
-  .nav-inner { padding: 12px var(--pad); gap: 8px; }
-  .brand { font-size: 12px; gap: 7px; min-width: 0; flex-shrink: 1; overflow: hidden; }
-  .brand-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .brand-dot { width: 6px; height: 6px; flex-shrink: 0; }
-  .nav-actions { gap: 5px; flex-shrink: 0; }
-  .lang-switch button { padding: 4px 7px; font-size: 10px; }
-  .nav-cta { padding: 5px 9px; font-size: 10px; gap: 4px; }
-  .nav-cta::after { font-size: 10px; }
+  /* Nav compact */
+  .nav-inner { padding: 12px var(--pad); }
+  .brand { font-size: 13px; gap: 8px; }
+  .brand-dot { width: 6px; height: 6px; }
+  .lang-switch button { padding: 5px 8px; font-size: 10px; }
 
   /* Sections breathing */
   section { padding: 60px var(--pad) 48px; }

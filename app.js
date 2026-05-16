@@ -30,11 +30,18 @@
   function renderNav() {
     const nav = $('#nav-links');
     nav.innerHTML = '';
+    const mobileNav = $('#mobile-nav');
+    if (mobileNav) mobileNav.innerHTML = '';
     NAV_IDS.forEach(id => {
       const label = t().nav[id];
       if (!label) return;
       const a = el('a', { href: '#' + id, 'data-nav': id }, label);
       nav.appendChild(a);
+      // Mobile nav clone
+      if (mobileNav) {
+        const ma = el('a', { href: '#' + id, 'data-nav': id, onclick: () => closeMobileMenu() }, label);
+        mobileNav.appendChild(ma);
+      }
     });
     $('.nav-cta-text').textContent = t().nav.contact;
   }
@@ -150,7 +157,7 @@
         `;
       }
 
-      list.appendChild(el('article', { class: 'project' }, [
+      const card = el('article', { class: 'project' + (p.link ? ' project-linked' : '') }, [
         slot,
         el('div', { class: 'project-body' }, [
           el('div', { class: 'project-meta' }, [
@@ -161,8 +168,20 @@
           el('p', {}, p.summary),
           chips,
           metricsWrap,
+          p.link ? el('a', { href: p.link, class: 'project-link' }, [
+            el('span', {}, state.lang === 'es' ? 'Ver Caso de Éxito | 2026' : 'View Case Study | 2026'),
+            el('span', { class: 'arr' }, '→'),
+          ]) : null,
         ]),
-      ]));
+      ]);
+      if (p.link) {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', (e) => {
+          if (e.target.closest('a')) return;
+          window.location.href = p.link;
+        });
+      }
+      list.appendChild(card);
     });
   }
 
@@ -368,11 +387,30 @@
     setInterval(tick, 1000);
   }
 
+  function closeMobileMenu() {
+    const menu = $('#mobile-menu');
+    const btn = $('#hamburger');
+    if (menu) menu.classList.remove('open');
+    if (btn) btn.classList.remove('open');
+    document.body.classList.remove('menu-open');
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     $$('.lang-switch button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
     setActiveLang();
     renderAll();
     setupNavScroll();
     setupClock();
+
+    // Hamburger toggle
+    const hamburger = $('#hamburger');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        const menu = $('#mobile-menu');
+        const isOpen = menu.classList.toggle('open');
+        hamburger.classList.toggle('open');
+        document.body.classList.toggle('menu-open', isOpen);
+      });
+    }
   });
 })();
