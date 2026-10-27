@@ -176,7 +176,9 @@
         ...(p.link ? { href: p.link, 'aria-label': `${state.lang === 'es' ? 'Ver caso de éxito' : 'View case study'}: ${p.title}` } : {}),
       });
       if (p.image) {
-        const dimensions = p.image.endsWith('.svg') ? { width: '960', height: '600' } : { width: '640', height: '480' };
+        const dimensions = p.image.endsWith('.svg') ? { width: '960', height: '600' }
+          : p.image.endsWith('.webp') ? { width: '960', height: '720' }
+          : { width: '640', height: '480' };
         slot.appendChild(el('img', { src: p.image, alt: p.title, loading: 'lazy', decoding: 'async', ...dimensions }));
       } else {
         slot.classList.add('is-placeholder');
