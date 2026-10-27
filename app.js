@@ -1,5 +1,9 @@
 // Landing oficial — Sergio Guillén Pampliega
 (function () {
+  if (window.location.pathname === '/index.html') {
+    window.history.replaceState(window.history.state, '', '/' + window.location.search + window.location.hash);
+  }
+
   const state = {
     lang: localStorage.getItem('sgp-lang') || (navigator.language?.startsWith('en') ? 'en' : 'es'),
   };
