@@ -7,6 +7,7 @@
 <meta name="description" content="Freelance experto en Inteligencia Artificial, automatización de procesos y transformación digital. Convierto la tecnología en tu mayor ventaja competitiva." />
 <meta name="author" content="Sergio Guillén Pampliega" />
 <meta name="theme-color" content="#0a0b0d" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="canonical" href="https://sergiogp.com/" />
 
 <!-- Open Graph -->
@@ -26,7 +27,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 
 <script type="application/ld+json">
@@ -54,6 +55,8 @@
 </head>
 <body>
 
+<a class="skip-link" id="skip-link" href="#main-content">Saltar al contenido</a>
+
 <div class="grid-bg"></div>
 <div class="noise"></div>
 
@@ -63,24 +66,24 @@
       <span class="brand-dot"></span>
       <span class="brand-name">Sergio Guillén Pampliega</span>
     </a>
-    <nav class="nav-links" id="nav-links"></nav>
+    <nav class="nav-links" id="nav-links" aria-label="Navegación principal"></nav>
     <div class="nav-actions">
       <div class="lang-switch">
-        <button data-lang="es" class="active">ES</button>
-        <button data-lang="en">EN</button>
+        <button type="button" data-lang="es" class="active" aria-label="Español" aria-pressed="true">ES</button>
+        <button type="button" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
       </div>
       <a href="#contact" class="nav-cta"><span class="nav-cta-text">Contacto</span></a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
+      <button type="button" class="hamburger" id="hamburger" aria-label="Abrir menú" aria-controls="mobile-menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
   <div class="mobile-menu" id="mobile-menu">
-    <nav class="mobile-nav" id="mobile-nav"></nav>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Navegación móvil"></nav>
   </div>
 </header>
 
-<main>
+<main id="main-content" tabindex="-1">
 
   <!-- HERO -->
   <section id="home" class="hero" data-screen-label="01 Hero">
@@ -88,38 +91,34 @@
       <div class="hero-left">
         <div class="hero-status">
           <span class="dot"></span>
-          <span id="hero-status-text"></span>
+          <span id="hero-status-text">Disponible para nuevos proyectos</span>
         </div>
-        <div class="hero-role" id="hero-role"></div>
-        <h1 class="hero-title" id="hero-title"></h1>
-        <p class="hero-sub" id="hero-sub"></p>
+        <div class="hero-role" id="hero-role">Agente de Transformación Digital</div>
+        <h1 class="hero-title" id="hero-title">Inteligencia artificial y automatización para escalar tu negocio.</h1>
+        <p class="hero-sub" id="hero-sub">Más de 3 años optimizando procesos y transformando empresas. Convierto la tecnología en tu mayor ventaja competitiva.</p>
         <div class="hero-ctas">
-          <a href="#contact" class="btn btn-primary" id="hero-cta-primary"></a>
-          <a href="#services" class="btn btn-ghost" id="hero-cta-secondary"></a>
+          <a href="#contact" class="btn btn-primary" id="hero-cta-primary">Consultoría gratuita →</a>
+          <a href="#services" class="btn btn-ghost" id="hero-cta-secondary">Ver servicios ↓</a>
         </div>
       </div>
-      <aside class="hero-panel" aria-hidden="true">
-        <div class="hp-header">
-          <span class="hp-dots"><i></i><i></i><i></i></span>
-          <span class="hp-title">sergio.terminal</span>
-          <span class="hp-net">●&nbsp;LIVE</span>
-        </div>
-        <div class="hp-body">
-          <div class="hp-row"><span class="hp-prompt">$</span><span class="hp-cmd"><span class="hp-typing" data-text="status --me"></span></span></div>
-          <div class="hp-out">
-            <div><span class="hp-key">Role</span><span class="hp-val">Freelance · AI &amp; Automation</span></div>
-            <div><span class="hp-key">Based</span><span class="hp-val">Murcia, Spain · 37.99°N 1.13°W</span></div>
-            <div><span class="hp-key">Stack</span><span class="hp-val">AI Programmer · n8n · Code</span></div>
-            <div><span class="hp-key">Avail</span><span class="hp-val ok">Accepting Projects ·&nbsp;Q2 26</span></div>
+      <aside class="hero-system" aria-labelledby="hero-system-heading">
+        <div class="system-frame">
+          <div class="system-bar">
+            <span class="system-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span id="system-bar-label">SERGIO / SISTEMAS APLICADOS</span>
+            <span class="system-signal" aria-hidden="true"></span>
           </div>
-          <div class="hp-row"><span class="hp-prompt">$</span><span class="hp-cmd hp-blink">_</span></div>
-          <div class="hp-graph" aria-hidden="true">
-            <svg viewBox="0 0 200 56" preserveAspectRatio="none">
-              <path d="M0,40 L20,38 L35,32 L50,30 L70,22 L90,26 L110,18 L130,12 L150,16 L175,8 L200,4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M0,40 L20,38 L35,32 L50,30 L70,22 L90,26 L110,18 L130,12 L150,16 L175,8 L200,4 L200,56 L0,56 Z" fill="url(#hp-grad)" opacity="0.4"/>
-              <defs><linearGradient id="hp-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="currentColor" stop-opacity="0.4"/><stop offset="100%" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
-            </svg>
-            <span class="hp-graph-label">PROJECTS · 2024 → 2026</span>
+          <div class="system-content">
+            <span class="system-kicker" id="system-kicker">DEL PROBLEMA AL SISTEMA</span>
+            <h2 class="system-heading" id="hero-system-heading">Tecnología que <em>trabaja contigo.</em></h2>
+            <p class="system-intro" id="system-intro">Conecto procesos, datos y herramientas para que tu equipo gane tiempo y claridad.</p>
+            <ol class="system-flow" aria-label="Fases del trabajo">
+              <li><span class="system-step-num">01</span><div><strong id="system-step-1">Entender</strong><small id="system-step-1-detail">Procesos y objetivos</small></div></li>
+              <li><span class="system-step-num">02</span><div><strong id="system-step-2">Construir</strong><small id="system-step-2-detail">IA y automatización útil</small></div></li>
+              <li><span class="system-step-num">03</span><div><strong id="system-step-3">Medir</strong><small id="system-step-3-detail">Resultados y mejora</small></div></li>
+            </ol>
+            <div class="system-result"><span id="system-result-label">OBJETIVO</span><strong id="system-result">Menos fricción. Más control.</strong></div>
+            <a class="system-link" href="caso-exito-remarketing-educativo.html"><span id="system-link-text">Ver un proyecto entregado</span><span aria-hidden="true">↗</span></a>
           </div>
         </div>
       </aside>
@@ -140,7 +139,7 @@
     <div class="about-layout reveal">
       <div class="about-portrait">
         <figure class="about-photo">
-          <img id="about-photo-img" alt="" loading="lazy" />
+          <img id="about-photo-img" alt="" width="1448" height="1070" loading="lazy" decoding="async" />
           <div class="about-photo-frame"></div>
           <figcaption>
             <span class="dot"></span>
@@ -157,8 +156,25 @@
     </div>
   </section>
 
+  <!-- APPROACH -->
+  <section id="approach" class="approach-band" data-screen-label="03 Approach">
+    <div class="approach-inner">
+      <div class="approach-top reveal">
+        <span class="approach-kicker" id="approach-kicker">03 / CÓMO TRABAJO</span>
+        <h2 id="approach-title">De una necesidad concreta a un sistema que funciona.</h2>
+        <p id="approach-intro">Cada proyecto empieza por entender tu operación y termina con una solución que tu equipo puede usar y mejorar.</p>
+      </div>
+      <ol class="approach-steps reveal">
+        <li><span>01</span><h3 id="approach-step-1">Diagnóstico</h3><p id="approach-step-1-detail">Reviso tareas, datos y herramientas para encontrar el cuello de botella real.</p></li>
+        <li><span>02</span><h3 id="approach-step-2">Diseño y construcción</h3><p id="approach-step-2-detail">Creo una solución a medida que encaja con los procesos que ya utilizas.</p></li>
+        <li><span>03</span><h3 id="approach-step-3">Entrega y mejora</h3><p id="approach-step-3-detail">La pruebo contigo, documento su uso y ajusto lo que haga falta.</p></li>
+      </ol>
+      <a class="approach-cta" href="#contact"><span id="approach-cta-text">Cuéntame qué necesitas</span><span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
   <!-- SERVICES (4 areas) -->
-  <section id="services" data-screen-label="03 Services">
+  <section id="services" data-screen-label="04 Services">
     <div class="reveal">
       <div class="kicker" id="services-kicker"></div>
       <h2 class="section-title" id="services-title"></h2>
@@ -167,7 +183,7 @@
   </section>
 
   <!-- PROJECTS -->
-  <section id="projects" data-screen-label="04 Projects">
+  <section id="projects" data-screen-label="05 Projects">
     <div class="reveal">
       <div class="kicker" id="projects-kicker"></div>
       <h2 class="section-title" id="projects-title"></h2>
@@ -177,7 +193,7 @@
   </section>
 
   <!-- SKILLS -->
-  <section id="skills" data-screen-label="05 Skills">
+  <section id="skills" data-screen-label="06 Skills">
     <div class="reveal">
       <div class="kicker" id="skills-kicker"></div>
       <h2 class="section-title" id="skills-title"></h2>
@@ -187,7 +203,7 @@
   </section>
 
   <!-- EXPERIENCE -->
-  <section id="experience" data-screen-label="06 Experience">
+  <section id="experience" data-screen-label="07 Experience">
     <div class="reveal">
       <div class="kicker" id="experience-kicker"></div>
       <h2 class="section-title" id="experience-title"></h2>
@@ -196,7 +212,7 @@
   </section>
 
   <!-- EDUCATION + COURSES -->
-  <section id="education" data-screen-label="07 Education">
+  <section id="education" data-screen-label="08 Education">
     <div class="reveal">
       <div class="kicker" id="education-kicker"></div>
       <h2 class="section-title" id="education-title"></h2>
@@ -211,7 +227,7 @@
   </section>
 
   <!-- FAQ -->
-  <section id="faq" data-screen-label="08 FAQ">
+  <section id="faq" data-screen-label="09 FAQ">
     <div class="reveal">
       <div class="kicker" id="faq-kicker"></div>
       <h2 class="section-title" id="faq-title"></h2>
@@ -220,7 +236,7 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="contact-section" data-screen-label="09 Contact">
+  <section id="contact" class="contact-section" data-screen-label="10 Contact">
     <div class="reveal">
       <div class="kicker" id="contact-kicker"></div>
     </div>
@@ -241,7 +257,7 @@
             <input id="contact-email" type="email" name="email" required maxlength="254" autocomplete="email" />
           </div>
           <div class="contact-field">
-            <label for="form-msg">Mensaje</label>
+            <label id="form-label-message" for="form-msg">Mensaje</label>
             <textarea id="form-msg" name="message" required maxlength="5000"></textarea>
           </div>
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />

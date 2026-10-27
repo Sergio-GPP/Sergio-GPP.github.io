@@ -13,6 +13,10 @@ window.PORTFOLIO_DATA = {
     photoCaption: { es: "Ponencia Business+ 2025 — IA en Pymes", en: "Business+ 2025 Talk — AI for SMEs" },
   },
   es: {
+    seo: {
+      title: "Sergio Guillén Pampliega — IA, Automatización & Transformación Digital",
+      description: "Freelance experto en Inteligencia Artificial, automatización de procesos y transformación digital. Convierto la tecnología en tu mayor ventaja competitiva.",
+    },
     nav: {
       home: "Inicio", about: "Sobre mí", services: "Servicios", projects: "Proyectos",
       experience: "Experiencia", education: "Formación", stack: "Stack", skills: "Skills",
@@ -25,6 +29,33 @@ window.PORTFOLIO_DATA = {
       ctaPrimary: "Consultoría gratuita",
       ctaSecondary: "Ver servicios",
       status: "Disponible para nuevos proyectos",
+      visual: {
+        bar: "SERGIO / SISTEMAS APLICADOS",
+        kicker: "DEL PROBLEMA AL SISTEMA",
+        headingStart: "Tecnología que",
+        headingAccent: "trabaja contigo.",
+        intro: "Conecto procesos, datos y herramientas para que tu equipo gane tiempo y claridad.",
+        steps: [
+          ["Entender", "Procesos y objetivos"],
+          ["Construir", "IA y automatización útil"],
+          ["Medir", "Resultados y mejora"],
+        ],
+        resultLabel: "OBJETIVO",
+        result: "Menos fricción. Más control.",
+        link: "Ver un proyecto entregado",
+        aria: "Fases del trabajo",
+      },
+    },
+    approach: {
+      kicker: "03 / CÓMO TRABAJO",
+      title: "De una necesidad concreta a un sistema que funciona.",
+      intro: "Cada proyecto empieza por entender tu operación y termina con una solución que tu equipo puede usar y mejorar.",
+      steps: [
+        ["Diagnóstico", "Reviso tareas, datos y herramientas para encontrar el cuello de botella real."],
+        ["Diseño y construcción", "Creo una solución a medida que encaja con los procesos que ya utilizas."],
+        ["Entrega y mejora", "La pruebo contigo, documento su uso y ajusto lo que haga falta."],
+      ],
+      cta: "Cuéntame qué necesitas",
     },
     about: {
       kicker: "// Sobre mí",
@@ -175,6 +206,7 @@ window.PORTFOLIO_DATA = {
       cta: "Enviar mensaje",
       formName: "Nombre",
       formEmail: "Email",
+      formMessageLabel: "Mensaje",
       formMessage: "Cuéntame sobre tu proyecto...",
       formDisclosure: "FormSubmit tramita los datos del formulario para enviarme el mensaje por correo.",
       privacyLink: "Privacidad del servicio ↗",
@@ -182,6 +214,10 @@ window.PORTFOLIO_DATA = {
     footer: { tagline: "Estrategia, IA y automatización.", rights: "Todos los derechos reservados." },
   },
   en: {
+    seo: {
+      title: "Sergio Guillén Pampliega — AI, Automation & Digital Transformation",
+      description: "Freelance specialist in AI, process automation and digital transformation. I turn technology into a practical advantage for your business.",
+    },
     nav: { home: "Home", about: "About", services: "Services", projects: "Projects", experience: "Experience", education: "Education", stack: "Stack", skills: "Skills", faq: "FAQ", contact: "Contact" },
     hero: {
       role: "Digital Transformation Agent",
@@ -189,6 +225,33 @@ window.PORTFOLIO_DATA = {
       sub: "3+ years optimizing processes and transforming companies. I turn technology into your strongest competitive edge.",
       ctaPrimary: "Free consultation", ctaSecondary: "View services",
       status: "Available for new projects",
+      visual: {
+        bar: "SERGIO / APPLIED SYSTEMS",
+        kicker: "FROM PROBLEM TO SYSTEM",
+        headingStart: "Technology that",
+        headingAccent: "works with you.",
+        intro: "I connect processes, data and tools so your team gains time and clarity.",
+        steps: [
+          ["Understand", "Processes and goals"],
+          ["Build", "Useful AI and automation"],
+          ["Measure", "Results and improvement"],
+        ],
+        resultLabel: "GOAL",
+        result: "Less friction. More control.",
+        link: "See a delivered project (in Spanish)",
+        aria: "How the work flows",
+      },
+    },
+    approach: {
+      kicker: "03 / HOW I WORK",
+      title: "From a concrete need to a system that works.",
+      intro: "Each project starts with understanding your operations and ends with a solution your team can use and improve.",
+      steps: [
+        ["Discovery", "I review tasks, data and tools to find the real bottleneck."],
+        ["Design and build", "I create a tailored solution that fits the processes you already use."],
+        ["Delivery and improvement", "We test it together, I document its use and adjust what is needed."],
+      ],
+      cta: "Tell me what you need",
     },
     about: {
       kicker: "// About",
@@ -312,7 +375,7 @@ window.PORTFOLIO_DATA = {
         { q: "Does it integrate with my tools?", a: "Absolutely. The priority is to not break your current ecosystem but to connect and enhance it." },
       ],
     },
-    contact: { kicker: "// Contact", title: "Got a project in mind?", sub: "Tell me the context — fast reply.", cta: "Send message", formName: "Name", formEmail: "Email", formMessage: "Tell me about your project...", formDisclosure: "FormSubmit processes this form's details to email me your message.", privacyLink: "Service privacy ↗" },
+    contact: { kicker: "// Contact", title: "Got a project in mind?", sub: "Tell me the context — fast reply.", cta: "Send message", formName: "Name", formEmail: "Email", formMessageLabel: "Message", formMessage: "Tell me about your project...", formDisclosure: "FormSubmit processes this form's details to email me your message.", privacyLink: "Service privacy ↗" },
     footer: { tagline: "Strategy, AI and automation.", rights: "All rights reserved." },
   },
 };

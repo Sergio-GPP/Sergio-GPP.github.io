@@ -1,0 +1,12 @@
+# Archivos de revisión local; no se publican con GitHub Pages.
+/screenshots/landing-preview-*.png
+/screenshots/landing-publicada-*.png
+/docs/privado/
+
+# Configuración y secretos locales.
+.env
+.env.*
+!.env.example
+__pycache__/
+.DS_Store
+Thumbs.db

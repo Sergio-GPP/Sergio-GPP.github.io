@@ -60,6 +60,33 @@
     $('#hero-coords').textContent = `LAT 37.99° N · LON 1.13° W · MURCIA / ES`;
     $('#hero-time-label').textContent = state.lang === 'es' ? 'SISTEMA' : 'SYSTEM';
     $('#hero-scroll').textContent = state.lang === 'es' ? 'DESPLAZA' : 'SCROLL';
+    const visual = t().hero.visual;
+    $('#system-bar-label').textContent = visual.bar;
+    $('#system-kicker').textContent = visual.kicker;
+    $('#hero-system-heading').replaceChildren(document.createTextNode(visual.headingStart + ' '), el('em', {}, visual.headingAccent));
+    $('#system-intro').textContent = visual.intro;
+    $('.system-flow').setAttribute('aria-label', visual.aria);
+    visual.steps.forEach(([title, detail], index) => {
+      const n = index + 1;
+      $(`#system-step-${n}`).textContent = title;
+      $(`#system-step-${n}-detail`).textContent = detail;
+    });
+    $('#system-result-label').textContent = visual.resultLabel;
+    $('#system-result').textContent = visual.result;
+    $('#system-link-text').textContent = visual.link;
+  }
+
+  function renderApproach() {
+    const content = t().approach;
+    $('#approach-kicker').textContent = content.kicker;
+    $('#approach-title').textContent = content.title;
+    $('#approach-intro').textContent = content.intro;
+    content.steps.forEach(([title, detail], index) => {
+      const n = index + 1;
+      $(`#approach-step-${n}`).textContent = title;
+      $(`#approach-step-${n}-detail`).textContent = detail;
+    });
+    $('#approach-cta-text').textContent = content.cta;
   }
 
   function renderAbout() {
@@ -120,7 +147,6 @@
         grid.appendChild(el('div', { class: 'service' }, [
           el('div', { class: 'service-head' }, [
             el('span', { class: 'service-icon', html: iconHtml }),
-            el('span', { class: 'service-arrow', html: '↗' }),
           ]),
           el('h4', { class: 'service-title' }, s.title),
           el('p', { class: 'service-desc' }, s.desc),
@@ -144,9 +170,13 @@
       (p.metrics || []).forEach(m => metricsWrap.appendChild(el('span', { class: 'metric' }, m)));
 
       // Image slot: shows real image if provided, otherwise a styled placeholder
-      const slot = el('div', { class: 'project-slot' });
+      const slot = el(p.link ? 'a' : 'div', {
+        class: 'project-slot',
+        ...(p.link ? { href: p.link, 'aria-label': `${state.lang === 'es' ? 'Ver caso de éxito' : 'View case study'}: ${p.title}` } : {}),
+      });
       if (p.image) {
-        slot.appendChild(el('img', { src: p.image, alt: p.title, loading: 'lazy' }));
+        const dimensions = p.image.endsWith('.svg') ? { width: '960', height: '600' } : { width: '640', height: '480' };
+        slot.appendChild(el('img', { src: p.image, alt: p.title, loading: 'lazy', decoding: 'async', ...dimensions }));
       } else {
         slot.classList.add('is-placeholder');
         slot.innerHTML = `
@@ -164,23 +194,16 @@
             el('span', { class: 'project-tag' }, p.tag),
             el('span', { class: 'project-status' }, p.status),
           ]),
-          el('h3', {}, p.title),
+          el('h3', {}, p.link ? el('a', { href: p.link }, p.title) : p.title),
           el('p', {}, p.summary),
           chips,
           metricsWrap,
           p.link ? el('a', { href: p.link, class: 'project-link' }, [
-            el('span', {}, state.lang === 'es' ? 'Ver Caso de Éxito | 2026' : 'View Case Study | 2026'),
+            el('span', {}, state.lang === 'es' ? 'Ver caso de éxito | 2026' : 'View case study (ES) | 2026'),
             el('span', { class: 'arr' }, '→'),
           ]) : null,
         ]),
       ]);
-      if (p.link) {
-        card.style.cursor = 'pointer';
-        card.addEventListener('click', (e) => {
-          if (e.target.closest('a')) return;
-          window.location.href = p.link;
-        });
-      }
       list.appendChild(card);
     });
   }
@@ -277,6 +300,7 @@
     const setPlaceholder = (id, txt) => { const e = $(id); if (e) e.setAttribute('placeholder', txt); };
     setLabel('#form-label-name', t().contact.formName);
     setLabel('#form-label-email', t().contact.formEmail);
+    setLabel('#form-label-message', t().contact.formMessageLabel);
     setPlaceholder('#form-msg', t().contact.formMessage);
     setLabel('#contact-form-note', t().contact.formDisclosure);
     setLabel('#contact-privacy-link', t().contact.privacyLink);
@@ -307,8 +331,21 @@
   }
 
   function setActiveLang() {
-    $$('.lang-switch button').forEach(b => b.classList.toggle('active', b.dataset.lang === state.lang));
+    $$('.lang-switch button').forEach(b => {
+      const active = b.dataset.lang === state.lang;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-pressed', String(active));
+    });
     document.documentElement.lang = state.lang;
+    document.title = t().seo.title;
+    $('meta[name="description"]').setAttribute('content', t().seo.description);
+    $('#skip-link').textContent = state.lang === 'es' ? 'Saltar al contenido' : 'Skip to content';
+    $('#nav-links').setAttribute('aria-label', state.lang === 'es' ? 'Navegación principal' : 'Main navigation');
+    $('#mobile-nav').setAttribute('aria-label', state.lang === 'es' ? 'Navegación móvil' : 'Mobile navigation');
+    const hamburger = $('#hamburger');
+    if (hamburger) hamburger.setAttribute('aria-label', hamburger.getAttribute('aria-expanded') === 'true'
+      ? (state.lang === 'es' ? 'Cerrar menú' : 'Close menu')
+      : (state.lang === 'es' ? 'Abrir menú' : 'Open menu'));
   }
 
   function setLang(lang) {
@@ -322,6 +359,7 @@
     renderNav();
     renderHero();
     renderAbout();
+    renderApproach();
     renderServices();
     renderProjects();
     renderSkills();
@@ -335,15 +373,25 @@
   let observer;
   function setupReveal() {
     if (observer) observer.disconnect();
+    const nodes = $$('.reveal');
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      nodes.forEach(n => { n.classList.remove('reveal-pending'); n.classList.add('visible'); });
+      return;
+    }
     observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
           e.target.classList.add('visible');
+          e.target.classList.remove('reveal-pending');
           observer.unobserve(e.target);
         }
       });
     }, { threshold: 0.02, rootMargin: '0px 0px 80px 0px' });
-    $$('.reveal').forEach(n => observer.observe(n));
+    nodes.forEach(n => {
+      if (n.classList.contains('visible')) return;
+      n.classList.add('reveal-pending');
+      observer.observe(n);
+    });
   }
 
 
@@ -362,13 +410,13 @@
   }
 
   function setupClock() {
+    const formatter = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit', second: '2-digit',
+      hour12: false, timeZoneName: 'short',
+    });
     const tick = () => {
-      const d = new Date();
-      const hh = String(d.getHours()).padStart(2, '0');
-      const mm = String(d.getMinutes()).padStart(2, '0');
-      const ss = String(d.getSeconds()).padStart(2, '0');
       const clock = document.getElementById('hero-clock');
-      if (clock) clock.textContent = `${hh}:${mm}:${ss} CET · ONLINE`;
+      if (clock) clock.textContent = `${formatter.format(new Date())} · ONLINE`;
     };
     tick();
     setInterval(tick, 1000);
@@ -378,8 +426,14 @@
     const menu = $('#mobile-menu');
     const btn = $('#hamburger');
     if (menu) menu.classList.remove('open');
-    if (btn) btn.classList.remove('open');
+    if (btn) {
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', state.lang === 'es' ? 'Abrir menú' : 'Open menu');
+    }
     document.body.classList.remove('menu-open');
+    $('main').inert = false;
+    $('footer').inert = false;
   }
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -396,8 +450,23 @@
         const menu = $('#mobile-menu');
         const isOpen = menu.classList.toggle('open');
         hamburger.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+        hamburger.setAttribute('aria-label', isOpen
+          ? (state.lang === 'es' ? 'Cerrar menú' : 'Close menu')
+          : (state.lang === 'es' ? 'Abrir menú' : 'Open menu'));
         document.body.classList.toggle('menu-open', isOpen);
+        $('main').inert = isOpen;
+        $('footer').inert = isOpen;
       });
     }
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && $('#mobile-menu')?.classList.contains('open')) {
+        closeMobileMenu();
+        hamburger?.focus();
+      }
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1240 && $('#mobile-menu')?.classList.contains('open')) closeMobileMenu();
+    });
   });
 })();
