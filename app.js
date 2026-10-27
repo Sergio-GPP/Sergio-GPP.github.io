@@ -53,7 +53,7 @@
       : `<span>${l}</span>`).join('<br/>');
     $('#hero-status-text').textContent = t().hero.status;
     $('#hero-role').textContent = t().hero.role;
-    $('#hero-title').innerHTML = titleHtml + '<span class="hero-cursor"></span>';
+    $('#hero-title').innerHTML = titleHtml;
     $('#hero-sub').textContent = t().hero.sub;
     $('#hero-cta-primary').innerHTML = `${t().hero.ctaPrimary} <span class="arr">→</span>`;
     $('#hero-cta-secondary').innerHTML = `${t().hero.ctaSecondary} <span class="arr">↓</span>`;

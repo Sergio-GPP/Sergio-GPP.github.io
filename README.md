@@ -12,4 +12,4 @@ python -m http.server 8765 --bind 127.0.0.1
 
 Abrir `http://127.0.0.1:8765/`. Si hay cambios locales, conservarlos y revisar `git fetch origin main` antes de integrar el remoto; no ejecutar un `pull` que los pise.
 
-Antes de publicar: `python scripts/check_site.py`, `node --check app.js`, `node --check data.js`, `git diff --check` y revisión visual de escritorio y móvil. El proceso completo está en [docs/PROCESO_PUBLICACION.md](docs/PROCESO_PUBLICACION.md). El mapa de dependencias está en [docs/INTEGRACIONES.md](docs/INTEGRACIONES.md).
+Antes de publicar: `python scripts/check_site.py`, `node --check app.js`, `node --check data.js`, `git diff --check` y revisión visual de escritorio y móvil. El proceso completo está en [docs/PROCESO_PUBLICACION.md](docs/PROCESO_PUBLICACION.md), el método de diseño y marketing en [docs/METODO_WEB_MARKETING.md](docs/METODO_WEB_MARKETING.md) y el mapa de dependencias en [docs/INTEGRACIONES.md](docs/INTEGRACIONES.md).

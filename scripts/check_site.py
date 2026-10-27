@@ -12,6 +12,8 @@ PUBLIC_HTML = [
     ROOT / "index.html",
     ROOT / "caso-exito-email-marketing.html",
     ROOT / "caso-exito-chatbot-nexia.html",
+    ROOT / "caso-exito-crm-copedis.html",
+    ROOT / "caso-exito-remarketing.html",
     ROOT / "caso-exito-remarketing-educativo.html",
     ROOT / "gracias.html",
     ROOT / "cv-print.html",

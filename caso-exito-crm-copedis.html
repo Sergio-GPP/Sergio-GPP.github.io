@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CRM interno para COPEDIS | Caso de éxito — Sergio Guillén Pampliega</title>
+  <meta name="description" content="Desarrollo y entrega de COPEDIS CRM v1.4.0: contactos, listas, campañas, prospección y sincronización con Mailjet en una aplicación interna documentada." />
+  <meta name="author" content="Sergio Guillén Pampliega" />
+  <meta name="theme-color" content="#0a0b0d" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="canonical" href="https://sergiogp.com/caso-exito-crm-copedis.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:title" content="CRM interno para COPEDIS | Caso de éxito" />
+  <meta property="og:description" content="Una aplicación interna para gestionar contactos, campañas y prospección, entregada con código, manuales y pruebas." />
+  <meta property="og:url" content="https://sergiogp.com/caso-exito-crm-copedis.html" />
+  <meta property="og:image" content="https://sergiogp.com/img/project-copedis.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#0a0b0d;--panel:#111714;--line:#2a352c;--fg:#edf1ea;--muted:#abb5ab;--soft:#99a79a;--green:#b1ed8f;--max:1180px;--pad:clamp(20px,4vw,56px)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.68 "Inter",Arial,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit}a:focus-visible{outline:2px solid var(--green);outline-offset:4px}img{max-width:100%}
+    h1,h2,h3{font-family:"Sora","Inter",sans-serif;letter-spacing:-.045em}h1,h2,h3,p{margin-top:0}
+    .grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(#fff1 1px,transparent 1px),linear-gradient(90deg,#fff1 1px,transparent 1px);background-size:64px 64px;opacity:.11;mask-image:linear-gradient(#000,transparent 75%)}
+    .nav{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:#0a0b0de8;backdrop-filter:blur(12px)}.nav-inner{max-width:var(--max);margin:auto;padding:14px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:20px}.nav a{text-decoration:none;font-size:13px}.back{border:1px solid var(--line);border-radius:4px;padding:8px 13px;color:var(--muted)}.back:hover,.brand:hover{color:var(--green);border-color:var(--green)}.brand{font-weight:600;text-align:right}
+    main{position:relative;z-index:1;max-width:var(--max);margin:auto}section{padding:clamp(64px,8vw,110px) var(--pad)}section+section{border-top:1px solid var(--line)}.mono,.eyebrow,.label,.step-num,.stat-label,.tag{font-family:"JetBrains Mono",monospace}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--green);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}.eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px #b1ed8f55}
+    .intro{padding-top:clamp(80px,10vw,135px)}h1{font-size:clamp(39px,5.7vw,72px);line-height:1.1;font-weight:700;max-width:980px;margin:24px 0}h1 em,h2 em{color:var(--green);font-style:normal}.lede{font-size:clamp(17px,1.5vw,21px);color:var(--muted);max-width:810px;margin:0 0 34px}.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 44px}.tag{padding:6px 10px;border:1px solid var(--line);border-radius:3px;color:var(--muted);font-size:11px}.tag.accent{border-color:#6e9f68;color:var(--green)}
+    .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);background:var(--panel)}.fact{padding:21px;border-right:1px solid var(--line)}.fact:last-child{border-right:0}.label,.stat-label{color:var(--soft);font-size:10px;letter-spacing:.08em}.fact strong{display:block;margin-top:7px;font-size:14px;font-weight:600;line-height:1.45}
+    h2{font-size:clamp(28px,3.6vw,48px);line-height:1.16;font-weight:700;max-width:860px;margin:12px 0 22px}.split{display:grid;grid-template-columns:180px 1fr;gap:clamp(24px,5vw,80px)}.split>.label{padding-top:9px;color:var(--green);font-size:12px}.copy{max-width:800px}.copy p{color:var(--muted);font-size:17px;line-height:1.78;margin-bottom:18px}.copy p:first-of-type{color:var(--fg)}.copy p:last-child{margin-bottom:0}.section-intro{max-width:800px;color:var(--muted);font-size:17px;margin-bottom:34px}
+    .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.step{min-width:0;min-height:275px;padding:28px;border:1px solid var(--line);background:var(--panel);border-top:2px solid #83be73}.step-num{display:block;color:var(--green);font-size:12px;margin-bottom:38px}.step h3{font-size:21px;line-height:1.25;margin:0 0 13px}.step p{color:var(--muted);margin:0}.step small{display:block;margin-top:19px;color:var(--soft);font:11px "JetBrains Mono",monospace}
+    .visual{margin:18px 0 0;padding:12px;border:1px solid var(--line);background:var(--panel)}.visual img{display:block;width:100%;height:auto;max-height:430px;object-fit:contain}.visual figcaption{color:var(--soft);font-size:12px;padding:8px 10px 1px}
+    .result-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:33px 0}.result{min-width:0;padding:26px;border:1px solid var(--line);background:var(--panel)}.result strong{display:block;color:var(--green);font:700 clamp(25px,2.9vw,38px)/1.15 "Sora",sans-serif;letter-spacing:-.05em;margin:11px 0}.result p{color:var(--muted);margin:0;font-size:14px}.proof{display:grid;grid-template-columns:1fr 1fr;gap:12px}.proof-card{padding:27px;border:1px solid var(--line);background:var(--panel)}.proof-card .mono{color:var(--green);font-size:11px}.proof-card h3{font-size:18px;margin:10px 0}.proof-card p{color:var(--muted);margin:0}.status{margin-top:25px;padding:25px 28px;border-left:2px solid var(--green);background:#142018}.status strong{display:block;margin-bottom:7px}.status p{color:var(--muted);margin:0}
+    .cta{margin:0 var(--pad) clamp(60px,8vw,110px);padding:clamp(35px,6vw,70px);border:1px solid var(--line);background:radial-gradient(circle at 85% 0%,#b1ed8f18,transparent 50%),var(--panel);text-align:center}.cta h2{margin:13px auto 20px}.cta p{max-width:650px;margin:0 auto 27px;color:var(--muted)}.button{display:inline-flex;align-items:center;gap:12px;padding:12px 20px;background:var(--green);color:#0b140a;text-decoration:none;border-radius:3px;font-weight:700}.button:hover{background:#d0f7ba}
+    footer{position:relative;z-index:1;max-width:var(--max);margin:auto;padding:24px var(--pad);border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;color:var(--soft);font-size:12px}footer a:hover{color:var(--green)}
+    @media(max-width:850px){.facts{grid-template-columns:repeat(2,1fr)}.fact:nth-child(2){border-right:0}.fact:nth-child(-n+2){border-bottom:1px solid var(--line)}.split{grid-template-columns:1fr;gap:15px}.steps,.result-grid,.proof{grid-template-columns:1fr}.step{min-height:0}.step-num{margin-bottom:24px}}
+    @media(max-width:520px){.brand{max-width:180px;line-height:1.25}.facts{grid-template-columns:1fr}.fact{border-right:0;border-bottom:1px solid var(--line)}.fact:last-child{border-bottom:0}.nav-inner{padding:12px var(--pad)}footer{flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <div class="grid" aria-hidden="true"></div>
+  <header class="nav"><div class="nav-inner"><a class="back" href="index.html#projects">← Volver a proyectos</a><a class="brand" href="index.html">Sergio Guillén Pampliega</a></div></header>
+  <main>
+    <section class="intro" aria-labelledby="case-title">
+      <span class="eyebrow">Caso de éxito · CRM y operación comercial</span>
+      <h1 id="case-title">Contactos, campañas y prospección <em>en una sola herramienta.</em></h1>
+      <p class="lede">Desarrollé COPEDIS CRM como aplicación interna para consultar y trabajar con contactos, listas, campañas y leads desde el navegador. La versión 1.4.0 se entregó con ejecutable, código fuente y documentación para su instalación y mantenimiento.</p>
+      <div class="tags"><span class="tag accent">FastAPI</span><span class="tag accent">SQLite</span><span class="tag">Mailjet</span><span class="tag">Windows</span><span class="tag">CRM interno</span></div>
+      <div class="facts" aria-label="Ficha del proyecto">
+        <div class="fact"><div class="label">CLIENTE</div><strong>COPEDIS</strong></div>
+        <div class="fact"><div class="label">SOLUCIÓN</div><strong>CRM comercial interno</strong></div>
+        <div class="fact"><div class="label">VERSIÓN</div><strong>1.4.0 entregada</strong></div>
+        <div class="fact"><div class="label">ALCANCE</div><strong>Aplicación y paquete técnico</strong></div>
+      </div>
+    </section>
+
+    <section class="split" aria-labelledby="challenge-title">
+      <div class="label">// EL RETO</div>
+      <div class="copy"><h2 id="challenge-title">Una operación comercial con varias piezas que debían <em>encajar.</em></h2>
+        <p>El trabajo abarcaba fichas CRM, listas y campañas de Mailjet, prospección y seguimiento de sincronizaciones. El equipo necesitaba consultar esas áreas y actuar sobre ellas desde una interfaz interna, con diferencias claras entre revisar información, preparar un borrador y autorizar un envío.</p>
+        <p>La entrega también tenía que ser mantenible: ejecutable para Windows, datos operativos, manual para usuarios, documentación técnica y código fuente de la misma versión.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="solution-title">
+      <span class="eyebrow">La solución</span><h2 id="solution-title">Cinco áreas de trabajo en una aplicación de red privada.</h2>
+      <p class="section-intro">La interfaz y la API se sirven desde el mismo proceso. Mailjet se integra por HTTPS; la base SQLite conserva el estado operativo y el historial necesario para consulta y seguimiento.</p>
+      <div class="steps">
+        <article class="step"><span class="step-num">01 / CONTACTOS</span><h3>Fichas y listas conectadas</h3><p>Búsqueda, edición y trabajo por lotes en el CRM. Las listas permiten revisar miembros y abrir la ficha de un contacto existente.</p><small>CRM · listas · CSV</small></article>
+        <article class="step"><span class="step-num">02 / CAMPAÑAS</span><h3>Del histórico al borrador</h3><p>Las campañas enviadas se consultan en tarjetas; los borradores y las programaciones tienen acciones diferenciadas y requieren revisión antes del envío.</p><small>Histórico · edición · control</small></article>
+        <article class="step"><span class="step-num">03 / PROSPECCIÓN</span><h3>Leads con trazabilidad</h3><p>Importación, asignación, depuración de duplicados y promoción a contacto, junto a una pantalla de sincronización con estado de trabajos.</p><small>Leads · conciliación · jobs</small></article>
+      </div>
+      <figure class="visual"><img src="img/project-copedis.svg" width="960" height="600" loading="lazy" decoding="async" alt="Esquema ilustrativo de COPEDIS CRM: contactos, campañas, prospección y sincronización" /><figcaption>Representación ilustrativa. No muestra datos de contactos ni una captura del sistema real.</figcaption></figure>
+    </section>
+
+    <section aria-labelledby="results-title">
+      <span class="eyebrow">Entrega verificada</span><h2 id="results-title">Una versión instalable y documentada.</h2>
+      <p class="section-intro">El paquete v1.4.0 incluyó aplicación, base operativa, manuales, código y manifiestos de integridad. Las comprobaciones de entrega quedaron registradas antes del empaquetado.</p>
+      <div class="result-grid">
+        <div class="result"><span class="stat-label">VERSIÓN</span><strong>1.4.0</strong><p>El ejecutable arrancó y respondió con esta versión en la prueba aislada.</p></div>
+        <div class="result"><span class="stat-label">REGRESIÓN</span><strong>22 pruebas</strong><p>Suite local de seguridad y regresión completada en el cierre de entrega.</p></div>
+        <div class="result"><span class="stat-label">DATOS</span><strong>Integridad OK</strong><p>Comprobación de las bases SQLite incluidas en el paquete.</p></div>
+      </div>
+      <div class="proof">
+        <div class="proof-card"><span class="mono">01 · OPERACIÓN</span><h3>Sincronización y copias</h3><p>Trabajos programados con estado consultable, copia de seguridad automática e instrucciones de mantenimiento para informática.</p></div>
+        <div class="proof-card"><span class="mono">02 · ENTREGA</span><h3>Código y manuales</h3><p>La fuente, el ejecutable, la guía de usuario y la documentación técnica corresponden a la versión entregada.</p></div>
+      </div>
+      <div class="status"><strong>Alcance de este caso</strong><p>La documentación acredita el paquete v1.4.0 y sus pruebas de entrega. La instalación en el servidor de destino y los resultados comerciales posteriores no se presentan aquí como hechos verificados. El uso previsto es una red local o VPN autorizada.</p></div>
+    </section>
+
+    <section class="split" aria-labelledby="criterion-title">
+      <div class="label">// EL CRITERIO</div>
+      <div class="copy"><h2 id="criterion-title">Hacer operable el CRM también significa <em>hacerlo mantenible.</em></h2>
+        <p>Un panel útil debe explicar qué dato muestra, qué acción cambia el estado y qué requiere validación humana. Por eso la aplicación separa consulta, borrador, prueba autorizada y envío.</p>
+        <p>La entrega se preparó como un sistema que otro equipo técnico puede instalar, revisar y actualizar sin depender de una copia de desarrollo.</p>
+      </div>
+    </section>
+
+    <div class="cta"><span class="eyebrow">Siguiente paso</span><h2>¿Tus contactos y campañas necesitan una operación más clara?</h2><p>Cuéntame qué herramientas utilizáis y dónde se pierde tiempo o visibilidad. Podemos definir un flujo que tu equipo pueda usar y mantener.</p><a class="button" href="mailto:sergio@sergiogp.com?subject=Consulta%20sobre%20CRM%20y%20automatizaci%C3%B3n">Hablemos del proyecto <span aria-hidden="true">→</span></a></div>
+  </main>
+  <footer><span>© 2026 Sergio Guillén Pampliega</span><a href="index.html#projects">Volver a proyectos ↑</a></footer>
+</body>
+</html>

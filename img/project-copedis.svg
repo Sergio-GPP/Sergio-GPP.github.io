@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">COPEDIS CRM, esquema de una aplicación comercial interna</title>
+  <desc id="desc">Panel ilustrativo sin datos de clientes: contactos, listas, campañas, prospección y sincronización.</desc>
+  <defs>
+    <linearGradient id="back" x2="1" y2="1"><stop stop-color="#111915"/><stop offset="1" stop-color="#0a0d0b"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#b1ed8f" stroke-opacity=".045"/></pattern>
+  </defs>
+  <rect width="960" height="600" fill="url(#back)"/>
+  <rect width="960" height="600" fill="url(#grid)"/>
+  <rect x="58" y="56" width="844" height="488" rx="18" fill="#101612" stroke="#3e5841" stroke-width="2"/>
+  <path d="M58 112h844M260 112v432" stroke="#314735" stroke-width="2"/>
+  <circle cx="88" cy="85" r="6" fill="#b1ed8f"/><circle cx="110" cy="85" r="6" fill="#58765b"/><circle cx="132" cy="85" r="6" fill="#58765b"/>
+  <text x="163" y="91" fill="#d8e8d4" font-family="Arial,sans-serif" font-size="18" font-weight="700">COPEDIS CRM</text>
+  <text x="770" y="90" fill="#b1ed8f" font-family="monospace" font-size="15">v1.4.0</text>
+  <g font-family="Arial,sans-serif" font-size="17" fill="#aebcac">
+    <text x="89" y="171" fill="#b1ed8f" font-weight="700">Resumen</text>
+    <text x="89" y="222">Contactos</text>
+    <text x="89" y="273">Campañas</text>
+    <text x="89" y="324">Prospección</text>
+    <text x="89" y="375">Sincronización</text>
+  </g>
+  <text x="302" y="166" fill="#b1ed8f" font-family="monospace" font-size="14" letter-spacing="2">OPERACIÓN COMERCIAL</text>
+  <text x="302" y="211" fill="#f1f6ec" font-family="Arial,sans-serif" font-size="31" font-weight="700">Un flujo, cinco áreas</text>
+  <g font-family="Arial,sans-serif">
+    <rect x="302" y="248" width="258" height="108" rx="8" fill="#18231a" stroke="#426045"/>
+    <text x="324" y="284" fill="#b1ed8f" font-size="14" font-weight="700">CONTACTOS Y LISTAS</text>
+    <text x="324" y="323" fill="#e5eee1" font-size="20">Fichas conectadas</text>
+    <rect x="576" y="248" width="272" height="108" rx="8" fill="#18231a" stroke="#426045"/>
+    <text x="598" y="284" fill="#b1ed8f" font-size="14" font-weight="700">CAMPAÑAS</text>
+    <text x="598" y="323" fill="#e5eee1" font-size="20">Borrador y revisión</text>
+    <rect x="302" y="371" width="546" height="100" rx="8" fill="#172019" stroke="#426045"/>
+    <text x="324" y="407" fill="#b1ed8f" font-size="14" font-weight="700">PROSPECCIÓN Y SINCRONIZACIÓN</text>
+    <text x="324" y="446" fill="#e5eee1" font-size="19">Información trazable para el equipo</text>
+  </g>
+  <text x="88" y="496" fill="#89a48c" font-family="monospace" font-size="13">ESQUEMA ILUSTRATIVO · SIN DATOS REALES</text>
+</svg>
