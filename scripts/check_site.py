@@ -12,7 +12,8 @@ PUBLIC_HTML = [
     ROOT / "index.html",
     ROOT / "caso-exito-email-marketing.html",
     ROOT / "caso-exito-chatbot-nexia.html",
-    ROOT / "caso-exito-crm-copedis.html",
+    ROOT / "caso-exito-crm-comercial.html",
+    ROOT / "caso-exito-sistema-editorial-ia.html",
     ROOT / "caso-exito-remarketing.html",
     ROOT / "caso-exito-remarketing-educativo.html",
     ROOT / "gracias.html",
@@ -75,6 +76,9 @@ public_code = "\n".join(
 )
 if re.search(r"aldrax|altrax|aldracks", public_code, re.I):
     errors.append("Hay una referencia a una marca ajena en el código público")
+for name in ("caso-exito-crm-comercial.html", "caso-exito-sistema-editorial-ia.html"):
+    if "identidad reservada" not in (ROOT / name).read_text(encoding="utf-8").lower():
+        errors.append(f"{name}: falta indicar que la identidad del cliente está reservada")
 if "https://formsubmit.co/sergio@sergiogp.com" not in public_code:
     errors.append("Revisar el destinatario del formulario")
 

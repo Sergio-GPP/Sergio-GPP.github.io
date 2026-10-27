@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
-  <title id="title">COPEDIS CRM, esquema de una aplicación comercial interna</title>
+  <title id="title">Esquema de una aplicación comercial interna</title>
   <desc id="desc">Panel ilustrativo sin datos de clientes: contactos, listas, campañas, prospección y sincronización.</desc>
   <defs>
     <linearGradient id="back" x2="1" y2="1"><stop stop-color="#111915"/><stop offset="1" stop-color="#0a0d0b"/></linearGradient>
@@ -10,8 +10,8 @@
   <rect x="58" y="56" width="844" height="488" rx="18" fill="#101612" stroke="#3e5841" stroke-width="2"/>
   <path d="M58 112h844M260 112v432" stroke="#314735" stroke-width="2"/>
   <circle cx="88" cy="85" r="6" fill="#b1ed8f"/><circle cx="110" cy="85" r="6" fill="#58765b"/><circle cx="132" cy="85" r="6" fill="#58765b"/>
-  <text x="163" y="91" fill="#d8e8d4" font-family="Arial,sans-serif" font-size="18" font-weight="700">COPEDIS CRM</text>
-  <text x="770" y="90" fill="#b1ed8f" font-family="monospace" font-size="15">v1.4.0</text>
+  <text x="163" y="91" fill="#d8e8d4" font-family="Arial,sans-serif" font-size="18" font-weight="700">CRM COMERCIAL</text>
+  <text x="770" y="90" fill="#b1ed8f" font-family="monospace" font-size="15">INTERNO</text>
   <g font-family="Arial,sans-serif" font-size="17" fill="#aebcac">
     <text x="89" y="171" fill="#b1ed8f" font-weight="700">Resumen</text>
     <text x="89" y="222">Contactos</text>
