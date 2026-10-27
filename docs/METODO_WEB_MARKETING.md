@@ -10,8 +10,10 @@ Este repositorio se revisa como producto y como código. Las skills están insta
 | Textos de páginas y casos | `copywriting` | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills/tree/main/skills/copywriting) | 2.3.1 |
 | SEO técnico y de contenido | `seo-audit` | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills/tree/main/skills/seo-audit) | 2.2.2 |
 | Claridad y conversión | `cro` | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills/tree/main/skills/cro) | 2.0.3 |
+| Ilustraciones de casos | `imagegen` | Skill integrada de Codex | Disponible el 27-10-2026 |
+| Revisión de interfaz | `web-design-guidelines` | Skill local de Codex | Disponible el 27-10-2026 |
 
-También está disponible la guía local `web-design-guidelines` para revisar la interfaz. Estas skills aportan listas de comprobación y enfoques; cualquier recomendación debe contrastarse con el código, el navegador y las pruebas del proyecto. Las versiones pueden cambiar si se actualizan las skills.
+Estas skills aportan listas de comprobación, enfoques y generación visual; cualquier resultado debe contrastarse con el código, el navegador y las pruebas del proyecto. Las versiones pueden cambiar si se actualizan las skills.
 
 ## Ciclo de cada mejora
 
