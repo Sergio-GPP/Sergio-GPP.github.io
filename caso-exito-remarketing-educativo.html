@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Remarketing educativo con control | Caso de éxito — Sergio Guillén Pampliega</title>
+  <meta name="description" content="Sistema de tracking, aptitud y audiencias de remarketing para un grupo educativo. Zoho CRM, Smartlead y Python con trazabilidad y revisión humana antes del envío." />
+  <meta name="author" content="Sergio Guillén Pampliega" />
+  <meta name="theme-color" content="#0a0b0d" />
+  <link rel="canonical" href="https://sergiogp.com/caso-exito-remarketing-educativo.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Remarketing educativo con control | Caso de éxito" />
+  <meta property="og:description" content="Del tracking a audiencias ES/EN revisables: un sistema de email marketing que mantiene el envío bajo control humano." />
+  <meta property="og:url" content="https://sergiogp.com/caso-exito-remarketing-educativo.html" />
+  <meta property="og:image" content="https://sergiogp.com/img/project-em2.svg" />
+  <meta property="og:locale" content="es_ES" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#0a0b0d;--panel:#101418;--panel2:#161d20;--line:#293237;--fg:#e8eae5;--muted:#a7b0ae;--soft:#75817e;--accent:#b1ed8f;--blue:#8fd4df;--max:1180px;--pad:clamp(20px,4vw,56px)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 "Space Grotesk",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit}a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}img{max-width:100%}
+    .grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(#fff1 1px,transparent 1px),linear-gradient(90deg,#fff1 1px,transparent 1px);background-size:64px 64px;opacity:.13;mask-image:linear-gradient(#000,transparent 75%)}
+    .nav{border-bottom:1px solid var(--line);background:#0a0b0de8;position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}
+    .nav-inner{max-width:var(--max);margin:auto;padding:14px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .nav a{text-decoration:none;font-size:13px}.back{border:1px solid var(--line);border-radius:4px;padding:8px 13px;color:var(--muted)}.back:hover,.nav .brand:hover{color:var(--accent);border-color:var(--accent)}.brand{font-weight:600;text-align:right}
+    main{position:relative;z-index:1;max-width:var(--max);margin:auto}section{padding:clamp(64px,8vw,110px) var(--pad)}section+section{border-top:1px solid var(--line)}
+    .eyebrow,.mono,.label,.stat-label,.stage-num,.tag,.fine{font-family:"JetBrains Mono",monospace}.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--accent);font-size:12px;letter-spacing:.08em;text-transform:uppercase}.eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+    h1,h2,h3,p{margin-top:0}h1{font-size:clamp(42px,6vw,79px);line-height:1.08;letter-spacing:-.05em;font-weight:500;max-width:970px;margin:24px 0 24px}h1 em,h2 em{color:var(--accent);font-style:normal}h2{font-size:clamp(29px,3.5vw,48px);line-height:1.17;letter-spacing:-.035em;font-weight:500;margin:10px 0 21px;max-width:830px}h3{font-size:21px;line-height:1.3;letter-spacing:-.02em;margin:0 0 13px}
+    .lede{font-size:clamp(17px,1.5vw,21px);line-height:1.65;color:var(--muted);max-width:780px;margin:0 0 34px}.intro{padding-top:clamp(80px,10vw,135px)}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 44px}.tag{font-size:11px;letter-spacing:.02em;border:1px solid var(--line);padding:6px 10px;border-radius:3px;color:var(--muted)}.tag.accent{border-color:#6e9f68;color:var(--accent)}
+    .facts{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);background:var(--panel)}.fact{padding:20px 22px;border-right:1px solid var(--line)}.fact:last-child{border-right:0}.label{font-size:10px;color:var(--soft);letter-spacing:.08em;margin-bottom:5px}.fact strong{display:block;font-size:14px;font-weight:500;line-height:1.45}
+    .split{display:grid;grid-template-columns:180px 1fr;gap:clamp(24px,5vw,80px)}.split .label{color:var(--accent);font-size:12px;padding-top:6px}.copy{max-width:760px}.copy p{font-size:17px;color:var(--muted);line-height:1.78;margin-bottom:18px}.copy p:first-child{color:var(--fg)}.copy p:last-child{margin-bottom:0}
+    .section-intro{color:var(--muted);max-width:740px;font-size:17px;margin-bottom:35px}.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stage{border:1px solid var(--line);background:var(--panel);padding:29px;min-height:285px;position:relative;overflow:hidden}.stage:before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--blue));opacity:.8}.stage-num{display:block;color:var(--accent);font-size:12px;letter-spacing:.06em;margin-bottom:43px}.stage p{color:var(--muted);margin:0}.stage .small{font-family:"JetBrains Mono",monospace;color:var(--soft);font-size:11px;margin-top:20px}
+    .visual{margin-top:18px;border:1px solid var(--line);background:var(--panel);padding:12px}.visual img{display:block;width:100%;height:auto;max-height:400px;object-fit:contain}.visual figcaption{color:var(--soft);font-size:12px;padding:8px 10px 1px}
+    .result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:35px 0}.result{border:1px solid var(--line);padding:26px;background:var(--panel)}.result strong{display:block;color:var(--accent);font-size:clamp(27px,3vw,39px);line-height:1.15;font-weight:500;letter-spacing:-.04em;margin-bottom:13px}.result p{color:var(--muted);margin:0;font-size:14px}.stat-label{display:block;font-size:10px;letter-spacing:.08em;color:var(--soft);margin-bottom:12px}
+    .proof{display:grid;grid-template-columns:1fr 1fr;gap:12px}.proof-card{border:1px solid var(--line);padding:27px;background:var(--panel)}.proof-card p{margin:0;color:var(--muted)}.proof-card h3{font-size:18px}.proof-card .mono{font-size:11px;color:var(--blue);display:block;margin-bottom:13px}
+    .status{margin-top:25px;padding:25px 28px;border-left:2px solid var(--blue);background:#152027}.status strong{display:block;margin-bottom:7px}.status p{color:var(--muted);margin:0}.status a{color:var(--blue)}
+    .cta{margin:0 var(--pad) clamp(60px,8vw,110px);padding:clamp(35px,6vw,70px);background:radial-gradient(circle at 85% 0%,#b1ed8f18,transparent 50%),var(--panel);border:1px solid var(--line);text-align:center}.cta h2{margin:13px auto 20px}.cta p{max-width:650px;margin:0 auto 27px;color:var(--muted)}.button{display:inline-flex;align-items:center;gap:12px;background:var(--accent);color:#0b140a;padding:12px 20px;text-decoration:none;border-radius:3px;font-weight:600}.button:hover{background:#d0f7ba}
+    footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:24px var(--pad);display:flex;justify-content:space-between;gap:16px;color:var(--soft);font-size:12px;max-width:var(--max);margin:auto}footer a:hover{color:var(--accent)}
+    @media(max-width:850px){.facts{grid-template-columns:repeat(2,1fr)}.fact:nth-child(2){border-right:0}.fact:nth-child(-n+2){border-bottom:1px solid var(--line)}.split{grid-template-columns:1fr;gap:15px}.stages{grid-template-columns:1fr}.stage{min-height:0}.stage-num{margin-bottom:24px}.result-grid{grid-template-columns:1fr}.proof{grid-template-columns:1fr}}
+    @media(max-width:520px){.brand{max-width:180px;line-height:1.25}.facts{grid-template-columns:1fr}.fact{border-right:0;border-bottom:1px solid var(--line)}.fact:last-child{border-bottom:0}.nav-inner{padding:12px var(--pad)}footer{flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <div class="grid" aria-hidden="true"></div>
+  <header class="nav"><div class="nav-inner"><a class="back" href="index.html#projects">← Volver a proyectos</a><a class="brand" href="index.html">Sergio Guillén Pampliega</a></div></header>
+  <main>
+    <section class="intro" aria-labelledby="case-title">
+      <span class="eyebrow">Caso de éxito · Educación y CRM</span>
+      <h1 id="case-title">Audiencias preparadas con criterio. <em>Campañas bajo control.</em></h1>
+      <p class="lede">Para un grupo educativo desarrollé un sistema que conecta la actividad de email marketing con el CRM, evalúa la aptitud de cada contacto y prepara audiencias en español e inglés para revisión antes de cualquier envío.</p>
+      <div class="tags"><span class="tag accent">Zoho CRM</span><span class="tag accent">Smartlead</span><span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">Dashboard</span></div>
+      <div class="facts" aria-label="Ficha del proyecto">
+        <div class="fact"><div class="label">SECTOR</div><strong>Formación</strong></div>
+        <div class="fact"><div class="label">SOLUCIÓN</div><strong>Tracking · Aptitud · Remarketing</strong></div>
+        <div class="fact"><div class="label">IDIOMAS</div><strong>Audiencias ES / EN</strong></div>
+        <div class="fact"><div class="label">ENTREGA</div><strong>Aplicación, worker y manuales</strong></div>
+      </div>
+    </section>
+
+    <section class="split" aria-labelledby="challenge-title">
+      <div class="label">// EL RETO</div>
+      <div class="copy"><h2 id="challenge-title">Cada contacto necesitaba una decisión <em>explicable.</em></h2>
+        <p>El equipo trabajaba con actividad de campañas en Smartlead y fichas comerciales en Zoho CRM. Para preparar remarketing, no bastaba con reunir emails: había que saber quién había dejado de interactuar, quién había pedido la baja y quién mantenía una gestión o matrícula vigente.</p>
+        <p>Una persona podía aparecer en varios módulos del CRM con correos distintos. El sistema debía reconocer la identidad por teléfono normalizado y después por email, conservar el motivo de cada exclusión y separar la preparación de audiencia de la decisión de enviar.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="solution-title">
+      <span class="eyebrow">La solución</span><h2 id="solution-title">Tres módulos conectados por reglas verificables.</h2>
+      <p class="section-intro">La orquestación se implementó en Python sobre las herramientas existentes del cliente. El dashboard permite revisar métricas, reglas y estados sin convertir la selección en un envío automático.</p>
+      <div class="stages">
+        <article class="stage"><span class="stage-num">01 / TRACKING</span><h3>Registrar lo que ocurre</h3><p>Recoge de Smartlead envíos, aperturas, clics, respuestas, rebotes y bajas; conserva el histórico operativo para consulta en el dashboard.</p><div class="small">Smartlead → base operativa</div></article>
+        <article class="stage"><span class="stage-num">02 / APTITUD</span><h3>Evaluar antes de incluir</h3><p>Calcula la aptitud de las fichas nuevas con reglas de inactividad, sin reescribir los «No» históricos. Las bajas y demás filtros se aplican al preparar la audiencia.</p><div class="small">Reglas → Apto_Remarketing</div></article>
+        <article class="stage"><span class="stage-num">03 / REMARKETING</span><h3>Preparar para revisión</h3><p>Concilia Zoho, cruza identidades y gestiones activas, separa ES/EN y deja la campaña como borrador. La activación y el envío requieren una decisión humana.</p><div class="small">Audiencia → borrador</div></article>
+      </div>
+      <figure class="visual"><img src="img/project-em2.svg" width="960" height="600" alt="Flujo de tres etapas: tracking de eventos, reglas de aptitud y audiencia con revisión humana" /><figcaption>Esquema ilustrativo del flujo. No contiene datos de clientes ni capturas del CRM.</figcaption></figure>
+    </section>
+
+    <section aria-labelledby="results-title">
+      <span class="eyebrow">Resultado acreditado</span><h2 id="results-title">Audiencias trazables, con filtros y control de salida.</h2>
+      <p class="section-intro">El cierre funcional dejó una conciliación del CRM y audiencias ES/EN preparadas y auditadas. El sistema conserva la razón de inclusión o exclusión y permite revisar borradores sin iniciar campañas.</p>
+      <div class="result-grid">
+        <div class="result"><span class="stat-label">ARQUITECTURA</span><strong>3 módulos</strong><p>Actividad, aptitud y remarketing integrados en una misma operación.</p></div>
+        <div class="result"><span class="stat-label">SEGMENTACIÓN</span><strong>ES / EN</strong><p>Audiencias separadas por idioma y contrastadas con el CRM.</p></div>
+        <div class="result"><span class="stat-label">CONTROL</span><strong>Borrador</strong><p>Preparar una campaña no la activa ni envía mensajes.</p></div>
+      </div>
+      <div class="proof">
+        <div class="proof-card"><span class="mono">01 · IDENTIDAD</span><h3>Exclusiones con motivo</h3><p>El cruce usa primero teléfono normalizado y luego email. Considera alumnos, matrículas y gestiones abiertas para no incluir a una persona por una ficha histórica aislada.</p></div>
+        <div class="proof-card"><span class="mono">02 · OPERACIÓN</span><h3>Entrega reproducible</h3><p>La solución se entregó con aplicación web, worker, scripts, pruebas y manuales de instalación. Las reglas y la operación quedan documentadas para el equipo técnico.</p></div>
+      </div>
+      <div class="status"><strong>Alcance de esta entrega</strong><p>El dashboard y las audiencias se validaron en el cierre documentado. La conectividad posterior con la base MySQL del cliente quedó pendiente de recuperación; una mejora adicional de aptitud se entregó en un paquete local para su instalación. Este caso describe la solución entregada y verificada, sin atribuirle campañas activadas, envíos ni resultados comerciales no medidos.</p></div>
+    </section>
+
+    <section class="split" aria-labelledby="approach-title">
+      <div class="label">// EL CRITERIO</div>
+      <div class="copy"><h2 id="approach-title">Automatizar la preparación. <em>Conservar la decisión.</em></h2>
+        <p>La aportación principal no fue enviar más mensajes, sino dar al equipo una forma consistente de decidir a quién podría dirigirse. Cada audiencia parte de una conciliación reciente, cada exclusión tiene una causa y cada campaña queda pendiente de aprobación.</p>
+        <p>El proyecto demuestra cómo conectar herramientas comerciales existentes sin perder trazabilidad sobre los datos ni ceder a la automatización la última decisión.</p>
+      </div>
+    </section>
+
+    <div class="cta"><span class="eyebrow">Siguiente paso</span><h2>¿Tu CRM y tus campañas necesitan hablar el mismo idioma?</h2><p>Cuéntame cómo gestionáis hoy la actividad, las exclusiones y la revisión de campañas. Puedo ayudarte a convertirlo en un flujo claro y medible.</p><a class="button" href="mailto:sergio@sergiogp.com?subject=Consulta%20sobre%20automatizaci%C3%B3n%20de%20CRM%20y%20email%20marketing">Hablemos del proyecto <span aria-hidden="true">→</span></a></div>
+  </main>
+  <footer><span>© 2026 Sergio Guillén Pampliega</span><a href="index.html#projects">Volver a proyectos ↑</a></footer>
+</body>
+</html>

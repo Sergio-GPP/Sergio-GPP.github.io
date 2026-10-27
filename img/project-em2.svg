@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">Sistema de remarketing educativo</title>
+  <desc id="desc">Tres etapas conectadas: tracking, aptitud y audiencia, con revisión humana antes de enviar.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#101a18"/><stop offset="1" stop-color="#0b1118"/></linearGradient>
+    <linearGradient id="line" x2="1"><stop stop-color="#a2ef82"/><stop offset="1" stop-color="#62cbd9"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#d8f8e2" stroke-opacity=".045"/></pattern>
+  </defs>
+  <rect width="960" height="600" fill="url(#bg)"/>
+  <rect width="960" height="600" fill="url(#grid)"/>
+  <rect x="62" y="64" width="836" height="472" rx="22" fill="#10181c" stroke="#3a4a48"/>
+  <path d="M62 125h836" stroke="#3a4a48"/>
+  <circle cx="91" cy="95" r="7" fill="#a2ef82"/><circle cx="114" cy="95" r="7" fill="#4b6660"/><circle cx="137" cy="95" r="7" fill="#4b6660"/>
+  <text x="170" y="101" fill="#b7c9c6" font-family="monospace" font-size="18">EM2 / AUDIENCE ENGINE</text>
+  <text x="94" y="185" fill="#a2ef82" font-family="monospace" font-size="16" letter-spacing="3">DATA FLOW</text>
+  <text x="94" y="232" fill="#eff7f1" font-family="Arial,sans-serif" font-size="31" font-weight="700">Del evento a la decisión</text>
+  <g font-family="monospace" font-size="17">
+    <rect x="94" y="290" width="214" height="148" rx="12" fill="#172620" stroke="#658773"/>
+    <text x="119" y="327" fill="#a2ef82">01 / TRACKING</text>
+    <text x="119" y="374" fill="#eff7f1" font-family="Arial,sans-serif" font-size="22">Eventos</text>
+    <text x="119" y="408" fill="#a6bcb1" font-size="14">envío · apertura</text>
+    <rect x="373" y="290" width="214" height="148" rx="12" fill="#172620" stroke="#658773"/>
+    <text x="398" y="327" fill="#a2ef82">02 / APTITUD</text>
+    <text x="398" y="374" fill="#eff7f1" font-family="Arial,sans-serif" font-size="22">Reglas</text>
+    <text x="398" y="408" fill="#a6bcb1" font-size="14">inactividad · baja</text>
+    <rect x="652" y="290" width="214" height="148" rx="12" fill="#172620" stroke="#658773"/>
+    <text x="677" y="327" fill="#a2ef82">03 / AUDIENCIA</text>
+    <text x="677" y="374" fill="#eff7f1" font-family="Arial,sans-serif" font-size="22">Revisión</text>
+    <text x="677" y="408" fill="#a6bcb1" font-size="14">ES / EN · borrador</text>
+  </g>
+  <path d="M318 363h43m-12-12 12 12-12 12m248-12h43m-12-12 12 12-12 12" fill="none" stroke="url(#line)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="94" y="492" fill="#9cb3a8" font-family="monospace" font-size="16">CONTROL HUMANO ANTES DEL ENVÍO</text>
+  <circle cx="844" cy="486" r="8" fill="#a2ef82"/>
+</svg>
