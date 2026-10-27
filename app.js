@@ -25,7 +25,8 @@
     return node;
   }
 
-  const NAV_IDS = ['home', 'about', 'services', 'projects', 'skills', 'experience', 'education', 'faq', 'contact'];
+  const NAV_IDS = ['home', 'about', 'services', 'projects', 'contact'];
+  const SECTION_IDS = ['home', 'about', 'services', 'projects', 'journey', 'faq', 'contact'];
 
   function renderNav() {
     const nav = $('#nav-links');
@@ -209,7 +210,8 @@
   }
 
   function renderExperience() {
-    $('#experience-kicker').textContent = t().experience.kicker;
+    $('#journey-kicker').textContent = t().journey.kicker;
+    $('#journey-title').textContent = t().journey.title;
     $('#experience-title').textContent = t().experience.title;
     const tl = $('#experience-list');
     tl.innerHTML = '';
@@ -226,7 +228,6 @@
   }
 
   function renderEducation() {
-    $('#education-kicker').textContent = t().education.kicker;
     $('#education-title').textContent = t().education.title;
     const list = $('#education-list');
     list.innerHTML = '';
@@ -244,30 +245,6 @@
     cl.innerHTML = '<ul></ul>';
     const ul = cl.querySelector('ul');
     t().courses.items.forEach(c => ul.appendChild(el('li', {}, c)));
-  }
-
-  function renderSkills() {
-    $('#skills-kicker').textContent = t().skills.kicker;
-    $('#skills-title').textContent = t().skills.title;
-    const grid = $('#skills-grid');
-    grid.innerHTML = '';
-    t().skills.groups.forEach(g => {
-      const chips = el('div', { class: 'skill-chips' });
-      g.items.forEach(i => chips.appendChild(el('span', { class: 'skill-chip' }, i)));
-      grid.appendChild(el('div', { class: 'skill-group' }, [
-        el('h4', { class: 'skill-group-label' }, g.label),
-        chips,
-      ]));
-    });
-
-    const ll = $('#langs-list');
-    ll.innerHTML = '';
-    t().languages.items.forEach(l => {
-      ll.appendChild(el('div', { class: 'lang-item' }, [
-        el('span', { class: 'lang-name' }, l.lang),
-        el('span', { class: 'lang-level' }, l.level),
-      ]));
-    });
   }
 
   function renderFaq() {
@@ -362,7 +339,6 @@
     renderApproach();
     renderServices();
     renderProjects();
-    renderSkills();
     renderExperience();
     renderEducation();
     renderFaq();
@@ -398,8 +374,8 @@
   function setupNavScroll() {
     const onScroll = () => {
       const y = window.scrollY + 120;
-      let active = NAV_IDS[0];
-      for (const id of NAV_IDS) {
+      let active = SECTION_IDS[0];
+      for (const id of SECTION_IDS) {
         const sec = document.getElementById(id);
         if (sec && sec.offsetTop <= y) active = id;
       }

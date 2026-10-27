@@ -1045,15 +1045,27 @@ section {
 .project-link .arr { transition: transform 0.2s; }
 .project-link:hover .arr { transform: translateX(3px); }
 
-/* EXPERIENCE / TIMELINE */
-.timeline {
-  border-top: 1px solid var(--line);
+/* EXPERIENCE + EDUCATION */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
 }
+.journey-column { min-width: 0; }
+.journey-column-title {
+  margin: 0;
+  padding: 0 0 20px;
+  font-size: clamp(21px, 2.3vw, 30px);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+.timeline, .edu-list { border-top: 1px solid var(--line); }
 .tl-item {
   display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 32px;
-  padding: 28px 0;
+  grid-template-columns: 100px minmax(0, 1fr);
+  gap: 18px;
+  padding: 20px 0;
   border-bottom: 1px solid var(--line);
 }
 .tl-period {
@@ -1081,22 +1093,27 @@ section {
   max-width: 640px;
 }
 
-/* EDUCATION + COURSES */
-.edu-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 60px;
-}
-.edu-list, .courses-list {
-  border-top: 1px solid var(--line);
-}
 .edu-item {
   display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 24px;
-  padding: 22px 0;
+  grid-template-columns: 100px minmax(0, 1fr);
+  gap: 18px;
+  padding: 20px 0;
   border-bottom: 1px solid var(--line);
 }
+.courses-disclosure { border-bottom: 1px solid var(--line); }
+.courses-disclosure summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 18px 0;
+  color: var(--accent);
+  font: 600 12px var(--font-mono);
+  letter-spacing: .04em;
+}
+.courses-disclosure summary::-webkit-details-marker { display: none; }
+.courses-disclosure summary::after { content: "+"; float: right; font-size: 18px; line-height: 1; }
+.courses-disclosure[open] summary::after { content: "−"; }
+.courses-disclosure summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.courses-list { border-top: 1px solid var(--line); }
 .edu-year {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -1120,7 +1137,7 @@ section {
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 0;
 }
 .courses-list li {
@@ -1186,84 +1203,6 @@ section {
   font-size: 12.5px;
 }
 .stack-group li:last-child { border-bottom: none; }
-
-/* SKILLS — chip grid */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
-}
-.skill-group {
-  padding: 28px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: var(--bg);
-  position: relative;
-  transition: background 0.3s;
-}
-.skill-group:hover { background: var(--bg-2); }
-.skill-group-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--accent);
-  margin: 0 0 20px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.skill-group-label::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--line);
-}
-.skill-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.skill-chip {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  padding: 6px 12px;
-  border: 1px solid var(--line-2);
-  border-radius: 100px;
-  color: var(--fg-2);
-  letter-spacing: 0.02em;
-  background: var(--bg-3);
-  transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s;
-  cursor: default;
-}
-.skill-chip:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--accent-glow);
-  transform: translateY(-1px);
-}
-
-/* LANGUAGES (inline under skills) */
-.langs-inline {
-  margin-top: 20px;
-  display: flex;
-  gap: 20px;
-}
-.lang-item {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  padding: 10px 0;
-}
-.lang-item .lang-name { font-size: 14px; font-weight: 500; }
-.lang-item .lang-level {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--accent);
-  letter-spacing: 0.05em;
-}
 
 /* TESTIMONIALS */
 .test-grid {
@@ -1520,8 +1459,8 @@ footer a:hover { color: var(--accent); }
   transform: translateY(0);
 }
 
-/* La navegación completa solo cabe sin recortes en pantallas anchas. */
-@media (max-width: 1240px) {
+/* La navegación compacta conserva espacio para nombre, idioma y contacto. */
+@media (max-width: 1050px) {
   .nav-links { display: none; }
   .nav-actions { margin-left: auto; }
   .hamburger { display: inline-flex; }
@@ -1558,15 +1497,8 @@ footer a:hover { color: var(--accent); }
   .project-slot { max-width: 100%; }
   .project:hover { padding-left: 0; }
 
-  /* Skills */
-  .skills-grid { grid-template-columns: 1fr; }
-
-  /* Experience */
-  .tl-item { grid-template-columns: 1fr; gap: 6px; }
-
-  /* Education */
-  .edu-grid { grid-template-columns: 1fr; gap: 32px; }
-  .courses-list ul { grid-template-columns: 1fr; }
+  /* Experience and education */
+  .journey-grid { grid-template-columns: 1fr; gap: 44px; }
 
   /* FAQ */
   .faq-item summary { grid-template-columns: 36px 1fr 24px; gap: 12px; }
@@ -1649,14 +1581,8 @@ footer a:hover { color: var(--accent); }
   .metrics { gap: 6px; margin-top: 8px; }
   .metric { font-size: 10.5px; padding: 3px 8px; }
 
-  /* Skills — touch-friendly chips */
-  .skill-group { padding: 20px 16px; }
-  .skill-group-label { font-size: 10px; margin-bottom: 14px; }
-  .skill-chips { gap: 6px; }
-  .skill-chip { font-size: 11px; padding: 7px 12px; }
-  .langs-inline { flex-direction: column; gap: 12px; }
-
   /* Experience */
+  .tl-item { grid-template-columns: 1fr; gap: 6px; }
   .tl-item { padding: 20px 0; }
   .tl-role { font-size: 16px; }
   .tl-desc { font-size: 13.5px; }

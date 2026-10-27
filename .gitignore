@@ -2,6 +2,7 @@
 /screenshots/landing-preview-*.png
 /screenshots/landing-publicada-*.png
 /docs/privado/
+/.playwright-cli/
 
 # Configuración y secretos locales.
 .env
