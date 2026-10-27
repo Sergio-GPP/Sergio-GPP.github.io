@@ -176,7 +176,8 @@ window.PORTFOLIO_DATA = {
       formName: "Nombre",
       formEmail: "Email",
       formMessage: "Cuéntame sobre tu proyecto...",
-      formSent: "Mensaje enviado. Te responderé pronto.",
+      formDisclosure: "FormSubmit tramita los datos del formulario para enviarme el mensaje por correo.",
+      privacyLink: "Privacidad del servicio ↗",
     },
     footer: { tagline: "Estrategia, IA y automatización.", rights: "Todos los derechos reservados." },
   },
@@ -311,7 +312,7 @@ window.PORTFOLIO_DATA = {
         { q: "Does it integrate with my tools?", a: "Absolutely. The priority is to not break your current ecosystem but to connect and enhance it." },
       ],
     },
-    contact: { kicker: "// Contact", title: "Got a project in mind?", sub: "Tell me the context — fast reply.", cta: "Send message", formName: "Name", formEmail: "Email", formMessage: "Tell me about your project...", formSent: "Message sent. I'll get back to you soon." },
+    contact: { kicker: "// Contact", title: "Got a project in mind?", sub: "Tell me the context — fast reply.", cta: "Send message", formName: "Name", formEmail: "Email", formMessage: "Tell me about your project...", formDisclosure: "FormSubmit processes this form's details to email me your message.", privacyLink: "Service privacy ↗" },
     footer: { tagline: "Strategy, AI and automation.", rights: "All rights reserved." },
   },
 };

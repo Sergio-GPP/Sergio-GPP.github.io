@@ -278,6 +278,8 @@
     setLabel('#form-label-name', t().contact.formName);
     setLabel('#form-label-email', t().contact.formEmail);
     setPlaceholder('#form-msg', t().contact.formMessage);
+    setLabel('#contact-form-note', t().contact.formDisclosure);
+    setLabel('#contact-privacy-link', t().contact.privacyLink);
 
     const info = $('#contact-info');
     info.innerHTML = '';
@@ -302,21 +304,6 @@
     $('#footer-tagline').textContent = t().footer.tagline;
     $('#footer-rights').textContent = `© ${fy} ${meta().name}. ${t().footer.rights}`;
 
-    // Form submit
-    const form = $('#contact-form');
-    if (form && !form._bound) {
-      form._bound = true;
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const sent = $('#contact-sent');
-        if (sent) {
-          sent.textContent = t().contact.formSent;
-          sent.classList.add('show');
-          form.reset();
-          setTimeout(() => sent.classList.remove('show'), 4000);
-        }
-      });
-    }
   }
 
   function setActiveLang() {

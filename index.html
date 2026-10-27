@@ -228,24 +228,28 @@
       <div>
         <h2 class="contact-title" id="contact-title"></h2>
         <p class="contact-sub" id="contact-sub"></p>
-        <form id="contact-form" class="contact-form">
+        <form id="contact-form" class="contact-form" action="https://formsubmit.co/sergio@sergiogp.com" method="POST">
+          <input type="hidden" name="_subject" value="Nuevo mensaje desde sergiogp.com" />
+          <input type="hidden" name="_next" value="https://sergiogp.com/gracias.html" />
+          <input type="hidden" name="_url" value="https://sergiogp.com/#contact" />
           <div class="contact-field">
-            <label id="form-label-name">Nombre</label>
-            <input type="text" required autocomplete="name" />
+            <label id="form-label-name" for="contact-name">Nombre</label>
+            <input id="contact-name" type="text" name="name" required maxlength="100" autocomplete="name" />
           </div>
           <div class="contact-field">
-            <label id="form-label-email">Email</label>
-            <input type="email" required autocomplete="email" />
+            <label id="form-label-email" for="contact-email">Email</label>
+            <input id="contact-email" type="email" name="email" required maxlength="254" autocomplete="email" />
           </div>
           <div class="contact-field">
-            <label>Mensaje</label>
-            <textarea id="form-msg" required></textarea>
+            <label for="form-msg">Mensaje</label>
+            <textarea id="form-msg" name="message" required maxlength="5000"></textarea>
           </div>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
           <button type="submit" class="btn btn-primary">
             <span id="contact-cta-text">Enviar mensaje</span> <span class="arr">→</span>
           </button>
         </form>
-        <div id="contact-sent" class="contact-sent"></div>
+        <p class="contact-form-note"><span id="contact-form-note">FormSubmit tramita los datos del formulario para enviarme el mensaje por correo.</span> <a id="contact-privacy-link" href="https://formsubmit.co/privacy" target="_blank" rel="noopener">Privacidad del servicio ↗</a></p>
       </div>
       <div class="contact-info" id="contact-info"></div>
     </div>
