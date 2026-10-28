@@ -40,8 +40,10 @@
     NAV_IDS.forEach(id => {
       const label = t().nav[id];
       if (!label) return;
-      const a = el('a', { href: '#' + id, 'data-nav': id }, label);
-      nav.appendChild(a);
+      if (id !== 'contact') {
+        const a = el('a', { href: '#' + id, 'data-nav': id }, label);
+        nav.appendChild(a);
+      }
       // Mobile nav clone
       if (mobileNav) {
         const ma = el('a', { href: '#' + id, 'data-nav': id, onclick: () => closeMobileMenu() }, label);
