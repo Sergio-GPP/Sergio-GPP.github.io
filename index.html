@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261107-form">
+<link rel="stylesheet" href="styles.css?v=20261107-supabase">
 
 <script type="application/ld+json">
 {
@@ -254,10 +254,7 @@
       <div>
         <h2 class="contact-title" id="contact-title"><!-- STATIC:contact-title:START -->¿Tienes un Proyecto en Mente?<!-- STATIC:contact-title:END --></h2>
         <p class="contact-sub" id="contact-sub"><!-- STATIC:contact-sub:START -->Cuéntame el contexto, la respuesta es rápida.<!-- STATIC:contact-sub:END --></p>
-        <form id="contact-form" class="contact-form" action="https://formsubmit.co/sergio@sergiogp.com" method="POST">
-          <input type="hidden" name="_subject" value="Nuevo mensaje desde sergiogp.com" />
-          <input type="hidden" name="_next" value="https://sergiogp.com/gracias.html" />
-          <input type="hidden" name="_url" value="https://sergiogp.com/#contact" />
+        <form id="contact-form" class="contact-form" action="https://lydavittbjyywdaklgoh.supabase.co/rest/v1/forms-sergiogp" method="POST" onsubmit="return false">
           <div class="contact-field">
             <label id="form-label-name" for="contact-name">Nombre</label>
             <input id="contact-name" type="text" name="name" required maxlength="100" autocomplete="name" />
@@ -277,7 +274,7 @@
           <p id="contact-form-status" class="contact-form-status" role="status" aria-live="polite" aria-atomic="true" hidden></p>
         </form>
         <noscript><style>#contact-form,.contact-form-note{display:none}</style><p class="contact-form-status">Escríbeme directamente a <a href="mailto:sergio@sergiogp.com">sergio@sergiogp.com</a> para contarme tu proyecto.</p></noscript>
-        <p class="contact-form-note"><span id="contact-form-note">FormSubmit tramita los datos del formulario para enviarme el mensaje por correo.</span> <a id="contact-privacy-link" href="https://formsubmit.co/privacy" target="_blank" rel="noopener">Privacidad del servicio ↗</a></p>
+        <p class="contact-form-note"><span id="contact-form-note">Sergio Guillén Pampliega guarda tu nombre, email y mensaje en Supabase (UE) para responder a tu consulta.</span> <a id="contact-privacy-link" href="https://supabase.com/privacy" target="_blank" rel="noopener">Privacidad de Supabase ↗</a></p>
       </div>
       <div class="contact-info" id="contact-info"><!-- STATIC:contact-info:START --><a href="mailto:sergio@sergiogp.com" target="_self" rel="noopener"><div><div class="label">EMAIL</div><div class="val">sergio@sergiogp.com</div></div><span class="arr">↗</span></a><a href="https://www.linkedin.com/in/sergioguillenpampliega" target="_blank" rel="noopener"><div><div class="label">LINKEDIN</div><div class="val">linkedin.com/in/sergioguillenpampliega</div></div><span class="arr">↗</span></a><a href="https://www.instagram.com/sergiogp.ia/" target="_blank" rel="noopener"><div><div class="label">INSTAGRAM</div><div class="val">instagram.com/sergiogp.ia</div></div><span class="arr">↗</span></a><a href="tel:+34649368800" target="_self" rel="noopener"><div><div class="label">TELÉFONO</div><div class="val">+34 649 36 88 00</div></div><span class="arr">↗</span></a><a href="https://sergiogp.com" target="_blank" rel="noopener"><div><div class="label">WEB</div><div class="val">sergiogp.com</div></div><span class="arr">↗</span></a><!-- STATIC:contact-info:END --></div>
     </div>
@@ -297,8 +294,8 @@
   </div>
 </footer>
 
-<script src="data.js?v=20261107-form"></script>
+<script src="data.js?v=20261107-supabase"></script>
 <script src="icons.js"></script>
-<script src="app.js?v=20261107-form"></script>
+<script src="app.js?v=20261107-supabase"></script>
 </body>
 </html>

@@ -81,8 +81,12 @@ if re.search(r"aldrax|altrax|aldracks", public_code, re.I):
 for name in ("caso-exito-crm-comercial.html", "caso-exito-sistema-editorial-ia.html"):
     if "identidad reservada" not in (ROOT / name).read_text(encoding="utf-8").lower():
         errors.append(f"{name}: falta indicar que la identidad del cliente está reservada")
-if "https://formsubmit.co/sergio@sergiogp.com" not in public_code:
-    errors.append("Revisar el destinatario del formulario")
+if "https://lydavittbjyywdaklgoh.supabase.co/rest/v1/forms-sergiogp" not in public_code:
+    errors.append("Revisar el destino del formulario")
+if "sb_publishable_" not in (ROOT / "app.js").read_text(encoding="utf-8"):
+    errors.append("El formulario no usa una clave pública de Supabase")
+if re.search(r"sb_secret_|service_role|formsubmit\.co", public_code, re.I):
+    errors.append("El código público contiene una credencial o proveedor anterior")
 
 try:
     sitemap = ET.parse(ROOT / "sitemap.xml")

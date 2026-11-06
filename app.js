@@ -8,6 +8,8 @@
     lang: localStorage.getItem('sgp-lang') || (navigator.language?.startsWith('en') ? 'en' : 'es'),
     formStatus: 'idle',
   };
+  // Publishable key only. Database grants and RLS limit visitors to inserting form fields.
+  const CONTACT_PUBLISHABLE_KEY = 'sb_publishable_AiQFiqkWFss13N2k3k9V8Q_aJdD2tup';
 
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
@@ -301,29 +303,33 @@
       event.preventDefault();
       if (state.formStatus === 'sending') return;
 
-      const payload = Object.fromEntries(new FormData(form));
-      delete payload._next;
-      const endpoint = new URL(form.action);
-      endpoint.pathname = '/ajax' + endpoint.pathname;
+      const fields = new FormData(form);
+      if (fields.get('_honey')) return;
+      const payload = {
+        name: String(fields.get('name') || '').trim(),
+        email: String(fields.get('email') || '').trim(),
+        message: String(fields.get('message') || '').trim(),
+      };
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 20000);
       state.formStatus = 'sending';
       renderContactFormStatus();
 
       try {
-        const response = await fetch(endpoint.href, {
+        const response = await fetch(form.action, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            apikey: CONTACT_PUBLISHABLE_KEY,
+            Prefer: 'return=minimal',
+          },
           body: JSON.stringify(payload),
           signal: controller.signal,
         });
-        const result = await response.json();
-        if (!response.ok || (result.success !== true && result.success !== 'true')) {
-          throw new Error('FormSubmit did not confirm the submission');
-        }
+        if (!response.ok) throw new Error('Contact storage did not confirm the submission');
         window.location.assign(new URL('gracias.html', window.location.href).href);
       } catch (error) {
-        // A timed-out response may follow a delivered email. Keep the draft and avoid an automatic retry.
+        // A timed-out response may follow a committed insert. Keep the draft and avoid an automatic retry.
         state.formStatus = 'unconfirmed';
         renderContactFormStatus();
       } finally {

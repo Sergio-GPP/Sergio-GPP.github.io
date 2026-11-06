@@ -18,7 +18,7 @@
 - El sistema editorial con IA permite crear y revisar borradores; la publicación automática en redes no está integrada. Su cliente también permanece anónimo en todo el contenido público.
 - No añadir cifras de ahorro, ingresos, usuarios, conversiones o campañas a partir de una impresión visual. Las cifras ya existentes de la web requieren una revisión documental con Sergio antes de ampliarlas o reutilizarlas.
 - No publicar capturas con datos de clientes, credenciales, métricas internas sensibles ni direcciones de sistemas privados. Usar ilustraciones identificadas como tales.
-- El formulario usa FormSubmit; un envío técnico o un POST configurado no demuestran recepción. Confirmarla en el buzón tras cambios relevantes.
+- El formulario guarda las consultas en la tabla `public."forms-sergiogp"` de Supabase; un POST configurado no demuestra persistencia. Confirmar el registro en la tabla tras cambios relevantes.
 
 ## Preguntas pendientes para futuras decisiones
 
