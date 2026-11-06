@@ -6,6 +6,7 @@
 
   const state = {
     lang: localStorage.getItem('sgp-lang') || (navigator.language?.startsWith('en') ? 'en' : 'es'),
+    formStatus: 'idle',
   };
 
   const $ = (sel, root = document) => root.querySelector(sel);
@@ -274,11 +275,68 @@
     });
   }
 
+  function renderContactFormStatus() {
+    const form = $('#contact-form');
+    const status = $('#contact-form-status');
+    const sending = state.formStatus === 'sending';
+    form.querySelector('button[type="submit"]').disabled = sending;
+    form.setAttribute('aria-busy', String(sending));
+    $('#contact-cta-text').textContent = sending ? t().contact.formSending : t().contact.cta;
+    status.hidden = state.formStatus === 'idle';
+    if (sending) {
+      status.textContent = t().contact.formSending;
+    } else if (state.formStatus === 'unconfirmed') {
+      status.replaceChildren(
+        document.createTextNode(t().contact.formUnconfirmed + ' '),
+        el('a', { href: 'mailto:' + meta().email }, meta().email),
+        document.createTextNode('.'),
+      );
+    }
+  }
+
+  function setupContactForm() {
+    const form = $('#contact-form');
+    if (!form) return;
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (state.formStatus === 'sending') return;
+
+      const payload = Object.fromEntries(new FormData(form));
+      delete payload._next;
+      const endpoint = new URL(form.action);
+      endpoint.pathname = '/ajax' + endpoint.pathname;
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 20000);
+      state.formStatus = 'sending';
+      renderContactFormStatus();
+
+      try {
+        const response = await fetch(endpoint.href, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(payload),
+          signal: controller.signal,
+        });
+        const result = await response.json();
+        if (!response.ok || (result.success !== true && result.success !== 'true')) {
+          throw new Error('FormSubmit did not confirm the submission');
+        }
+        window.location.assign(new URL('gracias.html', window.location.href).href);
+      } catch (error) {
+        // A timed-out response may follow a delivered email. Keep the draft and avoid an automatic retry.
+        state.formStatus = 'unconfirmed';
+        renderContactFormStatus();
+      } finally {
+        clearTimeout(timeout);
+      }
+    });
+  }
+
   function renderContact() {
     $('#contact-kicker').textContent = t().contact.kicker;
     $('#contact-title').textContent = t().contact.title;
     $('#contact-sub').textContent = t().contact.sub;
-    $('#contact-cta-text').textContent = t().contact.cta;
+    renderContactFormStatus();
 
     // Form labels
     const setLabel = (id, txt) => { const e = $(id); if (e) e.textContent = txt; };
@@ -424,6 +482,7 @@
     $$('.lang-switch button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
     setActiveLang();
     renderAll();
+    setupContactForm();
     setupNavScroll();
     setupClock();
 

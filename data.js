@@ -185,6 +185,8 @@ window.PORTFOLIO_DATA = {
       formEmail: "Email",
       formMessageLabel: "Mensaje",
       formMessage: "Cuéntame sobre tu proyecto...",
+      formSending: "Enviando mensaje…",
+      formUnconfirmed: "El servicio no ha confirmado el envío. Tu texto sigue en el formulario y puede que el correo ya haya llegado. Si necesitas asegurarte, escríbeme directamente a",
       formDisclosure: "FormSubmit tramita los datos del formulario para enviarme el mensaje por correo.",
       privacyLink: "Privacidad del servicio ↗",
     },
@@ -334,7 +336,7 @@ window.PORTFOLIO_DATA = {
         { q: "How do you price the project and ongoing support?", a: "It depends on the process, integrations and support you need. The proposal separates initial work, third-party costs and maintenance where applicable." },
       ],
     },
-    contact: { kicker: "// Contact", title: "Got a project in mind?", sub: "Tell me the context — fast reply.", cta: "Send message", formName: "Name", formEmail: "Email", formMessageLabel: "Message", formMessage: "Tell me about your project...", formDisclosure: "FormSubmit processes this form's details to email me your message.", privacyLink: "Service privacy ↗" },
+    contact: { kicker: "// Contact", title: "Got a project in mind?", sub: "Tell me the context — fast reply.", cta: "Send message", formName: "Name", formEmail: "Email", formMessageLabel: "Message", formMessage: "Tell me about your project...", formSending: "Sending message…", formUnconfirmed: "The service could not confirm delivery. Your text is still in the form, and the email may already have arrived. To make sure, email me directly at", formDisclosure: "FormSubmit processes this form's details to email me your message.", privacyLink: "Service privacy ↗" },
     footer: { tagline: "AI, Automation and Marketing.", rights: "All rights reserved." },
   },
 };

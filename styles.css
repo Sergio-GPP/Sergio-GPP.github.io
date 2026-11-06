@@ -1347,6 +1347,19 @@ section {
 }
 .contact-form-note a { color: var(--fg-2); }
 .contact-form-note a:hover { color: var(--accent); }
+.contact-form-status {
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r);
+  background: var(--bg);
+  color: var(--fg-2);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.contact-form-status[hidden] { display: none; }
+.contact-form-status a { color: var(--accent); }
+.contact-form button:disabled { opacity: 0.75; cursor: wait; transform: none; }
 .contact-section {
   padding-top: 120px;
   padding-bottom: 100px;

@@ -13,6 +13,7 @@
 2. Si el árbol está limpio: `git pull --ff-only origin main`. Si hay cambios locales: `git fetch origin main`, inspeccionar `git log --oneline --left-right HEAD...origin/main` y reconciliar sin sobrescribirlos.
 3. Editar en esta carpeta. Para ver la web: `python -m http.server 8765 --bind 127.0.0.1` y abrir `http://127.0.0.1:8765/`.
    Si cambias contenido en `data.js`, ejecuta `node scripts/render_static_home.js` para mantener el HTML inicial en español. `check_site.py` comprueba esa sincronización.
+   Si cambias `app.js`, `data.js` o `styles.css`, actualiza también la versión de su URL en `index.html` para evitar que el navegador reutilice una copia anterior.
 4. Revisar en móvil estrecho y escritorio: inicio, menú, ES/EN, secciones, casos, formulario, enlaces y `prefers-reduced-motion`. Mirar con el navegador si hay errores de consola o imágenes rotas.
 5. Ejecutar:
 
@@ -29,4 +30,4 @@
 
 ## Formulario
 
-El formulario hace POST a FormSubmit para `sergio@sergiogp.com` y redirige a `gracias.html`. Confirmar la recepción en el buzón tras cualquier cambio del formulario o del servicio. El código estático por sí solo no acredita que el correo llegue.
+Con JavaScript, el formulario envía a FormSubmit por AJAX y solo redirige a `gracias.html` cuando la respuesta confirma éxito. Ante un error conserva el borrador, informa de que la recepción es incierta y ofrece el correo directo; no reintenta automáticamente porque el mensaje podría haberse entregado antes del fallo de respuesta. Sin JavaScript se oculta el formulario y se muestra la dirección de correo. Confirmar la recepción en el buzón tras cualquier cambio del formulario o del servicio. El código estático y la respuesta del proveedor por sí solos no acreditan que el correo llegue.
