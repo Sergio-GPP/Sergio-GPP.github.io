@@ -14,8 +14,8 @@ window.PORTFOLIO_DATA = {
   },
   es: {
     seo: {
-      title: "Sergio Guillén Pampliega — IA, Automatización & Transformación Digital",
-      description: "Freelance experto en Inteligencia Artificial, automatización de procesos y transformación digital. Convierto la tecnología en tu mayor ventaja competitiva.",
+      title: "Sergio Guillén Pampliega | IA, web y automatización en Murcia",
+      description: "Consultor freelance en Murcia para IA, automatización, desarrollo web y software, email marketing y SEO. Soluciones a medida para empresas de la Región de Murcia.",
     },
     nav: {
       home: "Inicio", about: "Sobre mí", services: "Servicios", projects: "Proyectos",
@@ -192,8 +192,8 @@ window.PORTFOLIO_DATA = {
   },
   en: {
     seo: {
-      title: "Sergio Guillén Pampliega — AI, Automation & Digital Transformation",
-      description: "Freelance specialist in AI, process automation and digital transformation. I turn technology into a practical advantage for your business.",
+      title: "Sergio Guillén Pampliega | AI & Automation in Murcia",
+      description: "Freelance consultant in Murcia for AI, automation, web and software development, email marketing and SEO. Custom solutions for businesses.",
     },
     nav: { home: "Home", about: "About", services: "Services", projects: "Projects", contact: "Contact" },
     hero: {

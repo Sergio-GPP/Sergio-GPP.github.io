@@ -3,7 +3,9 @@
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
+import json
 import re
+import subprocess
 import sys
 import xml.etree.ElementTree as ET
 
@@ -83,9 +85,33 @@ if "https://formsubmit.co/sergio@sergiogp.com" not in public_code:
     errors.append("Revisar el destinatario del formulario")
 
 try:
-    ET.parse(ROOT / "sitemap.xml")
+    sitemap = ET.parse(ROOT / "sitemap.xml")
+    listed = {node.text for node in sitemap.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
+    expected = {"https://sergiogp.com/"}
+    for path in PUBLIC_HTML:
+        if path.name.startswith("caso-") and path.name != "caso-exito-remarketing-educativo.html":
+            expected.add(f"https://sergiogp.com/{path.name}")
+    if listed != expected:
+        errors.append(f"Sitemap no coincide con las páginas canónicas: faltan {expected - listed}, sobran {listed - expected}")
 except (OSError, ET.ParseError) as exc:
     errors.append(f"Sitemap inválido: {exc}")
+
+home = (ROOT / "index.html").read_text(encoding="utf-8")
+for index, markup in enumerate(re.findall(r'<script type="application/ld\+json">(.*?)</script>', home, re.S), 1):
+    try:
+        json.loads(markup)
+    except json.JSONDecodeError as exc:
+        errors.append(f"JSON-LD {index} inválido: {exc}")
+
+try:
+    static_check = subprocess.run(
+        ["node", str(ROOT / "scripts" / "render_static_home.js"), "--check"],
+        capture_output=True, text=True, check=False,
+    )
+    if static_check.returncode:
+        errors.append("HTML estático desactualizado respecto a data.js: ejecuta node scripts/render_static_home.js")
+except OSError as exc:
+    errors.append(f"No se pudo comprobar el HTML estático: {exc}")
 
 if (ROOT / "CNAME").read_text(encoding="utf-8").strip() != "sergiogp.com":
     errors.append("CNAME no apunta a sergiogp.com")

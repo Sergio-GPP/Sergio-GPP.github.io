@@ -12,6 +12,7 @@
 1. `git status --short`, `git branch -vv` y `git remote -v`. Revisar los cambios locales y conservarlos.
 2. Si el árbol está limpio: `git pull --ff-only origin main`. Si hay cambios locales: `git fetch origin main`, inspeccionar `git log --oneline --left-right HEAD...origin/main` y reconciliar sin sobrescribirlos.
 3. Editar en esta carpeta. Para ver la web: `python -m http.server 8765 --bind 127.0.0.1` y abrir `http://127.0.0.1:8765/`.
+   Si cambias contenido en `data.js`, ejecuta `node scripts/render_static_home.js` para mantener el HTML inicial en español. `check_site.py` comprueba esa sincronización.
 4. Revisar en móvil estrecho y escritorio: inicio, menú, ES/EN, secciones, casos, formulario, enlaces y `prefers-reduced-motion`. Mirar con el navegador si hay errores de consola o imágenes rotas.
 5. Ejecutar:
 
