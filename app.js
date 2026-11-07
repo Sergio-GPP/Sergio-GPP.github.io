@@ -353,6 +353,7 @@
     setPlaceholder('#form-msg', t().contact.formMessage);
     setLabel('#contact-form-note', t().contact.formDisclosure);
     setLabel('#contact-privacy-link', t().contact.privacyLink);
+    setLabel('#contact-mail-privacy-link', t().contact.mailPrivacyLink);
 
     const info = $('#contact-info');
     info.innerHTML = '';
