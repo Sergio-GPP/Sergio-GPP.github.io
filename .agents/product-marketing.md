@@ -18,7 +18,7 @@
 - El sistema editorial con IA permite crear y revisar borradores; la publicación automática en redes no está integrada. Su cliente también permanece anónimo en todo el contenido público.
 - No añadir cifras de ahorro, ingresos, usuarios, conversiones o campañas a partir de una impresión visual. Las cifras ya existentes de la web requieren una revisión documental con Sergio antes de ampliarlas o reutilizarlas.
 - No publicar capturas con datos de clientes, credenciales, métricas internas sensibles ni direcciones de sistemas privados. Usar ilustraciones identificadas como tales.
-- El formulario guarda las consultas en la tabla `public."forms-sergiogp"` de Supabase y envía a Sergio un aviso interno por correo; un POST configurado no demuestra persistencia ni entrega. Confirmar la fila, `notification_status='sent'` y la recepción real en el buzón tras cambios relevantes.
+- El formulario guarda las consultas en la tabla `public."forms-sergiogp"` de Supabase. El aviso por correo desde la agencia fue retirado. Un POST configurado no demuestra persistencia: confirmar la fila real tras cambios relevantes. El futuro aviso de ChatGPT requiere una tarea activa y una prueba independiente antes de anunciarlo como funcional.
 
 ## Preguntas pendientes para futuras decisiones
 

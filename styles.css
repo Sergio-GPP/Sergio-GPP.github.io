@@ -1516,7 +1516,9 @@ footer a:hover { color: var(--accent); }
   .faq-a { padding-left: 52px; }
 
   /* Contact */
-  .contact-card { grid-template-columns: 1fr; }
+  .contact-card { grid-template-columns: minmax(0, 1fr); }
+  .contact-card > * { min-width: 0; }
+  .contact-info .val { overflow-wrap: anywhere; }
 
   /* Footer */
   footer { flex-direction: column; align-items: flex-start; gap: 12px; }
